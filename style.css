@@ -1,4 +1,64 @@
 * {
     margin: 0;
+    padding: 0;
+
     box-sizing: border-box;
+}
+
+:root {
+    --background-color: hsl(180, 29%, 80%);
+    --navbar-background-color: hsl(180, 72%, 26%);
+    --default-padding: 20px;
+    --mobile-menu-color: hsl(180, 28%, 92%);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    font-family: "Bagel Fat One", sans-serif;
+
+}
+
+
+.navbar {
+    display: flex;
+    padding: var(--default-padding);
+    justify-content: space-between;
+    background-color: var(--navbar-background-color);
+
+
+}
+
+/* Menu toggle button for mobile view */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+
+
+.intro-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    margin: var(--default-padding);
+    margin-bottom: 100px;
+
+}
+
+.intro-section img,
+h2 {
+    margin-bottom: 20px;
+}
+
+.button-theme {
+    font-family: inherit;
+    width: 40vw;
+    height: 5vh;
+    background-color: transparent;
+    border-radius: 8px;
+    border: 2px solid var(--navbar-background-color);
 }
