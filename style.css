@@ -6,10 +6,12 @@
 }
 
 :root {
-    --default-padding: 20px;
+    --default-padding: 30px;
     --white: hsl(0, 0%, 100%);
     --black: hsl(0, 0%, 0%);
     --shadow-grey: hsla(223, 23%, 18%, 1);
+    --shadow-grey-dark: rgb(23, 27, 37);
+
     /*
     --grey: rgb(193, 196, 198);
     --space-indigo: rgb(55, 69, 118);
@@ -56,21 +58,30 @@ main {
 
 .navbar {
     display: flex;
-    padding: var(--default-padding);
+    padding: var(--default-padding) clamp(20px, 5vw, 50px);
     justify-content: space-between;
+    align-items: center;
+    background-color: var(--shadow-grey-dark);
 }
 
 nav li {
-    float: left;
-    margin-right: 30px;
+    /*    margin: auto 40px auto 0px; */
+    margin-right: 50px;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+
 }
+
+
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
-
+nav ol {
+    display: flex;
+    align-items: center;
+}
 
 
 
@@ -122,11 +133,45 @@ a {
     margin-top: 20px;
 }
 
-#arrow {
+#letter-e {
+    width: 55px;
+
+}
+
+#menu-icon {
+    width: 55px;
+}
+
+#li-icon {
+    width: 55px;
     position: absolute;
-    bottom: 0;
+    bottom: 35px;
+    left: 45px;
+}
+
+#gh-icon {
+    width: 55px;
+    position: absolute;
+    bottom: 100px;
+    left: 45px;
+}
+
+picture {
+    display: flex;
+    justify-content: center;
     align-self: center;
 }
+
+
+
+#arrow {
+    display: block;
+    position: absolute;
+    bottom: 35px;
+    width: 65px;
+}
+
+
 
 #code-image {
     margin-bottom: 20px;
@@ -137,12 +182,21 @@ a {
 
 }
 
-#menu-icon {
+
+
+#desktop-nav {
     display: none;
 }
 
-
-
+#skip {
+    list-style-type: none;
+    counter-increment: none;
+    border: 2px solid var(--white);
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 0px;
+    margin-left: -20px;
+}
 
 /* Styles for screen sizes larger than mobile */
 
@@ -155,6 +209,15 @@ a {
 @media (min-width:1024px) {
 
     /* laptops */
+    #menu-icon {
+        display: none;
+    }
+
+    #desktop-nav {
+        display: block;
+        margin: auto 0px auto auto;
+    }
+
 
 
 
