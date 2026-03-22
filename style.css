@@ -6,16 +6,14 @@
 }
 
 :root {
-    --background-color: hsl(180, 29%, 80%);
-    --navbar-background-color: hsl(180, 76%, 17%);
     --default-padding: 20px;
     --white: hsl(0, 0%, 100%);
     --black: hsl(0, 0%, 0%);
-    --mobile-menu-color: hsl(180, 28%, 92%);
-    --stormy-teal: hsla(187, 47%, 34%, 1);
     --shadow-grey: hsla(223, 23%, 18%, 1);
+    /*
     --grey: rgb(193, 196, 198);
     --space-indigo: rgb(55, 69, 118);
+    */
 }
 
 body {
@@ -26,6 +24,15 @@ body {
     color: var(--white);
 
 
+
+}
+
+main {
+    /* padding: 0px clamp(25px, 6vw, 100px); */
+    width: 100%;
+    max-width: 1600px;
+    padding: 0px clamp(25px, 12vw, 150px);
+    margin: 0px auto;
 }
 
 
@@ -39,7 +46,8 @@ body {
 
 .normal-text {
     font-weight: 400;
-    font-size: clamp(2.75rem, 8vw, 3.75rem);
+    /* font-size: clamp(2.75rem, 8vw, 3.75rem); */
+    font-size: clamp(2.75rem, 8vw, 5rem);
 }
 
 
@@ -72,15 +80,15 @@ a {
     align-items: flex-start;
     justify-content: center;
     min-height: 100vh;
-    margin: 0px 15px 50px 25px;
+    /* margin: 0px 15px 50px 25px; */
     padding-bottom: 30vh;
+    max-width: 1000px;
+    margin: 0px auto;
 
 }
 
 
-.intro-section h1 {
-    margin-bottom: 10px;
-}
+
 
 
 .content-section {
@@ -122,15 +130,15 @@ a {
 
 #code-image {
     margin-bottom: 20px;
-    /* clamp(100px, 7vw, 120px) */
-    width: clamp(100px, 7vw, 120px);
+    /* clamp(100px, 10vw, 175px) */
+    width: clamp(100px, 10vw, 145px);
 
 
 
 }
 
 #menu-icon {
-    /* display: none; */
+    display: none;
 }
 
 
@@ -148,13 +156,7 @@ a {
 
     /* laptops */
 
-    .intro-section {
-        padding-left: 30vw;
-    }
 
-    #arrow {
-        margin-right: 30vw;
-    }
 
 
 }
