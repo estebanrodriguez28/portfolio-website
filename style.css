@@ -31,11 +31,12 @@ body {
 }
 
 main {
-    /* padding: 0px clamp(25px, 6vw, 100px); */
+    padding: 0px clamp(25px, 6vw, 100px);
     width: 100%;
     max-width: 1600px;
     padding: 0px clamp(25px, 8.5vw, 150px);
     margin: 0px auto;
+
 }
 
 
@@ -50,6 +51,7 @@ main {
 .normal-text {
     font-weight: 400;
     font-size: clamp(2.75rem, 8vw, 5rem);
+
 }
 
 
@@ -103,15 +105,77 @@ nav ol {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 10vh;
+    padding-top: 30vh;
+    padding-bottom: 20vh;
+
+
+
+
 }
 
-#about-section h1 {
-    margin: 5px 0px 40px;
+
+#about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
 }
 
-#about-section img {
-    margin: 5px 0px 40px;
+
+
+#polaroid {
+    background-color: var(--shadow-grey-dark);
+    padding: 15px 20px 100px 20px;
+    margin: 45px 0px 60px 0px;
+
+    /*box-shadow: 10px 10px 10px var(--shadow-grey-dark); */
+}
+
+
+
+#browser {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--shadow-grey-dark);
+}
+
+#browser-tab {
+    display: flex;
+    padding: 15px;
+    background-color: var(--shadow-grey-dark);
+}
+
+.circle {
+    height: 10px;
+    width: 10px;
+    margin-right: 12px;
+    border-radius: 50%;
+
+    &:nth-child(1) {
+        background-color: #be2c2c;
+
+    }
+
+    &:nth-child(2) {
+        background-color: #e5c63a;
+
+    }
+
+    &:nth-child(3) {
+        background-color: #2c7d39;
+
+    }
+}
+
+
+
+
+
+
+#browser-text {
+    padding: 30px 10px;
 }
 
 #about-section p {
@@ -251,8 +315,34 @@ picture {
         right: 45px;
     }
 
+    #about-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    #browser {
+        max-width: 50%;
+    }
 
 
+    #polaroid {
+        margin-right: 80px;
+    }
+
+    #browser {
+        margin-left: 80px;
+    }
+
+    #about-section p {
+        font-size: 1.25rem;
+    }
+
+    #large-img {
+        width: 275px;
+    }
 
 
 }
