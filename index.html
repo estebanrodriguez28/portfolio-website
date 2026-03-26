@@ -63,13 +63,13 @@
             </section>
             <!-- 
             <img src="./images/gesture.png" alt="Hand icon waving" id="hand-wave">
-           -->
+           
 
             <picture>
                 <source media="(min-width:1024px)" srcset="./images/smooth-scrolling.png">
                 <img src="./images/down-arrow.png" id="arrow">
             </picture>
-
+            -->
 
 
         </section>
@@ -81,6 +81,7 @@
 
         <section id="about-section">
             <h1>1. About Me</h1>
+            <div id="sharp-edge"></div>
             <section id="about-content">
 
 
@@ -97,10 +98,12 @@
                     <div id="browser-text">
 
 
-                        <p>Hi! I'm Esteban. I love creating awesome UIs that excite people. I have experience with web
+                        <p class="txt-spacing">Hi! I'm Esteban. I love creating awesome UIs that excite people. I have
+                            experience with web
                             development
                             working with html, css, javascript as well as React.</p>
-                        <p>My goal is to create the best designs I possibly can and amaze people! I am excited to keep
+                        <p class="txt-spacing">My goal is to create the best designs I possibly can and amaze people! I
+                            am excited to keep
                             growing my front-end skills and reach the highest level of design I can.</p>
                     </div>
                 </div>
@@ -113,12 +116,30 @@
         <!--
             Experience/work section
         -->
-        <section>
-            <div>
-                <h1>Web Developer</h1>
-                <h2>Coframe</h2>
+        <section id="about-section">
+
+            <h1>2. Experience</h1>
+            <div id="sharp-edge"></div>
+            <div class="card">
+                <img src="./images/coframe.png" alt="Coframe company logo">
+                <h2>Web Developer</h2>
+                <h3>Coframe</h3>
                 <p>Built website variants with AI for conversion rate optimization (CRO) testing</p>
                 <span>February 2026</span>
+            </div>
+            <div class="card">
+                <img src="./images/haystacks.png" alt="Haystacks company logo">
+                <h2>Software Engineering Intern</h2>
+                <h3>Haystacks AI</h3>
+                <p>Used AI for automation and personalization for customer outreach</p>
+                <span>Summer 2024</span>
+            </div>
+            <div class="card">
+                <img src="./images/guardant.png" alt="Guardant company logo">
+                <h2>Security Validation Intern</h2>
+                <h3>Guardant Health</h3>
+                <p>Conducted security assesments on healthcare systems</p>
+                <span>Summer 2023</span>
             </div>
 
         </section>
@@ -143,7 +164,7 @@
     <!--
             Footer w/ Github + LinkedIn
         -->
-    <footer>
+    <footer id="about-section">
         <a href="https://www.flaticon.com/free-icons/letter-e" title="letter e icons">Letter e icons created by
             popo2021 - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/hamburger" title="hamburger icons">Hamburger icons created by
