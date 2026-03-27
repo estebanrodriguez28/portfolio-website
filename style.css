@@ -123,10 +123,10 @@ nav ol {
 
 #sharp-edge {
     width: 100%;
-    padding: 1.5px 0px;
-    background-color: var(--shadow-grey-dark);
+    padding: 1px 0px;
+    background-color: var(--white);
     margin-top: 10px;
-    border: 2px solid var(--shadow-grey-dark);
+    border: 2px solid var(--white);
     /* border-radius: 0px 60px 0px 60px; */
     transform: skewX(55deg);
 }
@@ -195,7 +195,47 @@ nav ol {
     width: 225px;
 }
 
+.project-icons {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 
+
+
+}
+
+.image-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 50px;
+    padding: 5px;
+
+}
+
+.image-container img {
+    margin-bottom: 0px !important;
+    width: 100% !important;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.project-icons li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+
+.project-icons li span {
+    font-size: .55rem;
+}
 
 
 .button-theme {
@@ -225,7 +265,7 @@ nav ol {
 
 }
 
-#gh-icon {
+.icon {
     width: 45px;
 
 }
@@ -234,13 +274,7 @@ nav ol {
     display: none;
 }
 
-#no-bullets {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 #hand-wave {
     display: none;
@@ -303,6 +337,11 @@ picture {
     margin-bottom: 10px;
 }
 
+#project-img {
+    width: 100%;
+
+}
+
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
 .card h2 {
     font-size: 1.1rem;
@@ -333,12 +372,57 @@ picture {
         margin: auto 0px auto auto;
     }
 
-    #social-icons {
-        display: block;
+    #no-bullets {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: fixed;
         bottom: 15px;
         left: 45px;
     }
+
+    #social-icons {
+        display: block;
+
+
+    }
+
+    #email {
+        position: fixed;
+        bottom: 15px;
+        right: 45px;
+        width: 65px;
+    }
+
+
+    #intro-slashes {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        position: fixed;
+        bottom: 35px;
+        right: 0;
+
+
+    }
+
+    .intro-slash {
+        background-color: var(--white);
+        margin-top: 15px;
+        border: 2px solid var(--white);
+        /* border-radius: 0px 60px 0px 60px; */
+        transform: skewX(55deg);
+        height: 15px;
+        width: 250px;
+    }
+
+    #slash-width {
+
+        width: 210px;
+    }
+
 
     #hand-wave {
         display: block;
