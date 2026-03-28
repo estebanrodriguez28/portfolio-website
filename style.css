@@ -142,16 +142,32 @@ nav ol {
 
 
 
-#browser {
+.browser {
     display: flex;
     flex-direction: column;
     border: 3px solid var(--shadow-grey-dark);
 }
 
-#browser-tab {
+.browser img {
+    margin-bottom: 0px !important;
+    padding: 0px 5px 5px 5px;
+}
+
+#browser-border {
+    border: 3px solid var(--shadow-grey);
+    background-color: var(--shadow-grey);
+    margin: 5px 0px 25px 0px;
+}
+
+.browser-tab {
     display: flex;
     padding: 15px;
     background-color: var(--shadow-grey-dark);
+}
+
+#browser-tab-color {
+    background-color: var(--shadow-grey);
+    padding: 10px;
 }
 
 .circle {
@@ -210,9 +226,10 @@ nav ol {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80px;
+    width: 60px;
     height: 50px;
     padding: 5px;
+    margin-bottom: 5px;
 
 }
 
@@ -228,6 +245,7 @@ nav ol {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5px;
 
 }
 
@@ -235,6 +253,7 @@ nav ol {
 
 .project-icons li span {
     font-size: .55rem;
+    padding: 0px 10px;
 }
 
 
@@ -321,6 +340,12 @@ picture {
     margin-left: -20px;
 }
 
+.devicon-white {
+    filter: brightness(0) invert(1);
+}
+
+
+
 .card {
     background-color: var(--shadow-grey-dark);
     padding: 15px;
@@ -335,6 +360,21 @@ picture {
 .card img {
     width: 60px;
     margin-bottom: 10px;
+}
+
+.project-links {
+    display: flex;
+    align-items: center;
+}
+
+.project-links h2 {
+    margin-right: 10px;
+}
+
+.project-links img {
+    width: 25px;
+    margin-bottom: 0px !important;
+    padding-top: 5px;
 }
 
 #project-img {
@@ -440,17 +480,17 @@ picture {
 
     }
 
-    #browser {
+    .browser {
         max-width: 50%;
     }
 
 
     #polaroid {
-        margin-right: 70px;
+        margin-right: 50px;
     }
 
-    #browser {
-        margin-left: 70px;
+    .browser {
+        margin-left: 50px;
     }
 
     #sharp-edge {
