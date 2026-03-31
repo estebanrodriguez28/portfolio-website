@@ -107,8 +107,6 @@ nav ol {
     align-items: center;
     padding-top: 15dvh;
 
-
-
 }
 
 
@@ -366,7 +364,7 @@ picture {
 }
 
 .project-card {
-    margin-top: 15px;
+    margin: 5px 0px 45px 0px;
 }
 
 .project-links {
@@ -397,6 +395,16 @@ picture {
 
 .project-row {
     display: inline;
+}
+
+#hide-screenshot-desktop {
+    display: inline;
+    width: 100%;
+}
+
+#hide-screenshot-mobile {
+    display: none;
+
 }
 
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
@@ -516,17 +524,18 @@ picture {
 
     }
 
+    /*
     #about-section {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding-top: 15dvh;
-        /* padding-bottom: 20dvh; */
-
-
+        /* padding-bottom: 20dvh; 
 
     }
+    */
+
 
 
     #about-section p {
@@ -552,9 +561,25 @@ picture {
 
 
     .project-card {
-        height: 20%;
         width: 55%;
-        margin-left: 50px;
+        margin: 0px 0px 0px 50px;
+    }
+
+    #hide-screenshot-desktop {
+        display: none;
+    }
+
+
+
+    #hide-screenshot-mobile {
+        display: inline;
+        width: 55%;
+        margin-right: 50px;
+
+    }
+
+    .fit-screenshot {
+        width: 55%;
     }
 
     #card-left {
@@ -581,9 +606,7 @@ picture {
     .desktop-browser {
         display: flex;
         flex-direction: column;
-        border: 3px solid var(--shadow-grey-dark);
-        width: 65%;
-        height: 50%;
+        width: 55%;
         margin-right: 50px;
     }
 
