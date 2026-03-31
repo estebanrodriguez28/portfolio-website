@@ -407,6 +407,41 @@ picture {
 
 }
 
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-row {
+    display: flex;
+    text-align: center;
+
+}
+
+.skills-row li {
+    background-color: var(--shadow-grey-dark);
+    padding: 15px 5px;
+    margin: 10px 15px;
+    width: 115px;
+    border-radius: 8px;
+}
+
+.skills-row li img {
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.skills-row li h2 {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.remove-bullets {
+    list-style-type: none;
+}
+
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
 .card h2 {
     font-size: 1.1rem;
@@ -620,6 +655,12 @@ picture {
         background-color: var(--shadow-grey-dark);
     }
 
+    .skills-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
 
 
 }
