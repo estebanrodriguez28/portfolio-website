@@ -125,7 +125,7 @@ nav ol {
     width: 100%;
     padding: 1px 0px;
     background-color: var(--white);
-    margin-top: 10px;
+    margin: 10px 0px 45px 0;
     border: 2px solid var(--white);
     /* border-radius: 0px 60px 0px 60px; */
     transform: skewX(55deg);
@@ -135,12 +135,14 @@ nav ol {
 #polaroid {
     background-color: var(--shadow-grey-dark);
     padding: 15px 20px 100px 20px;
-    margin: 45px 0px 60px 0px;
+    margin: 25px 0px 60px 0px;
 
     /*box-shadow: 10px 10px 10px var(--shadow-grey-dark); */
 }
 
-
+.card .browser {
+    margin-bottom: 20px;
+}
 
 .browser {
     display: flex;
@@ -150,13 +152,10 @@ nav ol {
 
 .browser img {
     margin-bottom: 0px !important;
-    padding: 0px 5px 5px 5px;
 }
 
-#browser-border {
-    border: 3px solid var(--shadow-grey);
+#browser-fill {
     background-color: var(--shadow-grey);
-    margin: 5px 0px 25px 0px;
 }
 
 .browser-tab {
@@ -168,6 +167,10 @@ nav ol {
 #browser-tab-color {
     background-color: var(--shadow-grey);
     padding: 10px;
+}
+
+.desktop-browser {
+    display: none;
 }
 
 .circle {
@@ -216,7 +219,7 @@ nav ol {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 25px;
 
 
 
@@ -362,9 +365,14 @@ picture {
     margin-bottom: 10px;
 }
 
+.project-card {
+    margin-top: 15px;
+}
+
 .project-links {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 .project-links h2 {
@@ -379,7 +387,16 @@ picture {
 
 #project-img {
     width: 100%;
+    height: 100%;
 
+}
+
+.project-card-body {
+    padding: 0px 15px;
+}
+
+.project-row {
+    display: inline;
 }
 
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
@@ -528,6 +545,58 @@ picture {
         width: 65%;
 
     }
+
+    .card .browser {
+        display: none;
+    }
+
+
+    .project-card {
+        height: 20%;
+        width: 55%;
+        margin-left: 50px;
+    }
+
+    #card-left {
+        margin-right: 50px;
+        margin-left: 0px;
+    }
+
+
+    .project-row {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 100px;
+
+    }
+
+    .row-reverse {
+
+        flex-direction: row-reverse;
+
+    }
+
+    .desktop-browser {
+        display: flex;
+        flex-direction: column;
+        border: 3px solid var(--shadow-grey-dark);
+        width: 65%;
+        height: 50%;
+        margin-right: 50px;
+    }
+
+    .middle-project {
+        margin-right: 0px;
+        margin-left: 50px;
+    }
+
+
+    #browser-fill {
+        background-color: var(--shadow-grey-dark);
+    }
+
 
 
 }
