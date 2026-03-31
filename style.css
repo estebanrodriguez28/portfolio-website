@@ -119,14 +119,20 @@ nav ol {
 
 }
 
-#sharp-edge {
+.sharp-edge {
     width: 100%;
     padding: 1px 0px;
     background-color: var(--white);
-    margin: 10px 0px 45px 0;
+    margin: 20px 0px 80px 0;
     border: 2px solid var(--white);
     /* border-radius: 0px 60px 0px 60px; */
     transform: skewX(55deg);
+}
+
+#shorter-edge {
+    width: 75%;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
 
 
@@ -469,8 +475,34 @@ picture {
     font-size: 0.75rem;
 }
 
-#interests {
-    margin-top: 60px;
+#footer {
+    display: flex;
+    flex-direction: column;
+    padding: var(--default-padding) clamp(20px, 5vw, 50px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15dvh;
+    background-color: var(--shadow-grey-dark);
+}
+
+#footer-socials {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#footer-row-socials {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
@@ -584,10 +616,14 @@ picture {
         margin-left: 50px;
     }
 
-    #sharp-edge {
+    .sharp-edge {
 
         width: 65%;
 
+    }
+
+    #shorter-edge {
+        width: 45%;
     }
 
     /*
