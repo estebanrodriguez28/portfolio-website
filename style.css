@@ -442,6 +442,37 @@ picture {
     list-style-type: none;
 }
 
+#skills-header {
+    font-size: 1.35rem;
+}
+
+.interests-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.interests-row li {
+    width: 80px;
+    text-align: center;
+    margin: 20px 30px;
+
+}
+
+.interests-row li img {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.interests-row li span {
+    font-size: 0.75rem;
+}
+
+#interests {
+    margin-top: 60px;
+}
+
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
 .card h2 {
     font-size: 1.1rem;
