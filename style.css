@@ -562,11 +562,13 @@ picture {
     background-color: var(--shadow-grey);
 }
 
+/*
 .dropdown:hover .dropdown-content {
     display: block;
 }
+*/
 
-.footer-dropdown:hover {
+#footer-dropdown:hover {
     background-color: var(--shadow-grey);
 }
 
