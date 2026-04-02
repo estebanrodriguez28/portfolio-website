@@ -538,7 +538,7 @@ picture {
 
 .dropdown {
     position: relative;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .dropdown-content {
@@ -802,6 +802,18 @@ picture {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    #footer-socials {
+        display: none;
+    }
+
+    #footer {
+        padding-top: 5dvh;
+    }
+
+    .inspiration {
+        width: 50%;
     }
 
 
