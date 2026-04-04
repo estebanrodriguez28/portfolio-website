@@ -19,6 +19,10 @@
     */
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100dvh;
     background-color: var(--shadow-grey);
@@ -59,6 +63,7 @@ main {
 
 
 #navbar {
+    /* display: flex; */
     display: flex;
     padding: var(--default-padding) clamp(20px, 5vw, 50px);
     justify-content: space-between;
@@ -80,25 +85,36 @@ a {
     color: inherit;
 }
 
-nav ol {
+.desktop-nav-row {
     display: flex;
     align-items: center;
 }
 
-
-
-#intro-section {
+.content-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
+    align-items: center;
+    padding-top: 15dvh;
+}
+
+
+#intro {
+    align-items: flex-start;
     min-height: 80dvh;
-    /* margin: 0px 15px 50px 25px; 
-    padding-bottom: 5dvh; */
     max-width: 1000px;
     margin: 0px auto;
+    padding-top: 0dvh;
 
 }
+
+#about {}
+
+#experience {}
+
+#projects {}
+
+#skills-interests {}
 
 #about-section {
     display: flex;
@@ -350,14 +366,23 @@ picture {
     display: none;
 }
 
-#skip {
+.skip {
     list-style-type: none;
     counter-increment: none;
     border: 2px solid var(--white);
     border-radius: 5px;
     padding: 10px;
     margin-right: 0px;
+
+}
+
+#skip-desktop {
     margin-left: -20px;
+}
+
+#skip-mobile {
+    text-align: center;
+    padding: 15px 25px;
 }
 
 .devicon-white {
@@ -538,7 +563,7 @@ picture {
 
 .dropdown {
     position: relative;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 .dropdown-content {
@@ -578,6 +603,54 @@ picture {
 
 .inspiration li {
     margin-bottom: 8px;
+}
+
+.mobile-menu-popup {
+    /* display: flex; */
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    height: 100dvh;
+    width: 75dvw;
+    overflow-y: hidden;
+    padding: 60px 15px;
+    background-color: var(--shadow-grey-dark);
+}
+
+.mobile-menu-popup-nav {
+    height: 50%;
+
+
+    /* border: 2px solid red; */
+
+}
+
+.mobile-menu-popup-nav ol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    list-style-position: inside;
+    /* border: 2px solid blue; */
+
+
+}
+
+.mobile-menu-popup-nav ol li {
+    font-size: 1.25rem;
+    margin-right: 0px;
+}
+
+.close-menu {
+    position: absolute;
+    cursor: pointer;
+    width: 35px;
+    right: 25px;
+    top: 30px;
 }
 
 /* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller

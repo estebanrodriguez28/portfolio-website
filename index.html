@@ -30,28 +30,46 @@
 
             <div id="desktop-nav">
 
-                <ol>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Experience</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Skills</a></li>
-                    <li id="skip"><a href="#">Resume</a></li>
+                <ol class="desktop-nav-row">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills-interests">Skills + Interests</a></li>
+                    <li class="skip" id="skip-desktop"><a href="#">Resume</a></li>
                 </ol>
             </div>
 
-            <a href="javascript:void(0);">
-                <img src="./images/site-imgs/mobile-menu.png" alt="Mobile navigation menu" id="menu-icon">
 
-            </a>
 
+            <img src="./images/site-imgs/mobile-menu.png" alt="Mobile navigation menu" id="menu-icon"
+                onclick="open_mobile_menu()">
         </nav>
+
+
+
+        <aside class="mobile-menu-popup">
+            <img src="./images/site-imgs/close.png" class="close-menu" onclick="close_mobile_popup()">
+            <nav class="mobile-menu-popup-nav">
+                <ol>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills-interests">Skills + Interests</a></li>
+                    <li class="skip" id="skip-mobile"><a href="#">Resume</a></li>
+                </ol>
+            </nav>
+        </aside>
+
+
+
+
     </header>
 
 
     <main>
 
         <!-- Intro section -->
-        <section id="intro-section">
+        <section class="content-section" id="intro">
             <img src="./images/site-imgs/programming.png" id="code-image">
 
             <h1 class="bold">Esteban Rodriguez</h1>
@@ -92,7 +110,7 @@
         <!-- About me section -->
 
 
-        <section id="about-section">
+        <section class="content-section" id="about">
             <h1>1. About Me</h1>
             <div class="sharp-edge"></div>
             <section id="about-content">
@@ -129,7 +147,7 @@
         <!--
             Experience/work section
         -->
-        <section id="about-section">
+        <section class="content-section" id="experience">
 
             <h1>2. Experience</h1>
             <div class="sharp-edge"></div>
@@ -160,7 +178,7 @@
         <!--
             Projects section
         -->
-        <section id="about-section">
+        <section class="content-section" id="projects">
             <h1>3. Projects</h1>
             <div class="sharp-edge"></div>
             <div class="project-row">
@@ -370,7 +388,7 @@
         <!--
             Skills + Interests section
         -->
-        <section id="about-section">
+        <section class="content-section" id="skills-interests">
             <h1 id="skills-header">4. Skills + Interests</h1>
             <div class="sharp-edge"></div>
             <ul class="skills-container remove-bullets">
@@ -560,10 +578,10 @@
 
             </li>
         </ul>
-
-        <span class="inspiration">Several icons in this site came from <a
-                href="https://www.flaticon.com/">flaticon.com</a>, here is a list of some talented artists
-            whose work I used (the tech icons came from <a href="https://devicon.dev/">devicon.dev</a>):
+        <span class="inspiration">The tech icons in projects + skills section came from <a
+                href="https://devicon.dev/">devicon.dev</a></span>
+        <span class="inspiration">List of icons used in this site from <a
+                href="https://www.flaticon.com/">flaticon.com</a>:
         </span>
         <section class="dropdown">
 
@@ -656,6 +674,11 @@
                         Good
                         Ware - Flaticon</a>
 
+                </li>
+
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Lagot
+                        Design - Flaticon</a>
                 </li>
 
             </ul>
