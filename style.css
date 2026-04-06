@@ -12,7 +12,7 @@
     --black: hsl(0, 0%, 0%);
     --shadow-grey: hsla(223, 23%, 18%, 1);
     --shadow-grey-dark: rgb(23, 27, 37);
-    --default-width: 55px;
+    --default-icon-width: 55px;
 
     /*
     --grey: rgb(193, 196, 198);
@@ -33,10 +33,10 @@ body {
     color: var(--white);
 
 
+
 }
 
 main {
-    padding: 0px clamp(25px, 6vw, 100px);
     width: 100%;
     max-width: 1600px;
     padding: 0px clamp(25px, 8.5vw, 150px);
@@ -49,13 +49,13 @@ main {
 
 .bold {
     font-weight: 700;
-    font-size: clamp(1.5rem, 7vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 3rem);
 
 }
 
 .normal-text {
     font-weight: 400;
-    font-size: clamp(2.75rem, 8vw, 5rem);
+    font-size: clamp(2.75rem, 5vw, 4.75rem);
 
 }
 
@@ -103,12 +103,12 @@ a {
 
 
 #intro {
+
     align-items: flex-start;
     min-height: 80dvh;
     max-width: 1000px;
     margin: 0px auto;
     padding-top: 0dvh;
-
 }
 
 #about {}
@@ -295,13 +295,10 @@ a {
     margin-top: 20px;
 }
 
-#letter-e {
-    width: var(--default-width);
 
-}
 
-#menu-icon {
-    width: var(--default-width);
+.icon-width {
+    width: var(--default-icon-width);
 }
 
 #li-icon {
@@ -357,7 +354,7 @@ picture {
 
 #code-image {
     margin-bottom: 20px;
-    width: clamp(100px, 10vw, 145px);
+    width: clamp(100px, 12vw, 145px);
 
 
 
@@ -375,8 +372,6 @@ picture {
     border: 2px solid var(--white);
     border-radius: 5px;
     padding: 10px;
-    margin-right: 0px;
-
 }
 
 #skip-desktop {
@@ -384,7 +379,6 @@ picture {
 }
 
 #skip-mobile {
-    text-align: center;
     padding: 15px 25px;
 }
 
@@ -629,10 +623,6 @@ picture {
 
 .mobile-menu-popup-nav {
     height: 50%;
-
-
-    /* border: 2px solid red; */
-
 }
 
 .mobile-menu-popup-nav ol {
@@ -642,14 +632,12 @@ picture {
     align-items: center;
     height: 100%;
     list-style-position: inside;
-    /* border: 2px solid blue; */
 
 
 }
 
 .mobile-menu-popup-nav ol li {
     font-size: 1.25rem;
-    margin-right: 0px;
 }
 
 .close-menu {
@@ -695,13 +683,14 @@ picture {
 @media (min-width:1024px) {
 
     /* laptops */
-    #menu-icon {
+    #hide-icon {
         display: none;
     }
 
     #desktop-nav {
         display: block;
-        width: 45%;
+        width: calc(clamp(650px, 50vw, 800px));
+
     }
 
     #no-bullets {
@@ -893,6 +882,7 @@ picture {
 
     .skills-container {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
         align-items: center;
