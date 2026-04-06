@@ -3,6 +3,7 @@
     padding: 0;
 
     box-sizing: border-box;
+
 }
 
 :root {
@@ -21,6 +22,7 @@
 
 html {
     scroll-behavior: smooth;
+
 }
 
 body {
@@ -29,7 +31,6 @@ body {
     font-family: "Orbitron", serif;
     font-optical-sizing: auto;
     color: var(--white);
-
 
 
 }
@@ -71,12 +72,7 @@ main {
     background-color: var(--shadow-grey-dark);
 }
 
-nav li {
-    /*    margin: auto 40px auto 0px; */
-    margin-right: 50px;
-    font-size: clamp(1rem, 1.25vw, 1.125rem);
 
-}
 
 
 
@@ -87,7 +83,14 @@ a {
 
 .desktop-nav-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+
+
+}
+
+.desktop-nav-row li {
+    font-size: clamp(1rem, 1.25vw, 1.125rem);
 }
 
 .content-section {
@@ -377,7 +380,7 @@ picture {
 }
 
 #skip-desktop {
-    margin-left: -20px;
+    margin-left: -30px;
 }
 
 #skip-mobile {
@@ -605,6 +608,8 @@ picture {
     margin-bottom: 8px;
 }
 
+
+
 .mobile-menu-popup {
     /* display: flex; */
     display: none;
@@ -614,7 +619,7 @@ picture {
     position: absolute;
     right: 0;
     height: 100dvh;
-    width: 75dvw;
+    width: 95dvw;
     overflow-y: hidden;
     padding: 60px 15px;
     background-color: var(--shadow-grey-dark);
@@ -696,7 +701,7 @@ picture {
 
     #desktop-nav {
         display: block;
-        margin: auto 0px auto auto;
+        width: 45%;
     }
 
     #no-bullets {

@@ -23,8 +23,12 @@ function open_mobile_menu() {
     $(document).ready(function () {
         $("#navbar").fadeOut(80, function () {
             $("#intro").css("minHeight", "100dvh");
+            //$("#intro").css("filter", "blur(6px)");
             $(".mobile-menu-popup").css("display", "flex");
             $(".mobile-menu-popup-nav ol li").click(close_mobile_popup);
+            $("body").css("overflow", "hidden");
+
+
         })
     });
 
@@ -38,6 +42,7 @@ function close_mobile_popup() {
         $("#navbar").fadeIn(500);
         $("#navbar").css("display", "flex");
         $("#intro").css("minHeight", "80dvh");
+        $("body").css("overflow", "visible");
     })
 
 }
