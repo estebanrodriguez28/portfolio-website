@@ -717,6 +717,9 @@ picture {
         width: 65px;
     }
 
+    #intro {
+        padding-left: 8vw;
+    }
 
     #intro-slashes {
         display: flex;
@@ -900,5 +903,17 @@ picture {
         width: 50%;
     }
 
+
+}
+
+/* The padding looks good on smaller desktops like macbook 13'' but
+on larger like macbook pro 16'' the padding make the text go on two lines
+which made the layout worse, this is probably not great practice but 
+the smaller desktops really needed that padding */
+
+@media (min-width:1450px) {
+    #intro {
+        padding-left: 0vw;
+    }
 
 }
