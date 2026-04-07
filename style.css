@@ -389,9 +389,12 @@ picture {
 
 .card {
     background-color: var(--shadow-grey-dark);
-    padding: 15px;
+    padding: 20px;
     margin-top: 30px;
+}
 
+#reset-margin {
+    margin-top: 0px;
 }
 
 .card p {
@@ -401,6 +404,10 @@ picture {
 .card img {
     width: 60px;
     margin-bottom: 10px;
+}
+
+.card h2 {
+    margin-bottom: 5px;
 }
 
 .project-card {
@@ -661,15 +668,6 @@ picture {
     }
 }
 
-/* Idk if I should make text smaller to make the job title for haystacks + guardant one line but its less readeable if I make it smaller
-.card h2 {
-    font-size: 1.1rem;
-}
-
-.card h3 {
-    font-size: .85rem;
-}
-*/
 
 /* Styles for screen sizes larger than mobile */
 
@@ -679,6 +677,18 @@ picture {
     #intro {
         min-height: 60dvh;
     }
+
+
+    .project-card {
+        width: 80%;
+    }
+
+    .project-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 
 
 }
@@ -817,10 +827,7 @@ picture {
         width: 275px;
     }
 
-    .card {
-        width: 65%;
 
-    }
 
     .card .browser {
         display: none;
@@ -857,6 +864,7 @@ picture {
 
     .project-row {
         display: flex;
+        flex-direction: row;
         padding: 20px;
         justify-content: center;
         align-items: center;
