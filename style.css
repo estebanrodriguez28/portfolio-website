@@ -49,7 +49,7 @@ main {
 
 .bold {
     font-weight: 700;
-    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-size: clamp(1.75rem, 5vw, 3rem);
 
 }
 
@@ -142,9 +142,8 @@ a {
     width: 100%;
     padding: 1px 0px;
     background-color: var(--white);
-    margin: 20px 0px 80px 0;
+    margin: 20px 0px 50px 0;
     border: 2px solid var(--white);
-    /* border-radius: 0px 60px 0px 60px; */
     transform: skewX(55deg);
 }
 
@@ -354,7 +353,7 @@ picture {
 
 #code-image {
     margin-bottom: 20px;
-    width: clamp(100px, 12vw, 145px);
+    width: clamp(100px, 18vw, 145px);
 
 
 
@@ -677,6 +676,10 @@ picture {
 @media (min-width:768px) {
 
     /* tablets */
+    #intro {
+        min-height: 60dvh;
+    }
+
 
 }
 
@@ -718,6 +721,7 @@ picture {
     }
 
     #intro {
+        min-height: 80dvh;
         padding-left: 8vw;
     }
 

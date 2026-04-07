@@ -39,7 +39,7 @@ function close_mobile_popup() {
 
     $(document).ready(function () {
         $(".mobile-menu-popup").css("display", "");
-        $("#navbar").fadeIn(500);
+        $("#navbar").fadeIn(300);
         $("#navbar").css("display", "flex");
         $("#intro").css("minHeight", "80dvh");
         $("body").css("overflow", "visible");
