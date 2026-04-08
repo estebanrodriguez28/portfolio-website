@@ -39,7 +39,8 @@ body {
 main {
     width: 100%;
     max-width: 1600px;
-    padding: 0px clamp(25px, 8.5vw, 150px);
+    /* padding: 0px clamp(25px, 8.5vw, 150px); */
+    padding: 0px 25px;
     margin: 0px auto;
 
 }
@@ -176,9 +177,7 @@ a {
     margin-bottom: 0px !important;
 }
 
-#browser-fill {
-    background-color: var(--shadow-grey);
-}
+
 
 .browser-tab {
     display: flex;
@@ -689,6 +688,9 @@ picture {
         align-items: center;
     }
 
+    main {
+        padding: 0px 100px;
+    }
 
 
 }
@@ -696,6 +698,11 @@ picture {
 @media (min-width:1024px) {
 
     /* laptops */
+
+    main {
+        padding: 0px 150px;
+    }
+
     #hide-icon {
         display: none;
     }
@@ -891,9 +898,7 @@ picture {
     }
 
 
-    #browser-fill {
-        background-color: var(--shadow-grey-dark);
-    }
+
 
     .skills-container {
         display: flex;
@@ -918,14 +923,12 @@ picture {
 
 }
 
-/* The padding looks good on smaller desktops like macbook 13'' but
-on larger like macbook pro 16'' the padding make the text go on two lines
-which made the layout worse, this is probably not great practice but 
-the smaller desktops really needed that padding */
+/* Really large desktops (16 inch +) */
 
 @media (min-width:1450px) {
     #intro {
         padding-left: 0vw;
     }
+
 
 }
