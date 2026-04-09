@@ -53,7 +53,8 @@
 
         <!-- Popup navigation menu on mobile after hamburger clicked -->
         <aside class="mobile-menu-popup">
-            <img src="./images/site-imgs/close.png" class="close-menu" onclick="close_mobile_popup()">
+            <img src="./images/site-imgs/close.png" class="close-menu" onclick="close_mobile_popup()"
+                alt="Icon in shape of x to close menu">
             <nav class="mobile-menu-popup-nav">
                 <ol>
                     <li><a href="#about">About</a></li>
@@ -87,7 +88,7 @@
 
         <!-- Intro/Hero section -->
         <section class="content-section" id="intro">
-            <img src="./images/site-imgs/programming.png" id="code-image">
+            <img src="./images/site-imgs/programming.png" id="code-image" alt="Cartoon icon of laptop with code">
 
             <h1 class="bold">Esteban Rodriguez</h1>
             <h2 class="normal-text">Front-End Developer</h2>
@@ -110,7 +111,7 @@
                 </span>
                 <!-- Styling the about text in a mock browser tab -->
                 <div class="browser">
-                    <div class="browser-tab">
+                    <div class="browser-tab" id="browser-tab-about">
                         <div class="circle"></div>
                         <div class="circle"></div>
                         <div class="circle"></div>
@@ -142,7 +143,7 @@
             <!-- My Jobs -->
             <ul class="remove-bullets">
                 <li>
-                    <div class="card" id="reset-margin">
+                    <div class="card">
                         <img src="./images/company-logos/coframe.png" alt="Coframe company logo">
                         <h2>Web Developer</h2>
                         <h3>Coframe</h3>
@@ -179,220 +180,231 @@
 
         </section>
 
-        <!--
-            Projects section
-        -->
+        <!-- Projects section -->
         <section class="content-section" id="projects">
             <h1>3. Projects</h1>
             <div class="sharp-edge"></div>
-            <div class="project-row">
-
-                <!-- On desktop I wanted the project screenshot to be outside of the card, and be on the left of the project description (which is within the card) to fill more of the screen. On mobile the screenshot is within the card. -->
-                <div class="desktop-browser">
-                    <div class="browser-tab">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                    <img src="./images/project-screenshots/mindestry.png" alt="Screenshot of my project mindestry"
-                        id="project-img">
-
-                </div>
-
-                <div class="card project-card">
-                    <div class="browser">
-                        <div class="browser-tab" id="browser-tab-color">
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                        </div>
-                        <img src="./images/project-screenshots/mindestry.png" alt="Coframe company logo"
-                            id="project-img">
-
-                    </div>
-                    <div class="project-card-body">
-
-
-                        <div class="project-links">
-                            <h2>Mindestry</h2>
-                            <a href="https://mindestry.onrender.com/"><img src="./images/site-imgs/external.png"></a>
-                            <a href="https://github.com/estebanrodriguez28/mind-mastery-react"><img
-                                    src="./images/social-icons/github.png"></a>
+            <ul class="remove-bullets">
+                <!-- List of Projects-->
+                <li>
+                    <div class="project-row">
+                        <!-- On desktop I wanted the project screenshot to be outside of the card, and be on the left of the project description (which is within the card), to fill more of the screen. On mobile the screenshot is within the card. -->
+                        <div class="desktop-browser">
+                            <div class="browser-tab">
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                            <img src="./images/project-screenshots/mindestry.png"
+                                alt="Screenshot of my project mindestry" id="project-img">
 
                         </div>
 
-                        <p>Developed a full stack mental health web app, utilizing OpenAI's GPT
-                            API to change negative thoughts into positive ones.</p>
-                    </div>
-                    <ul class="project-icons">
-                        <li>
-                            <div class="image-container">
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+                        <div class="card project-card">
+                            <!-- On mobile, the screenshot within the browser styling appears inside the card w/ project description, on desktop the browser (the screenshot + browser styling) gets hidden -->
+                            <div class="browser">
+                                <div class="browser-tab">
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <img src="./images/project-screenshots/mindestry.png"
+                                    alt="Screenshot of my project mindestry" id="project-img">
 
                             </div>
-                            <span>React.js</span>
-                        </li>
-                        <li>
-                            <div class="image-container">
+                            <div class="project-card-body">
 
 
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />
+                                <div class="project-links">
+                                    <h2>Mindestry</h2>
+                                    <a href="https://mindestry.onrender.com/"><img src="./images/site-imgs/external.png"
+                                            alt="External link icon"></a>
+                                    <a href="https://github.com/estebanrodriguez28/mind-mastery-react"><img
+                                            src="./images/social-icons/github.png" alt="Github icon"></a>
 
+                                </div>
 
+                                <p>Developed a full stack mental health web app, using OpenAI's GPT
+                                    API to change negative thoughts into positive ones.</p>
                             </div>
-                            <span>Node.js</span>
-                        </li>
+                            <ul class="project-icons">
+                                <li>
+                                    <div class="image-container">
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
 
-                        <li>
-                            <div class="image-container">
-
-
-
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" />
-
-                            </div>
-                            <span>MongoDB</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-row">
-
-                <img class="fit-screenshot" src="./images/project-screenshots/senior-project.png"
-                    alt="Coframe company logo" id="hide-screenshot-mobile">
+                                    </div>
+                                    <span>React.js</span>
+                                </li>
+                                <li>
+                                    <div class="image-container">
 
 
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />
 
-                <div class="card project-card">
 
-                    <img class="fit-screenshot" src="./images/project-screenshots/senior-project.png"
-                        alt="Coframe company logo" id="hide-screenshot-desktop">
+                                    </div>
+                                    <span>Node.js</span>
+                                </li>
+
+                                <li>
+                                    <div class="image-container">
 
 
 
-                    <div class="project-card-body">
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" />
 
-
-                        <div class="project-links">
-                            <h2>Senior Project</h2>
-                            <a href="https://github.com/estebanrodriguez28/COMP-49X-24-25-TransactCampus"><img
-                                    src="./images/social-icons/github.png"></a>
+                                    </div>
+                                    <span>MongoDB</span>
+                                </li>
+                            </ul>
                         </div>
-                        <p>Collaborated in a team of 4 to create an admin dashboard analyzing student dining behavior.
-                        </p>
                     </div>
-                    <ul class="project-icons">
-                        <li>
-                            <div class="image-container">
 
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" />
+                </li>
+
+                <li>
+
+                    <div class="project-row">
+
+                        <img class="fit-screenshot" src="./images/project-screenshots/senior-project.png"
+                            alt="Senior project poster screenshot" id="hide-screenshot-mobile">
+
+
+
+                        <div class="card project-card">
+
+                            <img class="fit-screenshot" src="./images/project-screenshots/senior-project.png"
+                                alt="Senior project poster screenshot" id="hide-screenshot-desktop">
+
+
+
+                            <div class="project-card-body">
+
+
+                                <div class="project-links">
+                                    <h2>Senior Project</h2>
+                                    <a href="https://github.com/estebanrodriguez28/COMP-49X-24-25-TransactCampus"><img
+                                            src="./images/social-icons/github.png"></a>
+                                </div>
+                                <p>Collaborated in a team of 4 to create an admin dashboard analyzing student dining
+                                    behavior.
+                                </p>
                             </div>
-                            <span>Flask</span>
-                        </li>
-                        <li>
-                            <div class="image-container">
+                            <ul class="project-icons">
+                                <li>
+                                    <div class="image-container">
+
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" />
+                                    </div>
+                                    <span>Flask</span>
+                                </li>
+                                <li>
+                                    <div class="image-container">
 
 
 
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" />
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" />
 
-                            </div>
-                            <span>Docker</span>
-                        </li>
+                                    </div>
+                                    <span>Docker</span>
+                                </li>
 
-                        <li>
-                            <div class="image-container">
-
-
-                                <img class="devicon-white" src="./images/tech-icons/power-bi.png" alt="PowerBI">
-
-                            </div>
-                            <span>PowerBI</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                <li>
+                                    <div class="image-container">
 
 
-            <div class="project-row">
-                <div class="desktop-browser">
-                    <div class="browser-tab">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                    <img src="./images/project-screenshots/intro-project.png" alt="Intro project screenshot"
-                        id="project-img">
+                                        <img class="devicon-white" src="./images/tech-icons/power-bi.png" alt="PowerBI">
 
-                </div>
-
-                <div class="card project-card">
-                    <div class="browser">
-                        <div class="browser-tab" id="browser-tab-color">
-                            <div class="circle"></div>
-                            <div class="circle"></div>
-                            <div class="circle"></div>
+                                    </div>
+                                    <span>PowerBI</span>
+                                </li>
+                            </ul>
                         </div>
-                        <img src="./images/project-screenshots/intro-project.png" alt="Intro project screenshot"
-                            id="project-img">
                     </div>
 
-                    <div class="project-card-body">
+                </li>
 
-                        <div class="project-links">
-                            <h2>Message Board</h2>
-                            <a href="https://github.com/estebanrodriguez28/COMP-49X-24-25-transactCampus-intro-project"><img
-                                    src="./images/social-icons/github.png">
-                            </a>
+                <li>
+                    <div class="project-row">
+                        <div class="desktop-browser">
+                            <div class="browser-tab">
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                            <img src="./images/project-screenshots/intro-project.png" alt="Intro project screenshot"
+                                id="project-img">
+
                         </div>
 
+                        <div class="card project-card">
 
-                        <p>Worked in a team of four to create a full-stack message board where users can create posts
-                            and
-                            add
-                            comments.</p>
+                            <div class="browser">
+                                <div class="browser-tab">
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <img src="./images/project-screenshots/intro-project.png" alt="Intro project screenshot"
+                                    id="project-img">
+                            </div>
+
+                            <div class="project-card-body">
+
+                                <div class="project-links">
+                                    <h2>Message Board</h2>
+                                    <a
+                                        href="https://github.com/estebanrodriguez28/COMP-49X-24-25-transactCampus-intro-project"><img
+                                            src="./images/social-icons/github.png">
+                                    </a>
+                                </div>
+
+
+                                <p>Worked in a team of four to create a full-stack message board where users can create
+                                    posts
+                                    and
+                                    add
+                                    comments.</p>
+                            </div>
+                            <ul class="project-icons">
+                                <li>
+                                    <div class="image-container">
+
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+                                    </div>
+                                    <span>Python</span>
+                                </li>
+                                <li>
+                                    <div class="image-container">
+
+
+
+
+                                        <img class="devicon-white"
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg" />
+
+                                    </div>
+                                    <span>PostgreSQL</span>
+                                </li>
+
+
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="project-icons">
-                        <li>
-                            <div class="image-container">
-
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
-                            </div>
-                            <span>Python</span>
-                        </li>
-                        <li>
-                            <div class="image-container">
-
-
-
-
-                                <img class="devicon-white"
-                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg" />
-
-                            </div>
-                            <span>PostgreSQL</span>
-                        </li>
-
-
-                    </ul>
-                </div>
-            </div>
-
+                </li>
+            </ul>
 
 
 
         </section>
 
-        <!--
-            Skills + Interests section
-        -->
+        <!-- Skills + Interests section -->
         <section class="content-section" id="skills-interests">
             <h1 id="skills-header">4. Skills + Interests</h1>
             <div class="sharp-edge"></div>
@@ -559,9 +571,9 @@
                         alt="LinkedIn icon" id="li-icon"></a>
 
                 <a href="https://github.com/estebanrodriguez28"><img src="./images/social-icons/github.png"
-                        alt="Github icon" class="icon"></a>
+                        alt="Github icon" class="icon-width"></a>
             </div>
-            <img src="./images/social-icons/email.png" alt="Email icon" class="icon" id="email">
+            <img src="./images/social-icons/email.png" alt="Email icon" class="icon-width" id="email">
             <span>erod9246@gmail.com</span>
 
 
@@ -689,31 +701,6 @@
             </ul>
 
         </section>
-
-
-        <!--
-           
-        <a href="https://www.flaticon.com/free-icons/down-arrow" title="down arrow icons">Down arrow icons created
-            by th studio - Flaticon</a>
-        
-             <a href="https://www.flaticon.com/free-icons/scroll-down" title="scroll down icons">Scroll down icons
-            created by
-            Indygo - Flaticon</a>
-             <a href="https://www.flaticon.com/free-icons/smooth-scrolling" title="smooth scrolling icons">Smooth
-            scrolling
-            icons created by brajaomar_j - Flaticon</a>
-            <a href="https://www.flaticon.com/free-icons/hello" title="hello icons">Hello icons created by BomSymbols -
-            Flaticon</a>
-            <a href="https://www.flaticon.com/free-icons/gesture" title="gesture icons">Gesture icons created by Freepik
-            -
-            Flaticon</a>
-
-            <a href="https://www.flaticon.com/free-icons/welcome" title="welcome icons">Welcome icons created by Three
-            musketeers - Flaticon</a>
-            <a href="https://www.flaticon.com/free-icons/meat" title="meat icons">Meat icons created by VectorPortal -
-            Flaticon</a>
-         -->
-
 
 
     </footer>

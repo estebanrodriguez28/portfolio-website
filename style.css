@@ -65,7 +65,6 @@ main {
 
 
 #navbar {
-    /* display: flex; */
     display: flex;
     padding: var(--default-padding) clamp(20px, 5vw, 50px);
     justify-content: space-between;
@@ -159,8 +158,6 @@ a {
     background-color: var(--shadow-grey-dark);
     padding: 15px 20px 100px 20px;
     margin: 25px 0px 60px 0px;
-
-    /*box-shadow: 10px 10px 10px var(--shadow-grey-dark); */
 }
 
 .card .browser {
@@ -181,14 +178,14 @@ a {
 
 .browser-tab {
     display: flex;
-    padding: 15px;
-    background-color: var(--shadow-grey-dark);
-}
-
-#browser-tab-color {
     background-color: var(--shadow-grey);
     padding: 10px;
 }
+
+#browser-tab-about {
+    background-color: var(--shadow-grey-dark);
+}
+
 
 .desktop-browser {
     display: none;
@@ -246,24 +243,7 @@ a {
 
 }
 
-.image-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 50px;
-    padding: 5px;
-    margin-bottom: 5px;
 
-}
-
-.image-container img {
-    margin-bottom: 0px !important;
-    width: 100% !important;
-    height: 100%;
-
-    object-fit: contain;
-}
 
 .project-icons li {
     display: flex;
@@ -305,10 +285,6 @@ a {
 
 }
 
-.icon {
-    width: 45px;
-
-}
 
 #social-icons {
     display: none;
@@ -316,38 +292,6 @@ a {
 
 
 
-#hand-wave {
-    display: none;
-}
-
-picture {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-}
-
-
-
-#arrow {
-    display: block;
-    position: absolute;
-    bottom: clamp(5px, 3dvh, 30px);
-    width: 65px;
-}
-
-.arrow-styling {
-    border: solid var(--white);
-    border-width: 0px 3px 3px 0;
-    display: inline-block;
-    align-self: center;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-.down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-}
 
 
 #code-image {
@@ -384,17 +328,32 @@ picture {
     filter: brightness(0) invert(1);
 }
 
+.arrow-styling {
+    border: solid var(--white);
+    border-width: 0px 3px 3px 0;
+    display: inline-block;
+    align-self: center;
+    padding: 5px;
+    margin-bottom: 5px;
+}
 
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
 
 .card {
     background-color: var(--shadow-grey-dark);
     padding: 20px;
-    margin-top: 30px;
+    margin-bottom: 40px;
+
+
 }
 
-#reset-margin {
-    margin-top: 0px;
-}
+
+
+
+
 
 .card p {
     margin: 15px 0px;
@@ -409,9 +368,25 @@ picture {
     margin-bottom: 5px;
 }
 
-.project-card {
-    margin: 5px 0px 45px 0px;
+
+.image-container {
+
+    width: 60px;
+    height: 50px;
+    padding: 5px;
+    margin-bottom: 5px;
+
 }
+
+.image-container img {
+    margin-bottom: 0px;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
 
 .project-links {
     display: flex;
@@ -494,14 +469,12 @@ picture {
 
 .interests-row {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 
 }
 
 .interests-row li {
     width: 80px;
-    text-align: center;
     margin: 20px 30px;
 
 }
@@ -565,7 +538,7 @@ picture {
 
 .dropdown {
     position: relative;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .dropdown-content {
@@ -677,9 +650,14 @@ picture {
         min-height: 60dvh;
     }
 
+    .card {
+        margin-bottom: 60px;
+    }
+
 
     .project-card {
         width: 80%;
+        margin-bottom: 100px;
     }
 
     .project-row {
@@ -691,6 +669,11 @@ picture {
     main {
         padding: 0px 100px;
     }
+
+    #skills-header {
+        font-size: 1.75rem;
+    }
+
 
 
 }
@@ -785,8 +768,11 @@ picture {
 
     }
 
-    .browser {
-        max-width: 50%;
+
+
+    .browser-tab {
+        padding: 15px;
+        background-color: var(--shadow-grey-dark);
     }
 
 
@@ -794,9 +780,7 @@ picture {
         margin-right: 50px;
     }
 
-    .browser {
-        margin-left: 50px;
-    }
+
 
     .sharp-edge {
 
@@ -807,18 +791,6 @@ picture {
     #shorter-edge {
         width: 45%;
     }
-
-    /*
-    #about-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 15dvh;
-        /* padding-bottom: 20dvh; 
-
-    }
-    */
 
 
 
@@ -843,7 +815,8 @@ picture {
 
     .project-card {
         width: 55%;
-        margin: 0px 0px 0px 50px;
+        margin-left: 50px;
+        margin-bottom: 0px;
     }
 
     #hide-screenshot-desktop {
