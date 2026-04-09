@@ -66,10 +66,16 @@ main {
 
 #navbar {
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
     padding: var(--default-padding) clamp(20px, 5vw, 50px);
     justify-content: space-between;
     align-items: center;
     background-color: var(--shadow-grey-dark);
+
 }
 
 
@@ -83,6 +89,7 @@ a {
 
 .desktop-nav-row {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
 
@@ -105,7 +112,7 @@ a {
 #intro {
 
     align-items: flex-start;
-    min-height: 80dvh;
+    min-height: 100dvh;
     max-width: 1000px;
     margin: 0px auto;
     padding-top: 0dvh;
@@ -170,9 +177,6 @@ a {
     border: 3px solid var(--shadow-grey-dark);
 }
 
-.browser img {
-    margin-bottom: 0px !important;
-}
 
 
 
@@ -369,6 +373,11 @@ a {
 }
 
 
+.browser img {
+    margin-bottom: 0px;
+}
+
+
 .image-container {
 
     width: 60px;
@@ -400,7 +409,7 @@ a {
 
 .project-links img {
     width: 25px;
-    margin-bottom: 0px !important;
+    margin-bottom: 0px;
     padding-top: 5px;
 }
 
@@ -588,7 +597,8 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     right: 0;
     height: 100dvh;
     width: 95dvw;
@@ -647,7 +657,7 @@ a {
 
     /* tablets */
     #intro {
-        min-height: 60dvh;
+        min-height: 80dvh;
     }
 
     .card {
@@ -721,7 +731,7 @@ a {
     }
 
     #intro {
-        min-height: 80dvh;
+        min-height: 100dvh;
         padding-left: 8vw;
     }
 
@@ -807,6 +817,10 @@ a {
     }
 
 
+    .browser {
+        max-width: 50%;
+        margin-left: 50px;
+    }
 
     .card .browser {
         display: none;

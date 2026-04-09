@@ -1,3 +1,25 @@
+// Source - https://stackoverflow.com/a/4326907
+// Posted by Josiah Ruddell, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-04-09, License - CC BY-SA 3.0
+
+var lastScrollTop = 0;
+$(window).scroll(function (event) {
+    var st = $(this).scrollTop();
+    //console.log(st);
+    if (st > 50) {
+        if (st > lastScrollTop) {
+            // downscroll code
+            $("#navbar").slideUp("fast");
+        } else {
+            // upscroll code
+            $("#navbar").slideDown("fast");
+        }
+        lastScrollTop = st;
+    }
+
+});
+
+
 
 
 function open_dropdown() {
@@ -22,7 +44,7 @@ function open_mobile_menu() {
 
     $(document).ready(function () {
         $("#navbar").fadeOut(80, function () {
-            $("#intro").css("minHeight", "100dvh");
+            //$("#intro").css("minHeight", "100dvh");
             //$("#intro").css("filter", "blur(6px)");
             $(".mobile-menu-popup").css("display", "flex");
             $(".mobile-menu-popup-nav ol li").click(close_mobile_popup);
@@ -41,7 +63,7 @@ function close_mobile_popup() {
         $(".mobile-menu-popup").css("display", "");
         $("#navbar").fadeIn(300);
         $("#navbar").css("display", "flex");
-        $("#intro").css("minHeight", "80dvh");
+        //$("#intro").css("minHeight", "80dvh");
         $("body").css("overflow", "visible");
     })
 
