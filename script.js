@@ -4,9 +4,11 @@
 
 var lastScrollTop = 0;
 $(window).scroll(function (event) {
+    //$("#navbar").css("box-shadow", "none");
+    // $("#navbar").addClass("box-shadow-fadeout");
     var st = $(this).scrollTop();
-    //console.log(st);
     if (st > 50) {
+        $("#navbar").css("box-shadow", "0px 4px 12px -1px rgba(0, 0, 0, 0.3)");
         if (st > lastScrollTop) {
             // downscroll code
             $("#navbar").slideUp("fast");

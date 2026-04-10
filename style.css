@@ -75,9 +75,22 @@ main {
     justify-content: space-between;
     align-items: center;
     background-color: var(--shadow-grey-dark);
+    /* box-shadow: 0px 4px 12px -1px rgba(0, 0, 0, 0.3); */
+
 
 }
 
+.box-shadow {
+    box-shadow: 0px 4px 12px -1px rgba(0, 0, 0, 0.3);
+}
+
+.box-shadow-fadeout {
+    transition: box-shadow 400ms;
+    box-shadow:
+        0px 4px 12px -1px rgba(0, 0, 0, 0.3),
+        0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+
+}
 
 
 
@@ -188,6 +201,7 @@ a {
 
 #browser-tab-about {
     background-color: var(--shadow-grey-dark);
+    border-bottom: 3px solid var(--shadow-grey);
 }
 
 
@@ -223,6 +237,7 @@ a {
 
 
 #browser-text {
+    background-color: var(--shadow-grey-dark);
     padding: 30px 10px;
 }
 
