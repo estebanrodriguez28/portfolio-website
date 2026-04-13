@@ -10,9 +10,12 @@
     --default-padding: 30px;
     --white: hsl(0, 0%, 100%);
     --black: hsl(0, 0%, 0%);
-    --shadow-grey: hsla(223, 23%, 18%, 1);
-    --shadow-grey-dark: rgb(23, 27, 37);
+    --shadow-grey: hsl(223, 23%, 18%);
+    --shadow-grey-dark: hsl(222.86, 23.33%, 11.76%);
+    --shadow-grey-darkest: hsl(220, 12%, 5%);
     --default-icon-width: 55px;
+    --underline-width-hover: 0px;
+    --underline-width: 0px;
 
     /*
     --grey: rgb(193, 196, 198);
@@ -75,7 +78,7 @@ main {
     justify-content: space-between;
     align-items: center;
     background-color: var(--shadow-grey-dark);
-    /* box-shadow: 0px 4px 12px -1px rgba(0, 0, 0, 0.3); */
+    box-shadow: 0px 4px 10px -1px rgba(0, 0, 0, 0.3);
 
 
 }
@@ -111,6 +114,7 @@ a {
 
 .desktop-nav-row li {
     font-size: clamp(1rem, 1.25vw, 1.125rem);
+
 }
 
 .content-section {
@@ -575,16 +579,11 @@ a {
 }
 
 .dropdown-content a {
-    color: var(--white);
     padding: 12px 16px;
-    text-decoration: none;
     display: block;
     background-color: var(--shadow-grey);
 }
 
-.dropdown-content a:hover {
-    background-color: var(--shadow-grey);
-}
 
 /*
 .dropdown:hover .dropdown-content {
@@ -651,6 +650,43 @@ a {
     top: 30px;
 }
 
+
+
+
+#desktop-nav a:hover::after {
+    width: var(--underline-width-hover);
+}
+
+
+
+
+#desktop-nav a {
+    position: relative;
+
+}
+
+#desktop-nav a::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: 0;
+    width: var(--underline-width);
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s;
+}
+
+
+@keyframes underline-slide {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
 
 
 @keyframes nav-slide-out {
