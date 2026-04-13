@@ -650,14 +650,20 @@ a {
     top: 30px;
 }
 
-
+#desktop-nav a:visited::after {
+    width: var(--underline-width-hover);
+}
 
 
 #desktop-nav a:hover::after {
     width: var(--underline-width-hover);
 }
 
-
+/*
+#desktop-nav a:active::after {
+    --underline-width: var(--underline-width-hover);
+}
+*/
 
 
 #desktop-nav a {

@@ -36,6 +36,19 @@ function nav_link_underline() {
 }
 
 
+function stay_underlined() {
+    $('#desktop-nav a').click(
+        function () {
+            var link_width = $(this).width();
+            document.documentElement.style.setProperty("--underline-width", `${link_width}px`);
+        }
+    )
+}
+
+
+
+
+
 
 
 function open_dropdown() {
@@ -81,6 +94,7 @@ function close_mobile_popup() {
 
 
 $(document).ready(function () {
+    nav_scroll();
     nav_link_underline();
 });
 
