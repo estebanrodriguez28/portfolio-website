@@ -1,3 +1,15 @@
+// Source - https://stackoverflow.com/a/4819886
+// Posted by bolmaster2, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-04-16, License - CC BY-SA 4.0
+
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+}
+
+
+
 // Source - https://stackoverflow.com/a/4326907
 // Posted by Josiah Ruddell, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-04-09, License - CC BY-SA 3.0
@@ -5,24 +17,40 @@
 
 
 function nav_scroll() {
-    var lastScrollTop = 0;
-    $(window).scroll(function () {
-        // $("#navbar").css("box-shadow", "none");
-        // $("#navbar").addClass("box-shadow-fadeout");
-        var st = $(this).scrollTop();
-        if (st > 50) {
-            // $("#navbar").css("box-shadow", "0px 4px 12px -1px rgba(0, 0, 0, 0.3)");
-            if (st > lastScrollTop) {
-                // downscroll code
-                $("#navbar").slideUp("fast");
-            } else {
-                // upscroll code
-                $("#navbar").slideDown("fast");
-            }
-            lastScrollTop = st;
-        }
+    if (!isTouchDevice()) {
+        var lastScrollTop = 0;
+        $(window).scroll(function () {
+            // $("#navbar").css("box-shadow", "none");
+            // $("#navbar").addClass("box-shadow-fadeout");
 
-    });
+            var st = $(this).scrollTop();
+            if (st > 50) {
+                // $("#navbar").css("box-shadow", "0px 4px 12px -1px rgba(0, 0, 0, 0.3)");
+                if (st > lastScrollTop) {
+                    // downscroll code
+                    $("#navbar").slideUp("fast");
+                } else {
+                    // upscroll code
+                    $("#navbar").slideDown("fast");
+                }
+                lastScrollTop = st;
+            }
+
+        });
+    }
+
+    else {
+        $("body").swipe({
+            swipe: function (event, direction) {
+                if (direction == "up" || direction == "down") {
+                    alert("Swiped Vertically");
+                }
+            },
+            threshold: 50,
+        });
+    }
+
+
 }
 
 
@@ -115,7 +143,7 @@ $(document).ready(function () {
     // Retrieved 2026-04-16, License - CC BY-SA 3.0
 
     var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
-    $(document.body).on('touchmove', nav_scroll);
+    //$(document.body).on('touchmove', nav_scroll);
     nav_scroll();
     nav_link_underline();
 
