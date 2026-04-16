@@ -2,7 +2,7 @@
 // Posted by Josiah Ruddell, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-04-09, License - CC BY-SA 3.0
 
-
+alert("hello");
 
 function nav_scroll() {
     var lastScrollTop = 0;
