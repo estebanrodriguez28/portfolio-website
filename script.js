@@ -2,11 +2,11 @@
 // Posted by Josiah Ruddell, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-04-09, License - CC BY-SA 3.0
 
-alert("hello");
+
 
 function nav_scroll() {
     var lastScrollTop = 0;
-    $(window).scroll(function (event) {
+    $(window).scroll(function () {
         // $("#navbar").css("box-shadow", "none");
         // $("#navbar").addClass("box-shadow-fadeout");
         var st = $(this).scrollTop();
@@ -110,6 +110,12 @@ function close_mobile_popup() {
 
 
 $(document).ready(function () {
+    // Source - https://stackoverflow.com/a/25874044
+    // Posted by elad.chen
+    // Retrieved 2026-04-16, License - CC BY-SA 3.0
+
+    var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
+    $(document.body).on('touchmove', nav_scroll);
     nav_scroll();
     nav_link_underline();
 
