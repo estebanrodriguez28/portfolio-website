@@ -103,6 +103,10 @@ a {
     color: inherit;
 }
 
+#desktop-nav {
+    display: none;
+}
+
 .desktop-nav-row {
     display: flex;
     position: relative;
@@ -327,9 +331,7 @@ a {
 
 
 
-#desktop-nav {
-    display: none;
-}
+
 
 .skip {
     list-style-type: none;
@@ -606,28 +608,27 @@ a {
 
 
 .mobile-menu-popup {
-    /* display: flex; */
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: fixed;
     z-index: 1;
-    right: 0;
+    right: -100dvw;
     height: 100dvh;
     width: 95dvw;
     overflow-y: hidden;
     padding: 60px 15px;
     background-color: var(--shadow-grey-dark);
-    animation: nav-slide-out 0.4s;
+
 
 }
 
-.mobile-menu-popup-nav {
-    height: 50%;
+#mobile-menu-popup-nav {
+    height: 40dvh;
 }
 
-.mobile-menu-popup-nav ol {
+#mobile-menu-popup-nav ol {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -638,7 +639,7 @@ a {
 
 }
 
-.mobile-menu-popup-nav ol li {
+#mobile-menu-popup-nav ol li {
     font-size: 1.25rem;
 }
 
@@ -650,28 +651,31 @@ a {
     top: 30px;
 }
 
-#desktop-nav a:visited::after {
+
+
+
+.nav-links a:hover::after {
     width: var(--underline-width-hover);
 }
 
 
-#desktop-nav a:hover::after {
-    width: var(--underline-width-hover);
+.nav-links a:active {
+    font-weight: 900;
 }
 
-/*
-#desktop-nav a:active::after {
-    --underline-width: var(--underline-width-hover);
+.nav-links a:active::after {
+    font-weight: 900;
+
 }
-*/
 
 
-#desktop-nav a {
+.nav-links a {
     position: relative;
+    transition: font-weight 0.3s;
 
 }
 
-#desktop-nav a::after {
+.nav-links a::after {
     content: "";
     position: absolute;
     display: inline-block;
@@ -680,24 +684,16 @@ a {
     width: var(--underline-width);
     height: 2px;
     background-color: white;
-    transition: width 0.3s;
+    transition: width 0.3s, font-weight 0.3s;
 }
 
 
-@keyframes underline-slide {
-    from {
-        width: 0%;
-    }
 
-    to {
-        width: 100%;
-    }
-}
 
 
 @keyframes nav-slide-out {
     from {
-        right: -200px;
+        right: -100px;
         opacity: 0;
     }
 
@@ -706,6 +702,19 @@ a {
         opacity: 1;
     }
 }
+
+@keyframes nav-slide-back {
+    from {
+        right: 0px;
+        opacity: 1;
+    }
+
+    to {
+        right: -200px;
+        opacity: 0;
+    }
+}
+
 
 
 /* Styles for screen sizes larger than mobile */

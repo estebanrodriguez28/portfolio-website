@@ -28,42 +28,48 @@
     <!--  Main navigation at the top -->
     <header>
 
-        <nav id="navbar">
+        <section id="navbar">
             <img class="icon-width" src="./images/site-imgs/letter-e.png" alt="The letter E" id="letter-e">
 
             <!-- Navigation for desktop -->
             <div id="desktop-nav">
+                <nav class="nav-links">
+                    <ol class="desktop-nav-row">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills-interests">Skills + Interests</a></li>
+                        <li class="skip" id="skip-desktop"><a href="https://pdflink.to/esteban-r/" target="_blank"
+                                rel="noopener noreferrer">Resume</a></li>
+                    </ol>
+                </nav>
 
-                <ol class="desktop-nav-row">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills-interests">Skills + Interests</a></li>
-                    <li class="skip" id="skip-desktop"><a href="https://pdflink.to/esteban-r/" target="_blank"
-                            rel="noopener noreferrer">Resume</a></li>
-                </ol>
             </div>
 
 
 
             <img src="./images/site-imgs/mobile-menu.png" alt="Mobile navigation menu" class="icon-width" id="hide-icon"
                 onclick="open_mobile_menu()">
-        </nav>
+        </section>
 
 
         <!-- Popup navigation menu on mobile after hamburger clicked -->
         <aside class="mobile-menu-popup">
             <img src="./images/site-imgs/close.png" class="close-menu" onclick="close_mobile_popup()"
                 alt="Icon in shape of x to close menu">
-            <nav class="mobile-menu-popup-nav">
-                <ol>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills-interests">Skills + Interests</a></li>
-                    <li class="skip" id="skip-mobile"><a href="https://pdflink.to/esteban-r/">Resume</a></li>
-                </ol>
-            </nav>
+
+            <section>
+                <nav class="nav-links" id="mobile-menu-popup-nav">
+                    <ol>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills-interests">Skills + Interests</a></li>
+                        <li class="skip" id="skip-mobile"><a href="https://pdflink.to/esteban-r/">Resume</a></li>
+                    </ol>
+                </nav>
+
+            </section>
         </aside>
 
 

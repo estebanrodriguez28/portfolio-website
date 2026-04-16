@@ -27,23 +27,30 @@ function nav_scroll() {
 
 
 function nav_link_underline() {
-    $("#desktop-nav a").hover(
-        function () {
-            var link_width = $(this).width();
-            document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-        }
-    );
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+        $(".nav-links a").hover(
+            function () {
+                var link_width = $(this).width();
+                document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
+            }
+        );
+    }
+
+    else {
+        $(".nav-links a").click(
+            function () {
+                var link_width = $(this).width();
+                document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
+            }
+        );
+    }
+
+
+
 }
 
 
-function stay_underlined() {
-    $('#desktop-nav a').click(
-        function () {
-            var link_width = $(this).width();
-            document.documentElement.style.setProperty("--underline-width", `${link_width}px`);
-        }
-    )
-}
+
 
 
 
@@ -68,10 +75,11 @@ function open_dropdown() {
 
 function open_mobile_menu() {
 
-
-    $("#navbar").fadeOut(80, function () {
-        $(".mobile-menu-popup").css("display", "flex");
-        $(".mobile-menu-popup-nav ol li").click(close_mobile_popup);
+    document.documentElement.style.setProperty("--underline-width-hover", "0px");
+    $("#navbar").slideUp(80, function () {
+        //$(".mobile-menu-popup").css("display", "flex");
+        $(".mobile-menu-popup").animate({ right: "0vw" }, 450);
+        $("#mobile-menu-popup-nav li").click(close_mobile_popup);
         $("body").css("overflow", "hidden");
 
 
@@ -82,11 +90,19 @@ function open_mobile_menu() {
 }
 
 function close_mobile_popup() {
-    $(".mobile-menu-popup").css("display", "");
-    $("#navbar").fadeIn(300);
-    $("#navbar").css("display", "flex");
-    //$("#intro").css("minHeight", "80dvh");
-    $("body").css("overflow", "visible");
+
+    $(".mobile-menu-popup").animate(
+        { right: "-100vw" },
+        450,
+        function () {
+            //$(".mobile-menu-popup").css("display", "");
+            //$("#navbar").fadeIn(300);
+            //$("#navbar").css("display", "flex");
+            $("body").css("overflow", "visible");
+
+        }
+    );
+
 
 
 }
@@ -96,5 +112,6 @@ function close_mobile_popup() {
 $(document).ready(function () {
     nav_scroll();
     nav_link_underline();
+
 });
 
