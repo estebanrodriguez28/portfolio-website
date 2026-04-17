@@ -42,12 +42,8 @@ function nav_scroll() {
     else {
         $("body").swipe({
             swipe: function (event, direction) {
-                if (direction == "up") {
-                    $("#navbar").slideDown("fast");
-                }
-
-                else if (direction == "down") {
-                    $("#navbar").slideUp("fast");
+                if (direction == "up" || direction == "down") {
+                    alert("Swiped Vertically");
                 }
             },
             threshold: 50,
