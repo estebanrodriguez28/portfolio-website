@@ -43,10 +43,13 @@ function nav_scroll() {
         $("body").swipe({
             swipe: function (event, direction) {
                 if (direction == "up") {
+                    // User swipes up, screen goes down, navbar should go away
+                    $("#navbar").slideUp("fast");
                     alert("Swiped Vertically Up");
                 }
 
                 else if (direction == "down") {
+                    $("#navbar").slideDown("fast");
                     alert("Swiped Vertically Down");
                 }
             },
