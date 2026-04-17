@@ -44,12 +44,14 @@ function nav_scroll() {
             swipe: function (event, direction) {
                 if (direction == "up") {
                     // User swipes up, screen goes down, navbar should go away
-                    $("#navbar").slideUp("fast");
+                    $("#navbar").animate({ top: "-20dvh" })
+
 
                 }
 
                 else if (direction == "down") {
-                    $("#navbar").slideDown("fast");
+                    $("#navbar").animate({ top: "0dvh" })
+
 
                 }
             },
@@ -149,7 +151,7 @@ $(document).ready(function () {
     // Posted by elad.chen
     // Retrieved 2026-04-16, License - CC BY-SA 3.0
 
-    var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
+    //var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
     //$(document.body).on('touchmove', nav_scroll);
     nav_scroll();
     nav_link_underline();
