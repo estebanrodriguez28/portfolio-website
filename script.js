@@ -42,8 +42,12 @@ function nav_scroll() {
     else {
         $("body").swipe({
             swipe: function (event, direction) {
-                if (direction == "up" || direction == "down") {
-                    alert("Swiped Vertically");
+                if (direction == "up") {
+                    alert("Swiped Vertically Up");
+                }
+
+                else if (direction == "down") {
+                    alert("Swiped Vertically Down");
                 }
             },
             threshold: 50,
