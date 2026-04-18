@@ -44,13 +44,13 @@ function nav_scroll() {
             swipe: function (event, direction) {
                 if (direction == "up") {
                     // User swipes up, screen goes down, navbar should go away
-                    $("#navbar").animate({ top: "-20dvh" })
+                    $("#navbar").slideUp("fast");
 
 
                 }
 
                 else if (direction == "down") {
-                    $("#navbar").animate({ top: "0dvh" })
+                    $("#navbar").slideDown("fast");
 
 
                 }
@@ -134,7 +134,7 @@ function close_mobile_popup() {
         function () {
             //$(".mobile-menu-popup").css("display", "");
             //$("#navbar").fadeIn(300);
-            //$("#navbar").css("display", "flex");
+            $("#navbar").slideDown("fast");
             $("body").css("overflow", "visible");
 
         }

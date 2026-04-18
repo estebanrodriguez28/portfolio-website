@@ -626,6 +626,7 @@ a {
 
 #mobile-menu-popup-nav {
     height: 50dvh;
+    padding-top: 5dvh;
 }
 
 #mobile-menu-popup-nav ol {
