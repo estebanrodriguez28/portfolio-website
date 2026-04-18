@@ -25,7 +25,7 @@ function nav_scroll() {
 
             var st = $(this).scrollTop();
             if (st > 50) {
-                // $("#navbar").css("box-shadow", "0px 4px 12px -1px rgba(0, 0, 0, 0.3)");
+                $("#navbar").css("box-shadow", "0px 4px 10px -1px rgba(0, 0, 0, 0.3)");
                 if (st > lastScrollTop) {
                     // downscroll code
                     $("#navbar").slideUp("fast");
@@ -113,14 +113,12 @@ function open_dropdown() {
 function open_mobile_menu() {
 
     document.documentElement.style.setProperty("--underline-width-hover", "0px");
-    $("#navbar").slideUp(80, function () {
-        //$(".mobile-menu-popup").css("display", "flex");
-        $(".mobile-menu-popup").animate({ right: "0vw" }, 450);
-        $("#mobile-menu-popup-nav li").click(close_mobile_popup);
-        $("body").css("overflow", "hidden");
+    $("#navbar").fadeOut("fast");
+    $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
+    $("#mobile-menu-popup-nav li").click(close_mobile_popup);
+    $("body").css("overflow", "hidden");
 
 
-    })
 
 
 
@@ -130,15 +128,13 @@ function close_mobile_popup() {
 
     $(".mobile-menu-popup").animate(
         { right: "-100vw" },
-        450,
-        function () {
-            //$(".mobile-menu-popup").css("display", "");
-            //$("#navbar").fadeIn(300);
-            $("#navbar").slideDown("fast");
-            $("body").css("overflow", "visible");
+        200);
 
-        }
-    );
+    $("#navbar").fadeIn("slow");
+    $("body").css("overflow", "visible");
+
+
+
 
 
 
