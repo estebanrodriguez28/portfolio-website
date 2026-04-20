@@ -115,7 +115,7 @@ function open_mobile_menu() {
     document.documentElement.style.setProperty("--underline-width-hover", "0px");
     $("#navbar").fadeOut("fast");
     $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
-    $("#mobile-menu-popup-nav li").click(close_mobile_popup);
+    $("#mobile-menu-popup-nav li").click({ param1: false }, close_mobile_popup);
     $("body").css("overflow", "hidden");
 
 
@@ -124,13 +124,16 @@ function open_mobile_menu() {
 
 }
 
-function close_mobile_popup() {
+function close_mobile_popup(event, fade) {
 
     $(".mobile-menu-popup").animate(
         { right: "-100vw" },
         200);
 
-    $("#navbar").fadeIn("slow");
+    if (fade || event.data.param1) {
+        $("#navbar").fadeIn("slow");
+    }
+
     $("body").css("overflow", "visible");
 
 
