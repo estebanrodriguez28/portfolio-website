@@ -115,7 +115,11 @@ function open_mobile_menu() {
     document.documentElement.style.setProperty("--underline-width-hover", "0px");
     $("#navbar").fadeOut("fast");
     $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
-    $("#mobile-menu-popup-nav li").click({ param1: false }, close_mobile_popup);
+    $("#mobile-menu-popup-nav ol").on("click",
+        function (event) {
+            event.target.closest("li").addEventListener("click", close_mobile_popup(false));
+        }
+    );
     $("body").css("overflow", "hidden");
 
 
@@ -124,13 +128,13 @@ function open_mobile_menu() {
 
 }
 
-function close_mobile_popup(event, fade) {
-
+function close_mobile_popup(fade) {
+    console.log("Fade is: ", fade);
     $(".mobile-menu-popup").animate(
         { right: "-100vw" },
         200);
 
-    if (fade || event.data.param1) {
+    if (fade == true) {
         $("#navbar").fadeIn("slow");
     }
 
