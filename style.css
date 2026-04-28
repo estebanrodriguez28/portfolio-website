@@ -74,7 +74,7 @@ main {
     left: 0;
     right: 0;
     z-index: 1;
-    padding: var(--default-padding) clamp(20px, 5vw, 50px);
+    padding: var(--default-padding);
     justify-content: space-between;
     align-items: center;
     background-color: var(--shadow-grey-dark);
@@ -109,7 +109,7 @@ a {
 .desktop-nav-row {
     display: flex;
     position: relative;
-    justify-content: space-between;
+    gap: 70px;
     align-items: center;
 
 
