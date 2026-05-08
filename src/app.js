@@ -1,3 +1,8 @@
+import { animate, stagger } from "motion";
+
+
+
+
 // Source - https://stackoverflow.com/a/4819886
 // Posted by bolmaster2, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-04-16, License - CC BY-SA 4.0
@@ -150,7 +155,7 @@ function animate_nav_desktop() {
     animate(".desktop-nav-row li", {
         opacity: 1, y: [50, 0]
     },
-        { delay: stagger(0.05) }
+        { delay: stagger(0.2) }
     )
 }
 

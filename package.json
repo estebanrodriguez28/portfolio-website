@@ -1,5 +1,31 @@
 {
   "dependencies": {
     "motion": "^12.38.0"
-  }
+  },
+  "type": "module",
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "browserify": "^17.0.1",
+    "esbuild": "0.28.0"
+  },
+  "scripts": {
+    "clean": "rm -rf ./build",
+    "init": "npm run clean && mkdir ./build",
+    "bundle": "npm run init && esbuild ./src/app.js --bundle --outfile=./build/out.js",
+    "build": "npm run bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estebanrodriguez28/portfolio-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estebanrodriguez28/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/estebanrodriguez28/portfolio-website#readme",
+  "description": ""
 }
