@@ -101,34 +101,35 @@ function nav_link_underline() {
 
 
 function open_dropdown() {
-    let dropdown_state = $(".dropdown-content").css("display");
-    if (dropdown_state == "none") {
-        $(".dropdown-content").css("display", "block");
-    }
 
-    else {
-        $(".dropdown-content").css("display", "");
-    }
+    $("#footer-dropdown").click(
 
+        function () {
+            let dropdown_state = $(".dropdown-content").css("display");
+            if (dropdown_state == "none") {
+                $(".dropdown-content").css("display", "block");
+            }
 
+            else {
+                $(".dropdown-content").css("display", "");
+            }
+        }
+    );
 
 
 };
 
 function open_mobile_menu() {
-
-    document.documentElement.style.setProperty("--underline-width-hover", "0px");
-    $("#navbar").fadeOut("fast");
-    $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
-    /*
-    $("#mobile-menu-popup-nav ol").on("click",
-        function (event) {
-            event.target.closest("li").addEventListener("click", close_mobile_popup(false));
+    $("#hide-icon").click(
+        function () {
+            document.documentElement.style.setProperty("--underline-width-hover", "0px");
+            $("#navbar").fadeOut("fast");
+            $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
+            $("#mobile-menu-popup-nav li").click(close_mobile_menu);
+            $("body").css("overflow", "hidden");
         }
     );
-    */
-    $("#mobile-menu-popup-nav li").click(close_mobile_popup);
-    $("body").css("overflow", "hidden");
+
 
 
 }
@@ -136,16 +137,20 @@ function open_mobile_menu() {
 
 
 
-function close_mobile_popup(event) {
+function close_button() {
+    $(".close-menu").click(
+        function () {
+            close_mobile_menu();
+            $("#navbar").fadeIn("slow");
+        }
+    );
 
+}
+
+function close_mobile_menu() {
     $(".mobile-menu-popup").animate(
         { right: "-100vw" },
         200);
-
-    const close_menu = $(".close-menu");
-    if (event.target == close_menu[0]) {
-        $("#navbar").fadeIn("slow");
-    }
 
     $("body").css("overflow", "visible");
 }
@@ -155,7 +160,7 @@ function animate_nav_desktop() {
     animate(".desktop-nav-row li", {
         opacity: 1, y: [50, 0]
     },
-        { delay: stagger(0.2) }
+        { delay: stagger(0.08) }
     )
 }
 
@@ -170,6 +175,11 @@ $(document).ready(function () {
     nav_scroll();
     nav_link_underline();
     animate_nav_desktop();
+    open_dropdown();
+    open_mobile_menu();
+    close_button();
+
+
 
 });
 
