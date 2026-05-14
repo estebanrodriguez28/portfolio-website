@@ -4919,7 +4919,7 @@
         opacity: 1,
         y: [50, 0]
       },
-      { delay: stagger(0.08) }
+      { delay: stagger(0.06) }
     );
   }
   $(document).ready(function() {
