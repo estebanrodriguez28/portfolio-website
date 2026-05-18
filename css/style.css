@@ -117,6 +117,7 @@ a {
 
 .desktop-nav-row li {
     font-size: clamp(1rem, 1.25vw, 1.125rem);
+    opacity: 0;
 
 }
 

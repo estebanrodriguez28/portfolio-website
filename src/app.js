@@ -158,7 +158,7 @@ function close_mobile_menu() {
 
 function animate_nav_desktop() {
     animate(".desktop-nav-row li", {
-        opacity: 1, y: [50, 0]
+        opacity: 1, y: [-35, 0]
     },
         { delay: stagger(0.06) }
     )
