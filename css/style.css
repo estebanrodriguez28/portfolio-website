@@ -109,7 +109,7 @@ a {
 .desktop-nav-row {
     display: flex;
     position: relative;
-    gap: 70px;
+    gap: 65px;
     align-items: center;
 
 
@@ -768,7 +768,8 @@ a {
 
     #desktop-nav {
         display: block;
-        width: calc(clamp(650px, 50vw, 800px));
+        /* width 700px */
+        width: calc(clamp(700px, 55vw, 800px));
 
     }
 
