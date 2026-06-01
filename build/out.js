@@ -4958,7 +4958,9 @@
             count++;
             console.log("Current count is: " + count);
             console.log(latest);
-            return generate_random_substring(target_string.length, symbols);
+            if (count % 4 === 0) {
+              return generate_random_substring(target_string.length, symbols);
+            }
           }
         )
       }

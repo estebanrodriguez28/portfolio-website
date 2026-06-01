@@ -200,6 +200,7 @@ const scramble_text = (element, target_string, symbols) => {
         ease: "circOut",
         // on each frame of the animation (a value between 0-0.5), set the elements text 
         // to a random substring in the symbols string with onUpdate callback
+
         onUpdate: (latest) => (element.text(
             function () {
                 // Once we reach the last frame or value in the animate function
@@ -210,9 +211,12 @@ const scramble_text = (element, target_string, symbols) => {
                 }
 
                 count++;
-                console.log("Current count is: " + count);
-                console.log(latest);
-                return generate_random_substring(target_string.length, symbols);
+                // On every 4th frame or value, we change the elementas content to random substring
+                // by doing this slows down the animation, changing of substrings, looks better
+                if (count % 4 === 0) {
+                    return generate_random_substring(target_string.length, symbols);
+                }
+
             }
         )
 
