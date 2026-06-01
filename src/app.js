@@ -195,7 +195,7 @@ const generate_random_substring = (length, symbols) => {
 const scramble_text = (element, target_string, symbols) => {
     let count = 0;
     animate(
-        0, 0.5, {
+        0, 30, {
         duration: 1.5,
         ease: "circOut",
         // on each frame of the animation (a value between 0-0.5), set the elements text 
@@ -205,7 +205,7 @@ const scramble_text = (element, target_string, symbols) => {
                 // Once we reach the last frame or value in the animate function
                 // set the element's text to the target value, example my name 
 
-                if (latest === 0.5) {
+                if (latest === 30) {
                     return target_string;
                 }
 

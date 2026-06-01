@@ -4944,15 +4944,15 @@
     let count = 0;
     animate(
       0,
-      0.5,
+      30,
       {
         duration: 1.5,
         ease: "circOut",
         // on each frame of the animation (a value between 0-0.5), set the elements text 
-        // to a random substring in the symbols string
+        // to a random substring in the symbols string with onUpdate callback
         onUpdate: (latest) => element.text(
           function() {
-            if (latest === 0.5) {
+            if (latest === 30) {
               return target_string;
             }
             count++;
