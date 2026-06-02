@@ -192,6 +192,7 @@ const generate_random_substring = (length, symbols) => {
     return random_substring;
 }
 
+/*
 const scramble_text = (element, target_string, symbols) => {
     let count = 0;
     animate(
@@ -226,7 +227,42 @@ const scramble_text = (element, target_string, symbols) => {
     )
 
 }
+*/
 
+const scramble_text = (count, element, target_string, symbols) => {
+    0, 30, {
+        duration: 1.5,
+        ease: "circOut",
+        // on each frame of the animation (a value between 0-0.5), set the elements text 
+        // to a random substring in the symbols string with onUpdate callback
+
+        onUpdate: (latest) => (element.text(
+            function () {
+                // Once we reach the last frame or value in the animate function
+                // set the element's text to the target value, example my name 
+                console.log(latest);
+                if (latest === 30) {
+                    return target_string;
+                }
+
+                count++;
+                // On every 4th frame or value, we change the elementas content to random substring
+                // by doing this slows down the animation, changing of substrings, looks better
+                if (count % 4 === 0) {
+                    return generate_random_substring(target_string.length, symbols);
+                }
+
+            }
+        )
+
+
+        ),
+    }
+
+
+}
+
+/*
 function animate_text() {
     const chars = ["😀", "😃", "😄", "😁", "😆", "😅"];
     const blocks = "█▓▒░";
@@ -252,13 +288,91 @@ function animate_text() {
 
 }
 
-/*
-function animate_title() {
-    const titles = ["Full-Stack Developer", "Front-End Developer", "Designer", "Creator"];
-    const title = $(".normal-text");
-    scramble_text(title);
-}
+*/
+
+
+
+
+
+function animate_hero() {
+    /*
+    For the hero, first fade in the navbar, then the text, then social icons
     */
+    const name = "Esteban Rodriguez";
+    const title = "Full-Stack Developer";
+    const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
+    const name_element = $(".bold");
+    const title_element = $(".normal-text");
+    let count = 0;
+
+    const sequence = [
+        ["#navbar", { opacity: 1 }, { duration: 0.5 }],
+        ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
+        [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
+        ["#code-image", { opacity: 1, y: [-35, 0] }, { duration: 0.25 }],
+        [
+
+            (latest) => (name_element.text(
+                function () {
+                    // Once we reach the last frame or value in the animate function
+                    // set the element's text to the target value, example my name 
+
+                    if (latest === 1) {
+                        return name;
+                    }
+
+                    count++;
+                    // On every 4th frame or value, we change the elementas content to random substring
+                    // by doing this slows down the animation, changing of substrings, looks better
+                    if (count % 4 === 0) {
+                        return generate_random_substring(name.length, symbols);
+                    }
+
+                }
+            )
+
+
+            ),
+
+            { duration: 1 }
+        ],
+
+
+        [
+
+            (latest) => (title_element.text(
+                function () {
+                    // Once we reach the last frame or value in the animate function
+                    // set the element's text to the target value, example my name 
+
+                    if (latest === 1) {
+                        return title;
+                    }
+
+                    count++;
+                    // On every 4th frame or value, we change the elementas content to random substring
+                    // by doing this slows down the animation, changing of substrings, looks better
+                    if (count % 4 === 0) {
+                        return generate_random_substring(title.length, symbols);
+                    }
+
+                }
+            )
+
+
+
+            ),
+            {
+
+                duration: 1
+            }
+        ],
+
+
+
+    ];
+    animate(sequence);
+}
 
 
 
@@ -272,9 +386,8 @@ $(document).ready(function () {
     nav_scroll();
     nav_link_underline();
 
-    animate_nav_desktop();
-    animate_logo();
-    animate_text();
+    animate_hero();
+
 
     open_dropdown();
     open_mobile_menu();

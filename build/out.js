@@ -4912,27 +4912,6 @@
     );
     $("body").css("overflow", "visible");
   }
-  function animate_nav_desktop() {
-    animate(
-      ".desktop-nav-row li",
-      {
-        opacity: 1,
-        y: [-35, 0]
-      },
-      { delay: stagger(0.06) }
-    );
-  }
-  function animate_logo() {
-    animate(
-      "#letter-e",
-      {
-        opacity: 1
-      },
-      {
-        duration: 1.5
-      }
-    );
-  }
   var generate_random_substring = (length, symbols) => {
     let random_substring = "";
     for (let i = 0; i <= length; i++) {
@@ -4940,53 +4919,55 @@
     }
     return random_substring;
   };
-  var scramble_text = (element, target_string, symbols) => {
-    let count = 0;
-    animate(
-      0,
-      30,
-      {
-        duration: 1.5,
-        ease: "circOut",
-        // on each frame of the animation (a value between 0-0.5), set the elements text 
-        // to a random substring in the symbols string with onUpdate callback
-        onUpdate: (latest) => element.text(
-          function() {
-            if (latest === 30) {
-              return target_string;
-            }
-            count++;
-            console.log("Current count is: " + count);
-            console.log(latest);
-            if (count % 4 === 0) {
-              return generate_random_substring(target_string.length, symbols);
-            }
-          }
-        )
-      }
-    );
-  };
-  function animate_text() {
-    const chars = ["\u{1F600}", "\u{1F603}", "\u{1F604}", "\u{1F601}", "\u{1F606}", "\u{1F605}"];
-    const blocks = "\u2588\u2593\u2592\u2591";
-    const binary = "01";
-    const hex2 = "0123456789ABCDEF";
-    const katakana = "\u30A2\u30A4\u30A6\u30A8\u30AA\u30AB\u30AD\u30AF\u30B1\u30B3\u30B5\u30B7\u30B9\u30BB\u30BD\u30BF\u30C1\u30C4\u30C6\u30C8\u30CA\u30CB\u30CC\u30CD\u30CE\u30CF\u30D2\u30D5\u30D8\u30DB\u30DE\u30DF\u30E0\u30E1\u30E2\u30E4\u30E6\u30E8\u30E9\u30EA\u30EB\u30EC\u30ED\u30EF\u30F2\u30F3";
-    const dots = "\u2801\u2802\u2803\u2804\u2805\u2806\u2807\u2808\u2809\u280A\u280B\u280C\u280D\u280E\u280F";
+  function animate_hero() {
     const name = "Esteban Rodriguez";
     const title = "Full-Stack Developer";
     const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`\u2591\u2592\u2593\u2588\u2580\u2584\u25A0\u25A1\u25AA\u25AB\u25CF\u25CB\u25C6\u25C7\u25C8\u25CA\u203B\u2020\u2021";
     const name_element = $(".bold");
-    scramble_text(name_element, name, symbols);
     const title_element = $(".normal-text");
-    scramble_text(title_element, title, symbols);
+    let count = 0;
+    const sequence = [
+      ["#navbar", { opacity: 1 }, { duration: 0.5 }],
+      ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
+      [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
+      ["#code-image", { opacity: 1, y: [-35, 0] }, { duration: 0.25 }],
+      [
+        (latest) => name_element.text(
+          function() {
+            if (latest === 1) {
+              return name;
+            }
+            count++;
+            if (count % 4 === 0) {
+              return generate_random_substring(name.length, symbols);
+            }
+          }
+        ),
+        { duration: 1 }
+      ],
+      [
+        (latest) => title_element.text(
+          function() {
+            if (latest === 1) {
+              return title;
+            }
+            count++;
+            if (count % 4 === 0) {
+              return generate_random_substring(title.length, symbols);
+            }
+          }
+        ),
+        {
+          duration: 1
+        }
+      ]
+    ];
+    animate(sequence);
   }
   $(document).ready(function() {
     nav_scroll();
     nav_link_underline();
-    animate_nav_desktop();
-    animate_logo();
-    animate_text();
+    animate_hero();
     open_dropdown();
     open_mobile_menu();
     close_button();

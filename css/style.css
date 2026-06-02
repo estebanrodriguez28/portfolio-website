@@ -57,6 +57,7 @@ main {
     font-weight: 700;
     font-size: clamp(1.75rem, 5vw, 3rem);
 
+
 }
 
 .normal-text {
@@ -80,6 +81,7 @@ main {
     justify-content: space-between;
     align-items: center;
     background-color: var(--shadow-grey-dark);
+    opacity: 0;
     /* box-shadow: 0px 4px 10px -1px rgba(0, 0, 0, 0.3); */
 
 }
@@ -326,7 +328,7 @@ a {
 #code-image {
     margin-bottom: 20px;
     width: clamp(100px, 18vw, 145px);
-
+    opacity: 0;
 
 
 }
