@@ -4919,6 +4919,18 @@
     }
     return random_substring;
   };
+  var scramble_text = (latest, count, element, target_string, symbols) => {
+    element.text(
+      function() {
+        if (latest === 1) {
+          return target_string;
+        }
+        if (count % 4 === 0) {
+          return generate_random_substring(target_string.length, symbols);
+        }
+      }
+    );
+  };
   function animate_hero() {
     const name = "Esteban Rodriguez";
     const title = "Full-Stack Developer";
@@ -4932,31 +4944,11 @@
       [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
       ["#code-image", { opacity: 1, y: [-35, 0] }, { duration: 0.25 }],
       [
-        (latest) => name_element.text(
-          function() {
-            if (latest === 1) {
-              return name;
-            }
-            count++;
-            if (count % 4 === 0) {
-              return generate_random_substring(name.length, symbols);
-            }
-          }
-        ),
+        (latest) => (scramble_text(latest, count, name_element, name, symbols), count++),
         { duration: 1 }
       ],
       [
-        (latest) => title_element.text(
-          function() {
-            if (latest === 1) {
-              return title;
-            }
-            count++;
-            if (count % 4 === 0) {
-              return generate_random_substring(title.length, symbols);
-            }
-          }
-        ),
+        (latest) => (scramble_text(latest, count, title_element, title, symbols), count++),
         {
           duration: 1
         }
