@@ -90,8 +90,6 @@ function reset_page() {
     $("#letter-e").click(
         () => {
             // When E logo in top left of page clicked: reload page, reset url (remove hashes # from url), scroll back to very top
-            removeHash();
-
             location.reload();
 
 
@@ -370,6 +368,7 @@ function animate_hero() {
 
 
 $(document).ready(function () {
+    removeHash();
     $(window).scrollTop(0);
     // Source - https://stackoverflow.com/a/25874044
     // Posted by elad.chen

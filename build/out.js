@@ -4870,7 +4870,6 @@
   function reset_page() {
     $("#letter-e").click(
       () => {
-        removeHash();
         location.reload();
       }
     );
@@ -4980,6 +4979,7 @@
     animate(sequence);
   }
   $(document).ready(function() {
+    removeHash();
     $(window).scrollTop(0);
     nav_scroll();
     reset_page();
