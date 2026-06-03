@@ -2,6 +2,7 @@ import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
 
 
 
+
 // Source - https://stackoverflow.com/a/4819886
 // Posted by bolmaster2, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-04-16, License - CC BY-SA 4.0 
@@ -12,6 +13,12 @@ function isTouchDevice() {
         (navigator.msMaxTouchPoints > 0));
 }
 
+// Source - https://www.xjavascript.com/blog/how-to-scroll-to-top-of-page-with-javascript-jquery/
+// Disable scroll restoration
+if (history.scrollRestoration) {
+    console.log("Scroll restoration present");
+    history.scrollRestoration = 'manual';
+}
 
 
 // Source - https://stackoverflow.com/a/4326907
@@ -363,6 +370,7 @@ function animate_hero() {
 
 
 $(document).ready(function () {
+    $(window).scrollTop(0);
     // Source - https://stackoverflow.com/a/25874044
     // Posted by elad.chen
     // Retrieved 2026-04-16, License - CC BY-SA 3.0

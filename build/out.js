@@ -4829,6 +4829,10 @@
   function isTouchDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
   }
+  if (history.scrollRestoration) {
+    console.log("Scroll restoration present");
+    history.scrollRestoration = "manual";
+  }
   function nav_scroll() {
     if (!isTouchDevice()) {
       var lastScrollTop = 0;
@@ -4976,6 +4980,7 @@
     animate(sequence);
   }
   $(document).ready(function() {
+    $(window).scrollTop(0);
     nav_scroll();
     reset_page();
     nav_link_underline();
