@@ -4887,7 +4887,7 @@
     );
   }
   function open_mobile_menu() {
-    $("#hide-icon").click(
+    $("#hamburger-icon").click(
       function() {
         document.documentElement.style.setProperty("--underline-width-hover", "0px");
         $("#navbar").fadeOut("fast");
