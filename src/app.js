@@ -230,18 +230,19 @@ const scramble_text = (element, target_string, symbols) => {
 */
 
 const scramble_text = (latest, count, element, target_string, symbols) => {
-    // on each frame of the animation (a value between 0-0.5), set the elements text 
-    // to a random substring in the symbols string with onUpdate callback
+    // on every 4th frame of the animation, set the elements text 
+    // to a random substring in the symbols string 
     element.text(
         function () {
-            // Once we reach the last frame or value in the animate function
+            // Once we reach the last frame or value 
             // set the element's text to the target value, example my name 
             if (latest === 1) {
                 return target_string;
             }
 
-            // On every 4th frame or value, we change the elementas content to random substring
-            // by doing this slows down the animation, changing of substrings, looks better
+            // On every 4th frame or value, we change the elementas content to a random substring
+            // this slows down the animation, changing of substrings, which looks better
+            // than having elemnts text change substrings on every frame
             if (count % 4 === 0) {
                 return generate_random_substring(target_string.length, symbols);
             }
@@ -294,22 +295,25 @@ function animate_hero() {
     const title = "Full-Stack Developer";
     const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
     const name_element = $(".bold");
-    const title_element = $(".normal-text");
+    const title_element = $(".title");
     let count = 0;
     const sequence = [
         ["#navbar", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
+        ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
         [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
-        ["#code-image", { opacity: 1, y: [-35, 0] }, { duration: 0.25 }],
+        ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
         [
-
+            // On each value, by default latests counts from 0 to 1, for each of those values
+            // between 0 and 1, runs callback to scramble the text
             (latest) => (
                 scramble_text(latest, count, name_element, name, symbols),
                 count++
             ),
 
-            { duration: 1 }
+            { at: "<-0.2", duration: 1 }
         ],
+
         [
             (latest) => (
                 scramble_text(latest, count, title_element, title, symbols),
@@ -320,6 +324,9 @@ function animate_hero() {
                 duration: 1
             }
         ],
+
+        ["#github-li", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
+        ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
 
 
 

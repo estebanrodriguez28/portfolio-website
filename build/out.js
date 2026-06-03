@@ -4936,23 +4936,28 @@
     const title = "Full-Stack Developer";
     const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`\u2591\u2592\u2593\u2588\u2580\u2584\u25A0\u25A1\u25AA\u25AB\u25CF\u25CB\u25C6\u25C7\u25C8\u25CA\u203B\u2020\u2021";
     const name_element = $(".bold");
-    const title_element = $(".normal-text");
+    const title_element = $(".title");
     let count = 0;
     const sequence = [
       ["#navbar", { opacity: 1 }, { duration: 0.5 }],
       ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
+      ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
       [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
-      ["#code-image", { opacity: 1, y: [-35, 0] }, { duration: 0.25 }],
+      ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
       [
+        // On each value, by default latests counts from 0 to 1, for each of those values
+        // between 0 and 1, runs callback to scramble the text
         (latest) => (scramble_text(latest, count, name_element, name, symbols), count++),
-        { duration: 1 }
+        { at: "<-0.2", duration: 1 }
       ],
       [
         (latest) => (scramble_text(latest, count, title_element, title, symbols), count++),
         {
           duration: 1
         }
-      ]
+      ],
+      ["#github-li", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
+      ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
     ];
     animate(sequence);
   }

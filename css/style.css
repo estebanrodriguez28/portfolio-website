@@ -15,7 +15,8 @@
     --shadow-grey-darkest: hsl(220, 12%, 5%);
     --default-icon-width: 55px;
     --underline-width-hover: 0px;
-    --underline-width: 0px;
+
+
 
     /*
     --grey: rgb(193, 196, 198);
@@ -56,15 +57,25 @@ main {
 .bold {
     font-weight: 700;
     font-size: clamp(1.75rem, 5vw, 3rem);
-
+    position: relative;
 
 }
 
-.normal-text {
+.title-div {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.title {
     font-weight: 400;
     font-size: clamp(2.75rem, 5vw, 4.75rem);
 
 }
+
+
 
 
 
@@ -314,7 +325,21 @@ a {
     width: 40px;
     margin-bottom: 10px;
 
+
 }
+
+.social-icon {
+    transition: rotate 0.6s, scale 0.6s, filter 0.6s;
+}
+
+.social-icon:hover {
+    rotate: -8deg;
+    scale: 1.25;
+    filter: invert(60%);
+
+}
+
+
 
 
 #social-icons {
@@ -611,6 +636,9 @@ a {
 
 
 
+
+
+
 .mobile-menu-popup {
     display: flex;
     flex-direction: column;
@@ -686,7 +714,7 @@ a {
     display: inline-block;
     left: 0;
     bottom: 0;
-    width: var(--underline-width);
+    width: 0px;
     height: 2px;
     background-color: white;
     transition: width 0.3s, font-weight 0.3s;
@@ -718,6 +746,10 @@ a {
         right: -200px;
         opacity: 0;
     }
+}
+
+#hamburger-icon {
+    opacity: 0;
 }
 
 
@@ -767,7 +799,7 @@ a {
         padding: 0px 150px;
     }
 
-    #hide-icon {
+    #hamburger-icon {
         display: none;
     }
 
@@ -778,7 +810,7 @@ a {
 
     }
 
-    #no-bullets {
+    #github-li {
         list-style-type: none;
         display: flex;
         flex-direction: column;
@@ -787,6 +819,11 @@ a {
         position: fixed;
         bottom: 15px;
         left: 45px;
+        opacity: 0;
+    }
+
+    #github-li a:active {
+        filter: brightness(200%);
     }
 
     #social-icons {
@@ -800,6 +837,11 @@ a {
         bottom: 15px;
         right: 45px;
         width: 65px;
+        opacity: 0;
+    }
+
+    #email:hover {
+        rotate: 8deg;
     }
 
     #intro {
