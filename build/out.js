@@ -4857,6 +4857,20 @@
       });
     }
   }
+  var removeHash = () => {
+    if (window.location.hash) {
+      const newUrl = window.location.href.split("#")[0];
+      history.replaceState(null, "", newUrl);
+    }
+  };
+  function reset_page() {
+    $("#letter-e").click(
+      () => {
+        removeHash();
+        location.reload();
+      }
+    );
+  }
   function nav_link_underline() {
     if (window.matchMedia("(min-width: 1024px)").matches) {
       $(".nav-links a").hover(
@@ -4963,6 +4977,7 @@
   }
   $(document).ready(function() {
     nav_scroll();
+    reset_page();
     nav_link_underline();
     animate_hero();
     open_dropdown();

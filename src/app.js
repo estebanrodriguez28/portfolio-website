@@ -66,6 +66,32 @@ function nav_scroll() {
 
 }
 
+// Source - https://www.xjavascript.com/blog/how-to-remove-the-hash-from-window-location-url-with-javascript-without-page-refresh/
+// Retrieved 2026-06-03, License - CC BY-SA 3.0
+
+const removeHash = () => {
+    if (window.location.hash) {
+        // Get the current URL without the hash  
+        const newUrl = window.location.href.split('#')[0];
+        // Replace the current history entry with the new URL  
+        history.replaceState(null, '', newUrl);
+    }
+}
+
+
+function reset_page() {
+    $("#letter-e").click(
+        () => {
+            // When E logo in top left of page clicked: reload page, reset url (remove hashes # from url), scroll back to very top
+            removeHash();
+
+            location.reload();
+
+
+        }
+    )
+}
+
 
 function nav_link_underline() {
     if (window.matchMedia("(min-width: 1024px)").matches) {
@@ -344,6 +370,11 @@ $(document).ready(function () {
     //var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
     //$(document.body).on('touchmove', nav_scroll);
     nav_scroll();
+    // By default the browser remembers scroll positon, so when you refresh page loads position that your were previously
+    //  but when refreshing the page a fter E logo clicked, I want the page to go back to very top to replay animations
+    // history.scrollRestoration = "manual";
+
+    reset_page();
     nav_link_underline();
 
     animate_hero();
