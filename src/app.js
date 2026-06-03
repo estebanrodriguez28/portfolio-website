@@ -89,7 +89,8 @@ const removeHash = () => {
 function reset_page() {
     $("#letter-e").click(
         () => {
-            // When E logo in top left of page clicked: reload page, reset url (remove hashes # from url), scroll back to very top
+            // When E logo in top left of page clicked reload page
+            // Reloading page will reset url (remove hashes # from url), scroll back to very top
             location.reload();
 
 
