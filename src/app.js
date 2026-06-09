@@ -16,7 +16,6 @@ function isTouchDevice() {
 // Source - https://www.xjavascript.com/blog/how-to-scroll-to-top-of-page-with-javascript-jquery/
 // Disable scroll restoration
 if (history.scrollRestoration) {
-    console.log("Scroll restoration present");
     history.scrollRestoration = 'manual';
 }
 
@@ -224,51 +223,16 @@ const generate_random_substring = (length, symbols) => {
     return random_substring;
 }
 
-/*
-const scramble_text = (element, target_string, symbols) => {
-    let count = 0;
-    animate(
-        0, 30, {
-        duration: 1.5,
-        ease: "circOut",
-        // on each frame of the animation (a value between 0-0.5), set the elements text 
-        // to a random substring in the symbols string with onUpdate callback
 
-        onUpdate: (latest) => (element.text(
-            function () {
-                // Once we reach the last frame or value in the animate function
-                // set the element's text to the target value, example my name 
-
-                if (latest === 30) {
-                    return target_string;
-                }
-
-                count++;
-                // On every 4th frame or value, we change the elementas content to random substring
-                // by doing this slows down the animation, changing of substrings, looks better
-                if (count % 4 === 0) {
-                    return generate_random_substring(target_string.length, symbols);
-                }
-
-            }
-        )
-
-
-        ),
-    }
-    )
-
-}
-*/
 
 const scramble_text = (latest, count, element, target_string, symbols) => {
     // on every 4th frame of the animation, set the elements text 
     // to a random substring in the symbols string 
     element.text(
         function () {
-            // Once we reach the last frame or value 
-            // set the element's text to the target value, example my name 
+            // Once we reach the last frame or value set the element's text to one of the words in the array
             if (latest === 1) {
+
                 return target_string;
             }
 
@@ -287,48 +251,27 @@ const scramble_text = (latest, count, element, target_string, symbols) => {
 
 }
 
-/*
-function animate_text() {
+
+
+
+async function animate_hero() {
+    /*
+    For the hero, first fade in the navbar, then the text, then social icons
+    */
     const chars = ["😀", "😃", "😄", "😁", "😆", "😅"];
     const blocks = "█▓▒░";
     const binary = "01";
     const hex = "0123456789ABCDEF";
     const katakana = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
     const dots = "⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏";
-
-
-    const name = "Esteban Rodriguez";
-    const title = "Full-Stack Developer";
-    const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
-
-    // do the scramble text animation on name in hero
-    const name_element = $(".bold");
-    scramble_text(name_element, name, symbols);
-
-    // do the scramble text animation on title in hero
-    const title_element = $(".normal-text");
-    scramble_text(title_element, title, symbols);
-
-
-
-}
-
-*/
-
-
-
-
-
-function animate_hero() {
-    /*
-    For the hero, first fade in the navbar, then the text, then social icons
-    */
     const name = "Esteban Rodriguez";
     const title = "Full-Stack Developer";
     const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
+    const titles = ["Full-Stack Developer", "Front-End Engineer", "Animator", "UI Creator"];
+    let idx = 0;
     const sequence = [
         ["#navbar", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
@@ -338,19 +281,22 @@ function animate_hero() {
         [
             // On each value, by default latests counts from 0 to 1, for each of those values
             // between 0 and 1, runs callback to scramble the text
-            (latest) => (
-                scramble_text(latest, count, name_element, name, symbols),
-                count++
-            ),
+            (latest) => {
+                scramble_text(latest, count, name_element, name, symbols);
+                count++;
+
+            },
+
 
             { at: "<-0.2", duration: 1 }
         ],
 
         [
-            (latest) => (
-                scramble_text(latest, count, title_element, title, symbols),
-                count++
-            ),
+            (latest) => {
+                scramble_text(latest, count, title_element, titles[idx], symbols);
+                count++;
+            },
+
             {
 
                 duration: 1
@@ -361,9 +307,83 @@ function animate_hero() {
         ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
 
 
-
     ];
-    animate(sequence);
+    return animate(sequence);
+
+
+
+}
+
+
+const scramble_text_infinte = () => {
+    const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
+    let is_repeating = false;
+    animate_hero().then(
+        () => {
+            const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
+            let current_title = 0;
+            let next_title = 0;
+            let count = 0;
+            animate(
+                0, 1, {
+                duration: 1.5,
+                ease: "circOut",
+                // on each frame of the animation (a value between 0-1), set the elements text 
+                // to a random substring in the symbols string with onUpdate callback
+
+                onUpdate: (latest) => {
+                    if (is_repeating === false || latest < 1) {
+                        ($(".title").text(
+                            function () {
+                                // Once we reach the last frame or value in the animate function
+                                // set the element's text to the target value, example my name 
+                                if (latest === 1) {
+                                    // Check if the index is outside of the bounds of array, if so reset the index
+                                    // Otherwise set the element text to the curent index of the array
+                                    current_title++;
+                                    next_title = current_title + 1;
+                                    if (current_title > titles.length - 1) {
+                                        current_title = 0;
+                                    }
+
+                                    if (next_title > titles.length - 1) {
+                                        next_title = 0;
+                                    }
+                                    is_repeating = true;
+
+
+                                    return titles[current_title];
+
+
+
+                                }
+                                is_repeating = false;
+                                count++;
+                                // On every 4th frame or value, we change the elementas content to random substring
+                                // by doing this slows down the animation, changing of substrings, looks better
+                                if (count % 6 === 0) {
+
+                                    return generate_random_substring(titles[next_title].length, symbols);
+                                }
+
+                            }
+
+                        )
+
+
+                        )
+                    }
+
+                },
+                repeat: Infinity, repeatType: "loop", repeatDelay: 1
+            }
+            )
+
+        }
+    )
+
+
+
 }
 
 
@@ -371,22 +391,14 @@ function animate_hero() {
 $(document).ready(function () {
     removeHash();
     $(window).scrollTop(0);
-    // Source - https://stackoverflow.com/a/25874044
-    // Posted by elad.chen
-    // Retrieved 2026-04-16, License - CC BY-SA 3.0
 
-    //var clickHandler = ("ontouchstart" in window ? "touchend" : "click")
-    //$(document.body).on('touchmove', nav_scroll);
     nav_scroll();
-    // By default the browser remembers scroll positon, so when you refresh page loads position that your were previously
-    //  but when refreshing the page a fter E logo clicked, I want the page to go back to very top to replay animations
-    // history.scrollRestoration = "manual";
+
 
     reset_page();
     nav_link_underline();
 
-    animate_hero();
-
+    scramble_text_infinte();
 
     open_dropdown();
     open_mobile_menu();

@@ -4830,7 +4830,6 @@
     return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
   }
   if (history.scrollRestoration) {
-    console.log("Scroll restoration present");
     history.scrollRestoration = "manual";
   }
   function nav_scroll() {
@@ -4948,13 +4947,21 @@
       }
     );
   };
-  function animate_hero() {
+  async function animate_hero() {
+    const chars = ["\u{1F600}", "\u{1F603}", "\u{1F604}", "\u{1F601}", "\u{1F606}", "\u{1F605}"];
+    const blocks = "\u2588\u2593\u2592\u2591";
+    const binary = "01";
+    const hex2 = "0123456789ABCDEF";
+    const katakana = "\u30A2\u30A4\u30A6\u30A8\u30AA\u30AB\u30AD\u30AF\u30B1\u30B3\u30B5\u30B7\u30B9\u30BB\u30BD\u30BF\u30C1\u30C4\u30C6\u30C8\u30CA\u30CB\u30CC\u30CD\u30CE\u30CF\u30D2\u30D5\u30D8\u30DB\u30DE\u30DF\u30E0\u30E1\u30E2\u30E4\u30E6\u30E8\u30E9\u30EA\u30EB\u30EC\u30ED\u30EF\u30F2\u30F3";
+    const dots = "\u2801\u2802\u2803\u2804\u2805\u2806\u2807\u2808\u2809\u280A\u280B\u280C\u280D\u280E\u280F";
     const name = "Esteban Rodriguez";
     const title = "Full-Stack Developer";
     const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`\u2591\u2592\u2593\u2588\u2580\u2584\u25A0\u25A1\u25AA\u25AB\u25CF\u25CB\u25C6\u25C7\u25C8\u25CA\u203B\u2020\u2021";
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
+    const titles = ["Full-Stack Developer", "Front-End Engineer", "Animator", "UI Creator"];
+    let idx = 0;
     const sequence = [
       ["#navbar", { opacity: 1 }, { duration: 0.5 }],
       ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
@@ -4964,11 +4971,17 @@
       [
         // On each value, by default latests counts from 0 to 1, for each of those values
         // between 0 and 1, runs callback to scramble the text
-        (latest) => (scramble_text(latest, count, name_element, name, symbols), count++),
+        (latest) => {
+          scramble_text(latest, count, name_element, name, symbols);
+          count++;
+        },
         { at: "<-0.2", duration: 1 }
       ],
       [
-        (latest) => (scramble_text(latest, count, title_element, title, symbols), count++),
+        (latest) => {
+          scramble_text(latest, count, title_element, titles[idx], symbols);
+          count++;
+        },
         {
           duration: 1
         }
@@ -4976,15 +4989,65 @@
       ["#github-li", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
       ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
     ];
-    animate(sequence);
+    return animate(sequence);
   }
+  var scramble_text_infinte = () => {
+    const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`\u2591\u2592\u2593\u2588\u2580\u2584\u25A0\u25A1\u25AA\u25AB\u25CF\u25CB\u25C6\u25C7\u25C8\u25CA\u203B\u2020\u2021";
+    let is_repeating = false;
+    animate_hero().then(
+      () => {
+        const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
+        let current_title = 0;
+        let next_title = 0;
+        let count = 0;
+        animate(
+          0,
+          1,
+          {
+            duration: 1.5,
+            ease: "circOut",
+            // on each frame of the animation (a value between 0-1), set the elements text 
+            // to a random substring in the symbols string with onUpdate callback
+            onUpdate: (latest) => {
+              if (is_repeating === false || latest < 1) {
+                $(".title").text(
+                  function() {
+                    if (latest === 1) {
+                      current_title++;
+                      next_title = current_title + 1;
+                      if (current_title > titles.length - 1) {
+                        current_title = 0;
+                      }
+                      if (next_title > titles.length - 1) {
+                        next_title = 0;
+                      }
+                      is_repeating = true;
+                      return titles[current_title];
+                    }
+                    is_repeating = false;
+                    count++;
+                    if (count % 6 === 0) {
+                      return generate_random_substring(titles[next_title].length, symbols);
+                    }
+                  }
+                );
+              }
+            },
+            repeat: Infinity,
+            repeatType: "loop",
+            repeatDelay: 1
+          }
+        );
+      }
+    );
+  };
   $(document).ready(function() {
     removeHash();
     $(window).scrollTop(0);
     nav_scroll();
     reset_page();
     nav_link_underline();
-    animate_hero();
+    scramble_text_infinte();
     open_dropdown();
     open_mobile_menu();
     close_button();
