@@ -1,4 +1,5 @@
 import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
+import shave from "shave";
 
 
 
@@ -386,6 +387,9 @@ const scramble_text_infinte = () => {
 
 }
 
+const clamp_text_hero = () => {
+    shave(".title", 250);
+}
 
 
 $(document).ready(function () {
