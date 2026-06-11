@@ -14,6 +14,11 @@ function isTouchDevice() {
         (navigator.msMaxTouchPoints > 0));
 }
 
+
+const isSmallScreen = () => {
+    return window.innerWidth <= 768;
+};
+
 // Source - https://www.xjavascript.com/blog/how-to-scroll-to-top-of-page-with-javascript-jquery/
 // Disable scroll restoration
 if (history.scrollRestoration) {
@@ -317,7 +322,12 @@ async function animate_hero() {
 
 
 const scramble_text_infinte = () => {
-    const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
+
+    let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
+    if (isSmallScreen()) {
+        symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    }
+
     let is_repeating = false;
     animate_hero().then(
         () => {
