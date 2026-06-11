@@ -4997,7 +4997,6 @@
   var scramble_text_infinte = () => {
     let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`\u2591\u2592\u2593\u2588\u2580\u2584\u25A0\u25A1\u25AA\u25AB\u25CF\u25CB\u25C6\u25C7\u25C8\u25CA\u203B\u2020\u2021";
     if (isSmallScreen()) {
-      symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
     let is_repeating = false;
     animate_hero().then(

@@ -14,9 +14,18 @@ function isTouchDevice() {
         (navigator.msMaxTouchPoints > 0));
 }
 
-
 const isSmallScreen = () => {
     return window.innerWidth <= 768;
+};
+
+const isMobile = () => {
+    // Check if the new API is supported
+    if (navigator.userAgentData) {
+        return navigator.userAgentData.mobile;
+    }
+
+    // Fallback for Safari/Firefox (see Solution 3)
+    return /Mobi|Android/i.test(navigator.userAgent);
 };
 
 // Source - https://www.xjavascript.com/blog/how-to-scroll-to-top-of-page-with-javascript-jquery/
@@ -324,8 +333,9 @@ async function animate_hero() {
 const scramble_text_infinte = () => {
 
     let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
-    if (isSmallScreen()) {
-        symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if (isMobile()) {
+        $("#limit-title").css("font-family", "Arial, Helvetica, sans-serif");
+
     }
 
     let is_repeating = false;
