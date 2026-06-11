@@ -333,7 +333,7 @@ async function animate_hero() {
 const scramble_text_infinte = () => {
 
     let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
-    if (isMobile()) {
+    if (isSmallScreen()) {
         $("#limit-title").css("font-family", "Arial, Helvetica, sans-serif");
 
     }
