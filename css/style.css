@@ -6,6 +6,7 @@
 
 }
 
+
 :root {
     --default-padding: 30px;
     --white: hsl(0, 0%, 100%);
@@ -24,6 +25,18 @@
     */
 }
 
+@font-face {
+    font-family: DejaVu;
+    font-weight: bold;
+    src: url("../fonts/DejaVuSansMono-Bold.ttf");
+}
+
+@font-face {
+    font-family: DejaVu;
+
+    src: url("../fonts/DejaVuSansMono.ttf");
+}
+
 html {
     scroll-behavior: smooth;
 
@@ -32,7 +45,7 @@ html {
 body {
     min-height: 100dvh;
     background-color: var(--shadow-grey);
-    font-family: "Orbitron", serif;
+    font-family: DejaVu, serif;
     font-optical-sizing: auto;
     color: var(--white);
 
