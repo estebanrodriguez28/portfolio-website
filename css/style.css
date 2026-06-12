@@ -83,7 +83,7 @@ main {
 .limit-symbols {
     max-width: 100%;
     display: block;
-    height: 150px;
+    height: 165px;
 
     overflow: hidden;
 
@@ -1053,11 +1053,7 @@ a {
         width: 50%;
     }
 
-    .limit-symbols {
-        max-width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-    }
+
 
 
 }
