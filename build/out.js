@@ -5047,6 +5047,101 @@
       }
     );
   };
+  function setupHighDPI(canvas) {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    const ctx = canvas.getContext("2d");
+    ctx.scale(dpr, dpr);
+    return { ctx, css_width: rect.width, css_height: rect.height };
+  }
+  var hero_ocean_animation = () => {
+    const ocean_canvas = $("#ocean-hero")[0];
+    const { ctx, css_width, css_height } = setupHighDPI(ocean_canvas);
+    ctx.strokeStyle = "#0077BE";
+    ctx.fillStyle = "#0077BE";
+    let arc_center_x = 0;
+    let arc_center_y = 100;
+    ctx.fillRect(0, 100, css_width, 200);
+    ctx.beginPath();
+    ctx.fillStyle = "hsl(223, 23%, 18%)";
+    ctx.fillRect(0, 100, css_width, 50);
+    while (arc_center_x < css_width - 110) {
+      ctx.arc(arc_center_x, arc_center_y, 25, 0, 0.5 * Math.PI);
+      ctx.stroke();
+      arc_center_x += 25;
+      arc_center_y += 25;
+      ctx.moveTo(arc_center_x, arc_center_y - 25);
+      ctx.arc(arc_center_x, arc_center_y, 25, 1.5 * Math.PI, 0);
+      ctx.stroke();
+      arc_center_x += 25;
+      arc_center_y -= 25;
+      ctx.moveTo(arc_center_x, arc_center_y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = "#0077BE";
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fill();
+    ctx.globalCompositeOperation = "source-over";
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+    ctx.lineTo(70, 70);
+    ctx.lineTo(30, 70);
+    ctx.lineTo(50, 50);
+    ctx.strokeStyle = "white";
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+    ctx.lineTo(50, 90);
+    ctx.moveTo(20, 90);
+    ctx.lineTo(80, 90);
+    ctx.moveTo(20, 90);
+    ctx.quadraticCurveTo(50, 120, 80, 90);
+    ctx.fillStyle = "#643B12";
+    ctx.strokeStyle = "#643B12";
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(css_width - 100, 120);
+    ctx.quadraticCurveTo(css_width - 50, 160, css_width - 10, 120);
+    ctx.strokeStyle = "#BEAD79";
+    ctx.moveTo(css_width - 100, 120);
+    ctx.quadraticCurveTo(css_width - 50, 80, css_width - 10, 120);
+    ctx.fillStyle = "#BEAD79";
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(css_width - 55, 100);
+    ctx.lineTo(css_width - 55, 50);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "#643B12";
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.fillStyle = "#67cd48";
+    ctx.strokeStyle = "black";
+    ctx.moveTo(css_width - 55, 50);
+    ctx.quadraticCurveTo(css_width - 60, 50, css_width - 75, 70);
+    ctx.moveTo(css_width - 75, 70);
+    ctx.quadraticCurveTo(css_width - 70, 35, css_width - 55, 50);
+    ctx.moveTo(css_width - 55, 50);
+    ctx.quadraticCurveTo(css_width - 70, 35, css_width - 85, 55);
+    ctx.moveTo(css_width - 85, 55);
+    ctx.quadraticCurveTo(css_width - 70, 10, css_width - 55, 50);
+    ctx.moveTo(css_width - 55, 50);
+    ctx.quadraticCurveTo(css_width - 50, 50, css_width - 35, 70);
+    ctx.moveTo(css_width - 35, 70);
+    ctx.quadraticCurveTo(css_width - 40, 35, css_width - 55, 50);
+    ctx.moveTo(css_width - 55, 50);
+    ctx.quadraticCurveTo(css_width - 35, 35, css_width - 25, 55);
+    ctx.moveTo(css_width - 25, 55);
+    ctx.quadraticCurveTo(css_width - 40, 10, css_width - 55, 50);
+    ctx.fill();
+    ctx.stroke();
+  };
   $(document).ready(function() {
     removeHash();
     $(window).scrollTop(0);
@@ -5054,19 +5149,9 @@
     reset_page();
     nav_link_underline();
     scramble_text_infinte();
+    hero_ocean_animation();
     open_dropdown();
     open_mobile_menu();
     close_button();
   });
 })();
-/*! Bundled license information:
-
-shave/dist/shave.mjs:
-  (**
-    shave - Shave is a javascript plugin that truncates multi-line text within a html element based on set max height
-    @version v5.1.0
-    @link https://github.com/yowainwright/shave#readme
-    @author Jeff Wainwright <yowainwright@gmail.com> (jeffry.in)
-    @license MIT
-  **)
-*/

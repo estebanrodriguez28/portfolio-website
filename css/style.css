@@ -460,6 +460,7 @@ a {
 }
 
 
+
 .image-container {
 
     width: 60px;
@@ -782,6 +783,18 @@ a {
 
 #hamburger-icon {
     opacity: 0;
+}
+
+
+#ocean-hero {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 90%;
+    height: 200px;
+    border: 1px solid blue;
 }
 
 
