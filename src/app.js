@@ -1,5 +1,4 @@
 import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
-import shave from "shave";
 
 
 
@@ -202,29 +201,7 @@ function close_mobile_menu() {
 }
 
 
-function animate_nav_desktop() {
-    animate(".desktop-nav-row li",
-        {
-            opacity: 1,
-            y: [-35, 0]
-        },
-        { delay: stagger(0.06) }
-    );
 
-
-}
-
-function animate_logo() {
-    animate(
-        "#letter-e",
-        {
-            opacity: 1
-        },
-        {
-            duration: 1.5,
-        }
-    )
-}
 
 
 
@@ -280,13 +257,11 @@ async function animate_hero() {
     const katakana = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
     const dots = "⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏";
     const name = "Esteban Rodriguez";
-    const title = "Full-Stack Developer";
     const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
-    const titles = ["Full-Stack Developer", "Front-End Engineer", "Animator", "UI Creator"];
-    let idx = 0;
+    const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
     const sequence = [
         ["#navbar", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
@@ -308,7 +283,7 @@ async function animate_hero() {
 
         [
             (latest) => {
-                scramble_text(latest, count, title_element, titles[idx], symbols);
+                scramble_text(latest, count, title_element, titles[0], symbols);
                 count++;
             },
 
@@ -323,93 +298,85 @@ async function animate_hero() {
 
 
     ];
-    return animate(sequence);
+    const hero_animation = animate(sequence);
+
+    await hero_animation;
+    scramble_text_infinte(symbols, titles);
 
 
 
 }
 
 
-const scramble_text_infinte = () => {
-
-    let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`░▒▓█▀▄■□▪▫●○◆◇◈◊※†‡";
-    if (isSmallScreen()) {
-        $("#limit-title").css("font-family", "Arial, Helvetica, sans-serif");
-
-    }
+const scramble_text_infinte = (symbols, titles) => {
 
     let is_repeating = false;
-    animate_hero().then(
-        () => {
-            const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
-            let current_title = 0;
-            let next_title = 0;
-            let count = 0;
-            animate(
-                0, 1, {
-                duration: 1.5,
-                ease: "circOut",
-                // on each frame of the animation (a value between 0-1), set the elements text 
-                // to a random substring in the symbols string with onUpdate callback
+    let current_title = 0;
+    let next_title = 0;
+    let count = 0;
+    animate(
+        0, 1, {
+        duration: 1.5,
+        ease: "circOut",
+        // on each frame of the animation (a value between 0-1), set the elements text 
+        // to a random substring in the symbols string with onUpdate callback
 
-                onUpdate: (latest) => {
-                    if (is_repeating === false || latest < 1) {
-                        ($(".title").text(
-                            function () {
-                                // Once we reach the last frame or value in the animate function
-                                // set the element's text to the target value, example my name 
-                                if (latest === 1) {
-                                    // Check if the index is outside of the bounds of array, if so reset the index
-                                    // Otherwise set the element text to the curent index of the array
-                                    current_title++;
-                                    next_title = current_title + 1;
-                                    if (current_title > titles.length - 1) {
-                                        current_title = 0;
-                                    }
-
-                                    if (next_title > titles.length - 1) {
-                                        next_title = 0;
-                                    }
-                                    is_repeating = true;
-
-
-                                    return titles[current_title];
-
-
-
-                                }
-                                is_repeating = false;
-                                count++;
-                                // On every 4th frame or value, we change the elementas content to random substring
-                                // by doing this slows down the animation, changing of substrings, looks better
-                                if (count % 6 === 0) {
-
-                                    return generate_random_substring(titles[next_title].length, symbols);
-                                }
-
+        onUpdate: (latest) => {
+            if (is_repeating === false || latest < 1) {
+                ($(".title").text(
+                    function () {
+                        // Once we reach the last frame or value in the animate function
+                        // set the element's text to the target value, example my name 
+                        if (latest === 1) {
+                            // Check if the index is outside of the bounds of array, if so reset the index
+                            // Otherwise set the element text to the curent index of the array
+                            current_title++;
+                            next_title = current_title + 1;
+                            if (current_title > titles.length - 1) {
+                                current_title = 0;
                             }
 
-                        )
+                            if (next_title > titles.length - 1) {
+                                next_title = 0;
+                            }
+                            is_repeating = true;
 
 
-                        )
+                            return titles[current_title];
+
+
+
+                        }
+                        is_repeating = false;
+                        count++;
+                        // On every 4th frame or value, we change the elementas content to random substring
+                        // by doing this slows down the animation, changing of substrings, looks better
+                        if (count % 6 === 0) {
+
+                            return generate_random_substring(titles[next_title].length, symbols);
+                        }
+
                     }
 
-                },
-                repeat: Infinity, repeatType: "loop", repeatDelay: 1
-            }
-            )
+                )
 
-        }
+
+                )
+            }
+
+        },
+        repeat: Infinity, repeatType: "loop", repeatDelay: 1
+    }
     )
 
 
 
+
+
+
 }
 
-const clamp_text_hero = () => {
-    shave(".title", 250);
-}
+
 
 
 $(document).ready(function () {
@@ -422,7 +389,7 @@ $(document).ready(function () {
     reset_page();
     nav_link_underline();
 
-    scramble_text_infinte();
+    animate_hero();
 
     open_dropdown();
     open_mobile_menu();
