@@ -1,4 +1,5 @@
 import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
+import shave from "shave";
 
 
 
@@ -406,188 +407,9 @@ const scramble_text_infinte = () => {
 
 }
 
-// Source: https://www.xjavascript.com/blog/how-do-i-fix-blurry-text-in-my-html5-canvas/
-function setupHighDPI(canvas) {
-    const dpr = window.devicePixelRatio || 1; // Default to 1 if undefined
-    const rect = canvas.getBoundingClientRect(); // Get displayed size via CSS
-
-    // Set intrinsic size to match physical pixels
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-
-    // Scale the context so 1 CSS pixel = dpr physical pixels
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-
-
-    // Return the logical size (for drawing) and context
-    return { ctx, css_width: rect.width, css_height: rect.height };
-
+const clamp_text_hero = () => {
+    shave(".title", 250);
 }
-
-
-const hero_ocean_animation = () => {
-    const ocean_canvas = $("#ocean-hero")[0];
-    const { ctx, css_width, css_height } = setupHighDPI(ocean_canvas);
-
-
-
-    // Overall Scene: Repeating Waves, Sailboat, Shore
-
-    // Waves
-
-    ctx.strokeStyle = "#0077BE";
-    ctx.fillStyle = "#0077BE";
-
-    let arc_center_x = 0;
-    let arc_center_y = 100;
-    //ctx.rect(0, 100, css_width, 200);
-    //ctx.stroke();
-
-    ctx.fillRect(0, 100, css_width, 200);
-    ctx.beginPath();
-
-    ctx.fillStyle = "hsl(223, 23%, 18%)";
-    ctx.fillRect(0, 100, css_width, 50)
-    while (arc_center_x < css_width - 110) {
-
-        //ctx.beginPath();
-        //ctx.moveTo(arc_center_x, arc_center_y);
-        ctx.arc(arc_center_x, arc_center_y, 25, 0, 0.5 * Math.PI);
-        //ctx.arc(arc_center_x, arc_center_y, 25, 1 * Math.PI, 1.5 * Math.PI);
-        ctx.stroke();
-        arc_center_x += 25;
-        arc_center_y += 25;
-        ctx.moveTo(arc_center_x, arc_center_y - 25);
-        //ctx.beginPath();
-
-        ctx.arc(arc_center_x, arc_center_y, 25, 1.5 * Math.PI, 0);
-        //ctx.arc(arc_center_x, arc_center_y, 25, 0, 0.5 * Math.PI)
-        ctx.stroke();
-        arc_center_x += 25;
-        arc_center_y -= 25;
-        ctx.moveTo(arc_center_x, arc_center_y);
-
-
-
-
-
-    }
-    ctx.closePath();
-
-    ctx.fillStyle = "#0077BE";
-
-    ctx.globalCompositeOperation = "destination-out";
-    ctx.fill();
-    ctx.globalCompositeOperation = 'source-over';
-
-
-    /*
-    ctx.closePath();
-    ctx.clip();
-    ctx.fillRect(0, 100, css_width - 100, 200)
-
-    ctx.globalCompositeOperation = 'source-over';
-    */
-
-    /*
-    ctx.moveTo(0, 125);
-    ctx.quadraticCurveTo(20, 120, 30, 100);
-    ctx.moveTo(30, 100);
-    ctx.quadraticCurveTo(60, 130, 0, 125);
-
-    ctx.moveTo(35, 125);
-    ctx.quadraticCurveTo(40, 120, 50, 100);
-    ctx.moveTo(50, 100);
-    ctx.quadraticCurveTo(70, 130, 35, 125);
-
-
-
-    //ctx.fill();
-    ctx.stroke();
-    */
-
-    //ctx.clip();
-    //ctx.fillRect(0, 100, css_width - 100, 200);
-
-
-
-    // Triangle
-    ctx.beginPath();
-    ctx.moveTo(50, 50);
-    ctx.lineTo(70, 70);
-    ctx.lineTo(30, 70);
-    ctx.lineTo(50, 50);
-    ctx.strokeStyle = "white";
-    ctx.fillStyle = "white";
-    ctx.fill();
-    ctx.stroke();
-    // Base
-    ctx.beginPath();
-    ctx.moveTo(50, 50);
-    ctx.lineTo(50, 90);
-    ctx.moveTo(20, 90);
-    ctx.lineTo(80, 90);
-    ctx.moveTo(20, 90);
-    ctx.quadraticCurveTo(50, 120, 80, 90);
-    ctx.fillStyle = "#643B12";
-    ctx.strokeStyle = "#643B12";
-    ctx.fill();
-    ctx.stroke();
-
-    // Shore
-    ctx.beginPath();
-    ctx.moveTo(css_width - 100, 120);
-    ctx.quadraticCurveTo(css_width - 50, 160, css_width - 10, 120);
-    ctx.strokeStyle = "#BEAD79";
-
-    //ctx.beginPath();
-    ctx.moveTo(css_width - 100, 120);
-    ctx.quadraticCurveTo(css_width - 50, 80, css_width - 10, 120);
-    ctx.fillStyle = "#BEAD79";
-    ctx.fill();
-    ctx.stroke();
-
-    // Palm tree
-
-    ctx.beginPath();
-    ctx.moveTo(css_width - 55, 100);
-    ctx.lineTo(css_width - 55, 50);
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = "#643B12";
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.fillStyle = "#67cd48";
-    ctx.strokeStyle = "black";
-    // Leaves on left side
-    ctx.moveTo(css_width - 55, 50);
-    ctx.quadraticCurveTo(css_width - 60, 50, css_width - 75, 70);
-    ctx.moveTo(css_width - 75, 70);
-    ctx.quadraticCurveTo(css_width - 70, 35, css_width - 55, 50);
-
-    ctx.moveTo(css_width - 55, 50);
-    ctx.quadraticCurveTo(css_width - 70, 35, css_width - 85, 55);
-    ctx.moveTo(css_width - 85, 55);
-    ctx.quadraticCurveTo(css_width - 70, 10, css_width - 55, 50);
-
-    // Leaves on right side
-    ctx.moveTo(css_width - 55, 50);
-    ctx.quadraticCurveTo(css_width - 50, 50, css_width - 35, 70);
-    ctx.moveTo(css_width - 35, 70);
-    ctx.quadraticCurveTo(css_width - 40, 35, css_width - 55, 50);
-
-    ctx.moveTo(css_width - 55, 50);
-    ctx.quadraticCurveTo(css_width - 35, 35, css_width - 25, 55);
-    ctx.moveTo(css_width - 25, 55);
-    ctx.quadraticCurveTo(css_width - 40, 10, css_width - 55, 50);
-
-
-    ctx.fill();
-    ctx.stroke();
-}
-
-
 
 
 $(document).ready(function () {
@@ -601,7 +423,7 @@ $(document).ready(function () {
     nav_link_underline();
 
     scramble_text_infinte();
-    hero_ocean_animation();
+
     open_dropdown();
     open_mobile_menu();
     close_button();
