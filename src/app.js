@@ -64,8 +64,8 @@ function nav_scroll() {
     }
 
     else {
-        $("body").swipe({
-            swipe: function (event, direction) {
+        $("body").swipe(
+            function (direction) {
                 if (direction == "up") {
                     // User swipes up, screen goes down, navbar should go away
                     $("#navbar").slideUp("fast");
@@ -78,9 +78,9 @@ function nav_scroll() {
 
 
                 }
-            },
-            threshold: 50,
-        });
+            }
+
+        );
     }
 
 

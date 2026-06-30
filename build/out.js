@@ -4848,16 +4848,15 @@
         }
       });
     } else {
-      $("body").swipe({
-        swipe: function(event, direction) {
+      $("body").swipe(
+        function(direction) {
           if (direction == "up") {
             $("#navbar").slideUp("fast");
           } else if (direction == "down") {
             $("#navbar").slideDown("fast");
           }
-        },
-        threshold: 50
-      });
+        }
+      );
     }
   }
   var removeHash = () => {
