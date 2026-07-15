@@ -788,7 +788,7 @@ a {
 
 /* Styles for screen sizes larger than mobile */
 
-@media (min-width:768px) {
+@media screen and (min-width:768px) {
 
     /* tablets */
     #intro {
@@ -823,7 +823,7 @@ a {
 
 }
 
-@media (min-width:1024px) {
+@media screen and (min-width:1024px) {
 
     /* laptops */
 

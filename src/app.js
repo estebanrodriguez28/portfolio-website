@@ -8,30 +8,26 @@ import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
 // Retrieved 2026-04-16, License - CC BY-SA 4.0 
 
 function isTouchDevice() {
-    return (('ontouchstart' in window) ||
+    const touch_events = (('ontouchstart' in window) ||
         (navigator.maxTouchPoints > 0) ||
         (navigator.msMaxTouchPoints > 0));
+    const coarse_pointer = window.matchMedia('(pointer: coarse)').matches;
+    return touch_events && coarse_pointer;
+
 }
 
-const isSmallScreen = () => {
-    return window.innerWidth <= 768;
-};
 
-const isMobile = () => {
-    // Check if the new API is supported
-    if (navigator.userAgentData) {
-        return navigator.userAgentData.mobile;
-    }
 
-    // Fallback for Safari/Firefox (see Solution 3)
-    return /Mobi|Android/i.test(navigator.userAgent);
-};
+
 
 // Source - https://www.xjavascript.com/blog/how-to-scroll-to-top-of-page-with-javascript-jquery/
 // Disable scroll restoration
 if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
 }
+
+
+
 
 
 // Source - https://stackoverflow.com/a/4326907
@@ -64,23 +60,37 @@ function nav_scroll() {
     }
 
     else {
-        $("body").swipe(
-            function (direction) {
-                if (direction == "up") {
-                    // User swipes up, screen goes down, navbar should go away
-                    $("#navbar").slideUp("fast");
 
+        function handleSwipe() {
+            const deltaY = touchStartY - touchEndY;
 
-                }
-
-                else if (direction == "down") {
-                    $("#navbar").slideDown("fast");
-
-
-                }
+            if (Math.abs(deltaY) < swipeThreshold) {
+                return; // not a real swipe, just a tap/small movement
             }
+            // If swipes up then want navbar to go away to improve readability, if swipes down want navbar to appear again 
+            if (deltaY > 0) {
+                $("#navbar").slideUp("fast");
+            } else {
+                $("#navbar").slideDown("fast");
 
-        );
+            }
+        }
+
+        let touchStartY = 0;
+        let touchEndY = 0;
+        const swipeThreshold = 50; // minimum px distance to count as a swipe
+
+        $(document).on('touchstart', function (e) {
+            touchStartY = e.originalEvent.touches[0].clientY;
+        });
+
+        $(document).on('touchend', function (e) {
+            touchEndY = e.originalEvent.changedTouches[0].clientY;
+            handleSwipe(touchStartY, touchEndY);
+        });
+
+
+
     }
 
 

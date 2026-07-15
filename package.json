@@ -1,16 +1,13 @@
 {
   "dependencies": {
-    "motion": "^12.38.0",
-    "shave": "^5.1.0"
+    "motion": "^12.38.0"
   },
   "type": "module",
   "name": "portfolio-website",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "browserify": "^17.0.1",
-    "esbuild": "0.28.0",
-    "shave": "^5.1.0"
+    "esbuild": "0.28.0"
   },
   "scripts": {
     "clean": "rm -rf ./build",

@@ -4827,7 +4827,9 @@
 
   // src/app.js
   function isTouchDevice() {
-    return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+    const touch_events = "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+    const coarse_pointer = window.matchMedia("(pointer: coarse)").matches;
+    return touch_events && coarse_pointer;
   }
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
@@ -4848,15 +4850,28 @@
         }
       });
     } else {
-      $("body").swipe(
-        function(direction) {
-          if (direction == "up") {
-            $("#navbar").slideUp("fast");
-          } else if (direction == "down") {
-            $("#navbar").slideDown("fast");
-          }
+      let handleSwipe = function() {
+        const deltaY = touchStartY - touchEndY;
+        if (Math.abs(deltaY) < swipeThreshold) {
+          return;
         }
-      );
+        if (deltaY > 0) {
+          console.log("Swiped up");
+          $("#navbar").slideUp("fast");
+        } else {
+          $("#navbar").slideDown("fast");
+        }
+      };
+      let touchStartY = 0;
+      let touchEndY = 0;
+      const swipeThreshold = 50;
+      $(document).on("touchstart", function(e) {
+        touchStartY = e.originalEvent.touches[0].clientY;
+      });
+      $(document).on("touchend", function(e) {
+        touchEndY = e.originalEvent.changedTouches[0].clientY;
+        handleSwipe(touchStartY, touchEndY);
+      });
     }
   }
   var removeHash = () => {
