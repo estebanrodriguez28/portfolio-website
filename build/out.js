@@ -4856,7 +4856,6 @@
           return;
         }
         if (deltaY > 0) {
-          console.log("Swiped up");
           $("#navbar").slideUp("fast");
         } else {
           $("#navbar").slideDown("fast");
@@ -4921,7 +4920,7 @@
       function() {
         document.documentElement.style.setProperty("--underline-width-hover", "0px");
         $("#navbar").fadeOut("fast");
-        $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
+        $(".mobile-menu-popup").addClass("appear");
         $("#mobile-menu-popup-nav li").click(close_mobile_menu);
         $("body").css("overflow", "hidden");
       }
@@ -4936,10 +4935,7 @@
     );
   }
   function close_mobile_menu() {
-    $(".mobile-menu-popup").animate(
-      { right: "-100vw" },
-      200
-    );
+    $(".mobile-menu-popup").removeClass("appear");
     $("body").css("overflow", "visible");
   }
   var generate_random_substring = (length, symbols) => {

@@ -173,12 +173,16 @@ function open_dropdown() {
 
 };
 
+
+
+
 function open_mobile_menu() {
     $("#hamburger-icon").click(
         function () {
             document.documentElement.style.setProperty("--underline-width-hover", "0px");
             $("#navbar").fadeOut("fast");
-            $(".mobile-menu-popup").animate({ right: "0vw" }, 300);
+            //$(".mobile-menu-popup").animate({ transform: "translateX(0%)" }, 300);
+            $(".mobile-menu-popup").addClass("appear");
             $("#mobile-menu-popup-nav li").click(close_mobile_menu);
             $("body").css("overflow", "hidden");
 
@@ -203,9 +207,7 @@ function close_button() {
 }
 
 function close_mobile_menu() {
-    $(".mobile-menu-popup").animate(
-        { right: "-100vw" },
-        200);
+    $(".mobile-menu-popup").removeClass("appear");
 
     $("body").css("overflow", "visible");
 }

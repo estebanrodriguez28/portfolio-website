@@ -677,15 +677,22 @@ a {
     align-items: center;
     justify-content: center;
     position: fixed;
+    right: 0;
     z-index: 1;
-    right: -100dvw;
+    transform: translateX(100vw);
+    opacity: 0;
     height: 100dvh;
-    width: 95dvw;
+    width: 95vw;
     overflow-y: hidden;
     padding: 60px 15px;
     background-color: var(--shadow-grey-dark);
+    transition: transform 0.6s, opacity 0.6s;
 
+}
 
+.mobile-menu-popup.appear {
+    opacity: 1;
+    transform: translateX(0vw);
 }
 
 #mobile-menu-popup-nav {
