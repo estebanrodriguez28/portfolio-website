@@ -4857,14 +4857,8 @@
       let handleSwipe = function() {
         const deltaY = touchStartY - touchEndY;
         if (deltaY > 0) {
-          alert(`Delta Y is ${deltaY} 
- Touch Start Y is ${touchStartY} 
- Touch End Y is ${touchEndY}`);
           $("#navbar").addClass("slide-up");
         } else {
-          alert(`Delta Y is ${deltaY} 
- Touch Start Y is ${touchStartY} 
- Touch End Y is ${touchEndY}`);
           $("#navbar").removeClass("slide-up");
         }
       };
