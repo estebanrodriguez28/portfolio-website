@@ -78,10 +78,8 @@ function nav_scroll() {
                 */
             // If swipes up then want navbar to go away to improve readability, if swipes down want navbar to appear again 
             if (deltaY > 0) {
-                alert(`Delta Y is ${deltaY} \n Touch Start Y is ${touchStartY} \n Touch End Y is ${touchEndY}`);
                 $("#navbar").addClass("slide-up");
             } else {
-                alert(`Delta Y is ${deltaY} \n Touch Start Y is ${touchStartY} \n Touch End Y is ${touchEndY}`);
                 $("#navbar").removeClass("slide-up");
 
             }
