@@ -40,21 +40,29 @@ function nav_scroll() {
     if (!isTouchDevice()) {
         var lastScrollTop = 0;
         $(window).scroll(function () {
-            // $("#navbar").css("box-shadow", "none");
-            // $("#navbar").addClass("box-shadow-fadeout");
+
 
             var st = $(this).scrollTop();
-            if (st > 50) {
-                $("#navbar").css("box-shadow", "0px 4px 10px -1px rgba(0, 0, 0, 0.3)");
+            if (st > 20) {
+                $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
+            }
+
+            else {
+                $("#navbar").css("filter", "drop-shadow(0px 0px black)");
+            }
+
+            if (st > 100) {
                 if (st > lastScrollTop) {
                     // downscroll code
-                    $("#navbar").slideUp("fast");
+                    $("#navbar").addClass("slide-up");
                 } else {
                     // upscroll code
-                    $("#navbar").slideDown("fast");
+                    $("#navbar").removeClass("slide-up");
                 }
-                lastScrollTop = st;
             }
+
+            lastScrollTop = st;
+
 
         });
     }
@@ -69,9 +77,9 @@ function nav_scroll() {
             }
             // If swipes up then want navbar to go away to improve readability, if swipes down want navbar to appear again 
             if (deltaY > 0) {
-                $("#navbar").slideUp("fast");
+                $("#navbar").addClass("slide-up");
             } else {
-                $("#navbar").slideDown("fast");
+                $("#navbar").removeClass("slide-up");
 
             }
         }
@@ -86,7 +94,7 @@ function nav_scroll() {
 
         $(document).on('touchend', function (e) {
             touchEndY = e.originalEvent.changedTouches[0].clientY;
-            handleSwipe(touchStartY, touchEndY);
+            handleSwipe();
         });
 
 

@@ -4839,15 +4839,19 @@
       var lastScrollTop = 0;
       $(window).scroll(function() {
         var st = $(this).scrollTop();
-        if (st > 50) {
-          $("#navbar").css("box-shadow", "0px 4px 10px -1px rgba(0, 0, 0, 0.3)");
-          if (st > lastScrollTop) {
-            $("#navbar").slideUp("fast");
-          } else {
-            $("#navbar").slideDown("fast");
-          }
-          lastScrollTop = st;
+        if (st > 20) {
+          $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
+        } else {
+          $("#navbar").css("filter", "drop-shadow(0px 0px black)");
         }
+        if (st > 100) {
+          if (st > lastScrollTop) {
+            $("#navbar").addClass("slide-up");
+          } else {
+            $("#navbar").removeClass("slide-up");
+          }
+        }
+        lastScrollTop = st;
       });
     } else {
       let handleSwipe = function() {
