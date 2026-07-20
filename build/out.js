@@ -4856,24 +4856,26 @@
     } else {
       let handleSwipe = function() {
         const deltaY = touchStartY - touchEndY;
-        if (Math.abs(deltaY) < swipeThreshold) {
-          return;
-        }
         if (deltaY > 0) {
-          $("#navbar").slideUp("fast");
+          alert(`Delta Y is ${deltaY} 
+ Touch Start Y is ${touchStartY} 
+ Touch End Y is ${touchEndY}`);
+          $("#navbar").addClass("slide-up");
         } else {
-          $("#navbar").slideDown("fast");
+          alert(`Delta Y is ${deltaY} 
+ Touch Start Y is ${touchStartY} 
+ Touch End Y is ${touchEndY}`);
+          $("#navbar").removeClass("slide-up");
         }
       };
       let touchStartY = 0;
       let touchEndY = 0;
-      const swipeThreshold = 50;
       $(document).on("touchstart", function(e) {
         touchStartY = e.originalEvent.touches[0].clientY;
       });
       $(document).on("touchend", function(e) {
         touchEndY = e.originalEvent.changedTouches[0].clientY;
-        handleSwipe(touchStartY, touchEndY);
+        handleSwipe();
       });
     }
   }

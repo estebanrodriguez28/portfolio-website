@@ -41,7 +41,7 @@ function nav_scroll() {
         var lastScrollTop = 0;
         $(window).scroll(function () {
 
-
+            // After user scrolls slightly, box shadow appears under top nav. When user scrolls to top of page, box shadow gradually goes away
             var st = $(this).scrollTop();
             if (st > 20) {
                 $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
@@ -71,14 +71,17 @@ function nav_scroll() {
 
         function handleSwipe() {
             const deltaY = touchStartY - touchEndY;
-
+            /*
             if (Math.abs(deltaY) < swipeThreshold) {
                 return; // not a real swipe, just a tap/small movement
             }
+                */
             // If swipes up then want navbar to go away to improve readability, if swipes down want navbar to appear again 
             if (deltaY > 0) {
+                alert(`Delta Y is ${deltaY} \n Touch Start Y is ${touchStartY} \n Touch End Y is ${touchEndY}`);
                 $("#navbar").addClass("slide-up");
             } else {
+                alert(`Delta Y is ${deltaY} \n Touch Start Y is ${touchStartY} \n Touch End Y is ${touchEndY}`);
                 $("#navbar").removeClass("slide-up");
 
             }
@@ -86,7 +89,7 @@ function nav_scroll() {
 
         let touchStartY = 0;
         let touchEndY = 0;
-        const swipeThreshold = 50; // minimum px distance to count as a swipe
+        //const swipeThreshold = 50; // minimum px distance to count as a swipe
 
         $(document).on('touchstart', function (e) {
             touchStartY = e.originalEvent.touches[0].clientY;
