@@ -2208,8 +2208,8 @@
     if (typeof value === "number" || Array.isArray(value))
       return true;
     if (typeof value === "string" && // It's animatable if we have a string
-    (complex.test(value) || value === "0") && // And it contains numbers and/or colors
-    !value.startsWith("url(")) {
+      (complex.test(value) || value === "0") && // And it contains numbers and/or colors
+      !value.startsWith("url(")) {
       return true;
     }
     return false;
@@ -2295,11 +2295,11 @@
      * Force WAAPI for color properties with browser-only color formats
      * (oklch, oklab, lab, lch, etc.) that the JS animation path can't parse.
      */
-    (acceleratedValues.has(name) || colorProperties.has(name) && hasBrowserOnlyColors(keyframes2)) && (name !== "transform" || !transformTemplate) && /**
+      (acceleratedValues.has(name) || colorProperties.has(name) && hasBrowserOnlyColors(keyframes2)) && (name !== "transform" || !transformTemplate) && /**
      * If we're outputting values to onUpdate then we can't use WAAPI as there's
      * no way to read the value from WAAPI every frame.
      */
-    !onUpdate && !repeatDelay && repeatType !== "mirror" && damping !== 0 && type !== "inertia";
+      !onUpdate && !repeatDelay && repeatType !== "mirror" && damping !== 0 && type !== "inertia";
   }
 
   // node_modules/motion-dom/dist/es/animation/AsyncMotionValueAnimation.mjs
@@ -4837,7 +4837,7 @@
   function nav_scroll() {
     if (!isTouchDevice()) {
       var lastScrollTop = 0;
-      $(window).scroll(function() {
+      $(window).scroll(function () {
         var st = $(this).scrollTop();
         if (st > 20) {
           $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
@@ -4854,8 +4854,11 @@
         lastScrollTop = st;
       });
     } else {
-      let handleSwipe = function() {
+      let handleSwipe = function () {
         const deltaY = touchStartY - touchEndY;
+        if (Math.abs(deltaY) < swipeThreshold) {
+          return;
+        }
         if (deltaY > 0) {
           $("#navbar").addClass("slide-up");
         } else {
@@ -4864,12 +4867,13 @@
       };
       let touchStartY = 0;
       let touchEndY = 0;
-      $(document).on("touchstart", function(e) {
+      const swipeThreshold = 50;
+      $(document).on("touchstart", function (e) {
         touchStartY = e.originalEvent.touches[0].clientY;
       });
-      $(document).on("touchend", function(e) {
+      $(document).on("touchend", function (e) {
         touchEndY = e.originalEvent.changedTouches[0].clientY;
-        handleSwipe();
+        handleSwipe(touchStartY, touchEndY);
       });
     }
   }
@@ -4889,14 +4893,14 @@
   function nav_link_underline() {
     if (window.matchMedia("(min-width: 1024px)").matches) {
       $(".nav-links a").hover(
-        function() {
+        function () {
           var link_width = $(this).width();
           document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
         }
       );
     } else {
       $(".nav-links a").click(
-        function() {
+        function () {
           var link_width = $(this).width();
           document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
         }
@@ -4905,7 +4909,7 @@
   }
   function open_dropdown() {
     $("#footer-dropdown").click(
-      function() {
+      function () {
         let dropdown_state = $(".dropdown-content").css("display");
         if (dropdown_state == "none") {
           $(".dropdown-content").css("display", "block");
@@ -4917,7 +4921,7 @@
   }
   function open_mobile_menu() {
     $("#hamburger-icon").click(
-      function() {
+      function () {
         document.documentElement.style.setProperty("--underline-width-hover", "0px");
         $("#navbar").fadeOut("fast");
         $(".mobile-menu-popup").addClass("appear");
@@ -4928,7 +4932,7 @@
   }
   function close_button() {
     $(".close-menu").click(
-      function() {
+      function () {
         close_mobile_menu();
         $("#navbar").fadeIn("slow");
       }
@@ -4947,7 +4951,7 @@
   };
   var scramble_text = (latest, count, element, target_string, symbols) => {
     element.text(
-      function() {
+      function () {
         if (latest === 1) {
           return target_string;
         }
@@ -5017,7 +5021,7 @@
         onUpdate: (latest) => {
           if (is_repeating === false || latest < 1) {
             $(".title").text(
-              function() {
+              function () {
                 if (latest === 1) {
                   current_title++;
                   next_title = current_title + 1;
@@ -5045,7 +5049,7 @@
       }
     );
   };
-  $(document).ready(function() {
+  $(document).ready(function () {
     removeHash();
     $(window).scrollTop(0);
     nav_scroll();
