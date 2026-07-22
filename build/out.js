@@ -4829,6 +4829,9 @@
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
   }
+  if (window.location.hash) {
+    window.location.hash = "";
+  }
   var nav_scroll = () => {
     var lastScrollTop = 0;
     $(window).scroll(function() {
@@ -4852,12 +4855,6 @@
       }
       lastScrollTop = st;
     });
-  };
-  var removeHash = () => {
-    if (window.location.hash) {
-      const newUrl = window.location.href.split("#")[0];
-      history.replaceState(null, "", newUrl);
-    }
   };
   function reset_page() {
     $("#letter-e").click(
@@ -5027,7 +5024,6 @@
     );
   };
   $(document).ready(function() {
-    removeHash();
     $(window).scrollTop(0);
     nav_scroll();
     reset_page();

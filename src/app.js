@@ -26,6 +26,9 @@ if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
 }
 
+if (window.location.hash) {
+    window.location.hash = "";
+}
 
 
 
@@ -75,17 +78,7 @@ const nav_scroll = () => {
     });
 }
 
-// Source - https://www.xjavascript.com/blog/how-to-remove-the-hash-from-window-location-url-with-javascript-without-page-refresh/
-// Retrieved 2026-06-03, License - CC BY-SA 3.0
 
-const removeHash = () => {
-    if (window.location.hash) {
-        // Get the current URL without the hash  
-        const newUrl = window.location.href.split('#')[0];
-        // Replace the current history entry with the new URL  
-        history.replaceState(null, '', newUrl);
-    }
-}
 
 
 function reset_page() {
@@ -372,7 +365,6 @@ const scramble_text_infinte = (symbols, titles) => {
 
 
 $(document).ready(function () {
-    removeHash();
     $(window).scrollTop(0);
 
     nav_scroll();
