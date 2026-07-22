@@ -4833,6 +4833,11 @@
     var lastScrollTop = 0;
     $(window).scroll(function() {
       var st = $(this).scrollTop();
+      if (st === 0) {
+        if ($("#navbar").hasClass("slide-up")) {
+          $("#navbar").removeClass("slide-up");
+        }
+      }
       if (st > 20) {
         $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
       } else {

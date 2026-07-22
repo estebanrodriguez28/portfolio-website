@@ -35,82 +35,22 @@ if (history.scrollRestoration) {
 // Retrieved 2026-04-09, License - CC BY-SA 3.0
 
 
-/*
-function nav_scroll() {
-    if (!isTouchDevice()) {
-        var lastScrollTop = 0;
-        $(window).scroll(function () {
 
-
-            var st = $(this).scrollTop();
-            if (st > 20) {
-                $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
-            }
-
-            else {
-                $("#navbar").css("filter", "drop-shadow(0px 0px black)");
-            }
-
-            if (st > 100) {
-                if (st > lastScrollTop) {
-                    // downscroll code
-                    $("#navbar").addClass("slide-up");
-                } else {
-                    // upscroll code
-                    $("#navbar").removeClass("slide-up");
-                }
-            }
-
-            lastScrollTop = st;
-
-
-        });
-    }
-
-    else {
-
-        function handleSwipe() {
-            const deltaY = touchStartY - touchEndY;
-
-            if (Math.abs(deltaY) < swipeThreshold) {
-                return; // not a real swipe, just a tap/small movement
-            }
-            // If swipes up then want navbar to go away to improve readability, if swipes down want navbar to appear again 
-            if (deltaY > 0) {
-                $("#navbar").addClass("slide-up");
-            } else {
-                $("#navbar").removeClass("slide-up");
-
-            }
-        }
-
-        let touchStartY = 0;
-        let touchEndY = 0;
-        const swipeThreshold = 50; // minimum px distance to count as a swipe
-
-        $(document).on('touchstart', function (e) {
-            touchStartY = e.originalEvent.touches[0].clientY;
-        });
-
-        $(document).on('touchend', function (e) {
-            touchEndY = e.originalEvent.changedTouches[0].clientY;
-            handleSwipe();
-        });
-
-
-
-    }
-
-
-}
-
-*/
 const nav_scroll = () => {
     var lastScrollTop = 0;
     $(window).scroll(function () {
 
 
         var st = $(this).scrollTop();
+
+        // Sometimes user can scroll to very top of page without navbar coming down/appearing
+        if (st === 0) {
+            if ($("#navbar").hasClass("slide-up")) {
+                $("#navbar").removeClass("slide-up");
+            }
+        }
+
+        // After scrolling slightly, box shadow added under top navigation
         if (st > 20) {
             $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
         }
@@ -119,6 +59,7 @@ const nav_scroll = () => {
             $("#navbar").css("filter", "drop-shadow(0px 0px black)");
         }
 
+        // Scroll some more the top nav will slde up as user scrolls down page and slide down or appear again when user scrolls up page
         if (st > 100) {
             if (st > lastScrollTop) {
                 // downscroll code
