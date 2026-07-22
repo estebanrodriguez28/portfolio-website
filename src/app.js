@@ -35,7 +35,7 @@ if (history.scrollRestoration) {
 // Retrieved 2026-04-09, License - CC BY-SA 3.0
 
 
-
+/*
 function nav_scroll() {
     if (!isTouchDevice()) {
         var lastScrollTop = 0;
@@ -102,6 +102,36 @@ function nav_scroll() {
     }
 
 
+}
+
+*/
+const nav_scroll = () => {
+    var lastScrollTop = 0;
+    $(window).scroll(function () {
+
+
+        var st = $(this).scrollTop();
+        if (st > 20) {
+            $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
+        }
+
+        else {
+            $("#navbar").css("filter", "drop-shadow(0px 0px black)");
+        }
+
+        if (st > 100) {
+            if (st > lastScrollTop) {
+                // downscroll code
+                $("#navbar").addClass("slide-up");
+            } else {
+                // upscroll code
+                $("#navbar").removeClass("slide-up");
+            }
+        }
+
+        lastScrollTop = st;
+
+    });
 }
 
 // Source - https://www.xjavascript.com/blog/how-to-remove-the-hash-from-window-location-url-with-javascript-without-page-refresh/

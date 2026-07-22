@@ -4826,57 +4826,28 @@
   var animate = createScopedAnimate();
 
   // src/app.js
-  function isTouchDevice() {
-    const touch_events = "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-    const coarse_pointer = window.matchMedia("(pointer: coarse)").matches;
-    return touch_events && coarse_pointer;
-  }
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
   }
-  function nav_scroll() {
-    if (!isTouchDevice()) {
-      var lastScrollTop = 0;
-      $(window).scroll(function() {
-        var st = $(this).scrollTop();
-        if (st > 20) {
-          $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
-        } else {
-          $("#navbar").css("filter", "drop-shadow(0px 0px black)");
-        }
-        if (st > 100) {
-          if (st > lastScrollTop) {
-            $("#navbar").addClass("slide-up");
-          } else {
-            $("#navbar").removeClass("slide-up");
-          }
-        }
-        lastScrollTop = st;
-      });
-    } else {
-      let handleSwipe = function() {
-        const deltaY = touchStartY - touchEndY;
-        if (Math.abs(deltaY) < swipeThreshold) {
-          return;
-        }
-        if (deltaY > 0) {
+  var nav_scroll = () => {
+    var lastScrollTop = 0;
+    $(window).scroll(function() {
+      var st = $(this).scrollTop();
+      if (st > 20) {
+        $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
+      } else {
+        $("#navbar").css("filter", "drop-shadow(0px 0px black)");
+      }
+      if (st > 100) {
+        if (st > lastScrollTop) {
           $("#navbar").addClass("slide-up");
         } else {
           $("#navbar").removeClass("slide-up");
         }
-      };
-      let touchStartY = 0;
-      let touchEndY = 0;
-      const swipeThreshold = 50;
-      $(document).on("touchstart", function(e) {
-        touchStartY = e.originalEvent.touches[0].clientY;
-      });
-      $(document).on("touchend", function(e) {
-        touchEndY = e.originalEvent.changedTouches[0].clientY;
-        handleSwipe();
-      });
-    }
-  }
+      }
+      lastScrollTop = st;
+    });
+  };
   var removeHash = () => {
     if (window.location.hash) {
       const newUrl = window.location.href.split("#")[0];
