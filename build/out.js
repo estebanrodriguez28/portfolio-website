@@ -4837,20 +4837,20 @@
     $(window).scroll(function() {
       var st = $(this).scrollTop();
       if (st === 0) {
-        if ($("#navbar").hasClass("slide-up")) {
-          $("#navbar").removeClass("slide-up");
+        if ($(".navigation").hasClass("slide-up")) {
+          $(".navigation").removeClass("slide-up");
         }
       }
       if (st > 20) {
-        $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
+        $(".navigation").css("filter", "drop-shadow(0px -1px 8px black)");
       } else {
-        $("#navbar").css("filter", "drop-shadow(0px 0px black)");
+        $(".navigation").css("filter", "drop-shadow(0px 0px black)");
       }
       if (st > 100) {
         if (st > lastScrollTop) {
-          $("#navbar").addClass("slide-up");
+          $(".navigation").addClass("slide-up");
         } else {
-          $("#navbar").removeClass("slide-up");
+          $(".navigation").removeClass("slide-up");
         }
       }
       lastScrollTop = st;
@@ -4865,14 +4865,14 @@
   }
   function nav_link_underline() {
     if (window.matchMedia("(min-width: 1024px)").matches) {
-      $(".nav-links a").hover(
+      $(".navigation ol a").hover(
         function() {
           var link_width = $(this).width();
           document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
         }
       );
     } else {
-      $(".nav-links a").click(
+      $(".navigation ol a").click(
         function() {
           var link_width = $(this).width();
           document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
@@ -4896,7 +4896,7 @@
     $("#hamburger-icon").click(
       function() {
         document.documentElement.style.setProperty("--underline-width-hover", "0px");
-        $("#navbar").addClass("slide-up");
+        $(".navigation").addClass("slide-up");
         $(".mobile-menu-popup").addClass("appear");
         $("#mobile-menu-popup-nav li").click(close_mobile_menu);
         $("body").css("overflow", "hidden");
@@ -4907,13 +4907,13 @@
     $(".close-menu").click(
       function() {
         close_mobile_menu();
-        $("#navbar").removeClass("slide-up");
+        $(".navigation").removeClass("slide-up");
       }
     );
   }
   function close_mobile_menu() {
     $(".mobile-menu-popup").removeClass("appear");
-    $("#navbar").css("display", "flex");
+    $(".navigation").css("display", "flex");
     $("body").css("overflow", "visible");
   }
   var generate_random_substring = (length, symbols) => {
@@ -4949,10 +4949,10 @@
     let count = 0;
     const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
     const sequence = [
-      ["#navbar", { opacity: 1 }, { duration: 0.5 }],
+      [".navigation", { opacity: 1 }, { duration: 0.5 }],
       ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
       ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
-      [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
+      [".navigation ol li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
       ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
       [
         // On each value, by default latests counts from 0 to 1, for each of those values
