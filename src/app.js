@@ -96,7 +96,7 @@ function reset_page() {
 
 function nav_link_underline() {
     if (window.matchMedia("(min-width: 1024px)").matches) {
-        $(".navigation ol a").hover(
+        $(".nav-links a").hover(
             function () {
                 var link_width = $(this).width();
                 document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
@@ -105,7 +105,7 @@ function nav_link_underline() {
     }
 
     else {
-        $(".navigation ol a").click(
+        $(".nav-links a").click(
             function () {
                 var link_width = $(this).width();
                 document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
@@ -251,7 +251,7 @@ async function animate_hero() {
         [".navigation", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
         ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
-        [".navigation ol li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
+        [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
         ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
         [
             // On each value, by default latests counts from 0 to 1, for each of those values
