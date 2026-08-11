@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/site-imgs/letter-e.png">
     <title>Esteban Rodriguez</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
@@ -30,7 +31,8 @@
     <header>
 
         <nav class="navigation">
-            <img class="icon-width social-icon" src="images/site-imgs/letter-e.png" alt="The letter E" id="letter-e">
+            <img class="icon-width icon-hover-state" src="images/site-imgs/letter-e.png" alt="The letter E"
+                id="letter-e">
 
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -44,70 +46,47 @@
 
 
 
-
+            <!--
+          
             <img src="images/site-imgs/mobile-menu.png" alt="Mobile navigation menu" class="icon-width"
                 id="hamburger-icon">
+                  -->
+
+            <div class="hamburger">
+                <span class="bar"> </span>
+                <span class="bar"> </span>
+                <span class="bar"> </span>
+
+            </div>
         </nav>
 
-        <!--
-        
-
-        <nav id="navbar">
-            <img class="icon-width social-icon" src="images/site-imgs/letter-e.png" alt="The letter E" id="letter-e">
-
-        <div id="desktop-nav">
-            <nav class="nav-links">
-                <ol class="desktop-nav-row">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills-interests">Skills + Interests</a></li>
-                    <li class="skip" id="skip-desktop"><a href="https://pdflink.to/esteban-r-e/" target="_blank"
-                            rel="noopener noreferrer">Resume</a></li>
-                </ol>
-            </nav>
-
-        </div>
-
-
-        <img src="images/site-imgs/mobile-menu.png" alt="Mobile navigation menu" class="icon-width" id="hamburger-icon">
-        </nav>
-
-
-        <aside class="mobile-menu-popup">
-            <img src="images/site-imgs/close.png" class="close-menu" alt="Icon in shape of x to close menu">
-
-            <section>
-                <nav class="nav-links" id="mobile-menu-popup-nav">
-                    <ol>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills-interests">Skills + Interests</a></li>
-                        <li class="skip" id="skip-mobile"><a href="https://pdflink.to/esteban-r-e/">Resume</a></li>
-                    </ol>
-                </nav>
-
-            </section>
-        </aside>
-        -->
 
 
 
     </header>
 
-    <section id="social-icons">
-        <ul id="github-li">
-            <li><a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank"><img
-                        src="images/social-icons/linkedin.png" alt="LinkedIn icon" class="social-icon" id="li-icon"></a>
+    <ul class="social-profiles">
+        <ul class="github-linkedin">
+            <li>
+                <a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank">
+                    <i class="icon-hover-state fa-brands fa-square-linkedin fa-3x"></i>
+            <li>
+                <a href="https://github.com/estebanrodriguez28" target="_blank">
+                    <i class="icon-hover-state fa-brands fa-square-github fa-3x">
+
+                    </i>
+                </a>
             </li>
-            <li><a href="https://github.com/estebanrodriguez28" target="_blank"><img
-                        src="images/social-icons/github.png" alt="Github icon" class="social-icon icon-width"></a></li>
+
         </ul>
-        <a href="mailto:erod9246@gmail.com">
-            <img src="images/social-icons/email.png" alt="Email icon" class="social-icon" id="email">
-        </a>
-    </section>
+        <li class="mail-icon">
+            <a href="mailto:erod9246@gmail.com">
+                <i class="icon-hover-state fa-solid fa-envelope fa-3x"></i>
+            </a>
+        </li>
+    </ul>
+
+
 
 
     <main>

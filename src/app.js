@@ -278,8 +278,7 @@ async function animate_hero() {
             }
         ],
 
-        ["#github-li", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
-        ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
+
 
 
     ];
@@ -371,7 +370,7 @@ $(document).ready(function () {
 
 
     reset_page();
-    nav_link_underline();
+    //nav_link_underline();
 
     animate_hero();
 

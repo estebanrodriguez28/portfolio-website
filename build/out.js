@@ -4863,23 +4863,6 @@
       }
     );
   }
-  function nav_link_underline() {
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-      $(".nav-links a").hover(
-        function() {
-          var link_width = $(this).width();
-          document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-        }
-      );
-    } else {
-      $(".nav-links a").click(
-        function() {
-          var link_width = $(this).width();
-          document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-        }
-      );
-    }
-  }
   function open_dropdown() {
     $("#footer-dropdown").click(
       function() {
@@ -4971,9 +4954,7 @@
         {
           duration: 1
         }
-      ],
-      ["#github-li", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
-      ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
+      ]
     ];
     const hero_animation = animate(sequence);
     await hero_animation;
@@ -5027,7 +5008,6 @@
     $(window).scrollTop(0);
     nav_scroll();
     reset_page();
-    nav_link_underline();
     animate_hero();
     open_dropdown();
     open_mobile_menu();
