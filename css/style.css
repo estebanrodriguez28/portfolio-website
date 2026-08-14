@@ -15,7 +15,7 @@
     --shadow-grey-dark: hsl(222.86, 23.33%, 11.76%);
     --shadow-grey-darkest: hsl(220, 12%, 5%);
     --default-icon-width: 55px;
-    --social-icon-width: 45px;
+
     --underline-width-hover: 0px;
 
 
@@ -57,7 +57,6 @@ body {
 main {
     width: 100%;
     max-width: 1600px;
-    /* padding: 0px clamp(25px, 8.5vw, 150px); */
     padding: 0px 25px;
     margin: 0px auto;
 
@@ -352,9 +351,6 @@ a {
     width: var(--default-icon-width);
 }
 
-.social-icon-width {
-    width: var(--social-icon-width);
-}
 
 
 #li-icon {
@@ -364,16 +360,9 @@ a {
 
 }
 
-.icon-hover-state {
-    transition: transform 0.6s, opacity 0.6s;
-}
 
-.icon-hover-state:hover {
-    cursor: pointer;
-    transform: translateY(-6px);
-    opacity: 0.5 !important;
 
-}
+.default-hover-state {}
 
 
 
@@ -760,56 +749,35 @@ a {
     border: 2px solid var(--white);
     border-radius: 5px;
     padding: 10px;
-    transition: all 0.3s;
-}
-
-.nav-links .resume:hover {
-
-    background-color: var(--shadow-grey-dark);
-    color: var(--white);
-
-}
-
-
-.nav-links .resume a:active {
-    font-weight: 400;
-
-}
-
-.nav-links .resume a:hover::after {
-    width: 0%;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 
 
-@keyframes nav-slide-out {
-    from {
-        right: -100px;
-        opacity: 0;
-    }
 
-    to {
-        right: 0px;
-        opacity: 1;
-    }
+.hamburger {
+    display: block;
+
+
 }
 
-@keyframes nav-slide-back {
-    from {
-        right: 0px;
-        opacity: 1;
-    }
-
-    to {
-        right: -200px;
-        opacity: 0;
-    }
-}
-
-#hamburger-icon {
+.bar {
     opacity: 0;
+    display: block;
+    width: 30px;
+    height: 5px;
+    margin: 7px auto;
+    background-color: var(--white);
+
 }
 
+.nav-links {
+    display: none;
+}
+
+.social-profiles {
+    display: none;
+}
 
 
 /* Styles for screen sizes larger than mobile */
@@ -897,12 +865,13 @@ a {
         display: flex;
         flex-direction: column;
         list-style-type: none;
-
+        opacity: 0;
         gap: 15px;
     }
 
     .mail-icon {
         align-self: end;
+        opacity: 0;
     }
 
     #github-li a:active {

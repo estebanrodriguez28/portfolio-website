@@ -1,4 +1,4 @@
-import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
+import { animate, easingDefinitionToFunction, stagger, delay, hover } from "motion";
 
 
 
@@ -92,33 +92,6 @@ function reset_page() {
         }
     )
 }
-
-
-function nav_link_underline() {
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-        $(".nav-links a").hover(
-            function () {
-                var link_width = $(this).width();
-                document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-            }
-        );
-    }
-
-    else {
-        $(".nav-links a").click(
-            function () {
-                var link_width = $(this).width();
-                document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-            }
-        );
-    }
-
-
-
-}
-
-
-
 
 
 
@@ -246,11 +219,11 @@ async function animate_hero() {
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
-    const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
+    const titles = ["Full-Stack Developer", "Front-End Engineer", "Web Developer"];
     const sequence = [
         [".navigation", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
-        ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
+        [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }],
         [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
         ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
         [
@@ -278,16 +251,15 @@ async function animate_hero() {
             }
         ],
 
-
+        [".github-linkedin", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
+        [".mail-icon", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
 
 
     ];
     const hero_animation = animate(sequence);
 
-    await hero_animation;
-    scramble_text_infinte(symbols, titles);
-
-
+    //await hero_animation;
+    //scramble_text_infinte(symbols, titles);
 
 }
 
@@ -360,6 +332,25 @@ const scramble_text_infinte = (symbols, titles) => {
 
 }
 
+// Since motion library changes opacity, I have to continue to use Motion if I want to animate same value
+// in this case opacity, otherwise if I try to animate opacity on hover state in css, will cause issue (flickering bug)
+const default_hover_states = () => {
+    hover(
+        ".default-hover-state", (element) => {
+            // runs when hover starts
+
+            element.style.cursor = "pointer";
+            animate(element, { opacity: 0.5, transform: "translateY(-6px)" });
+
+            // runs when hover ends
+            return () => {
+                animate(element, { opacity: 1, transform: "translateY(0px)" });
+            }
+        }
+    )
+
+}
+
 
 
 
@@ -370,9 +361,9 @@ $(document).ready(function () {
 
 
     reset_page();
-    //nav_link_underline();
 
     animate_hero();
+    default_hover_states();
 
     open_dropdown();
     open_mobile_menu();

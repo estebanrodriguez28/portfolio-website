@@ -3464,6 +3464,87 @@
   // node_modules/motion-dom/dist/es/frameloop/microtask.mjs
   var { schedule: microtask, cancel: cancelMicrotask } = /* @__PURE__ */ createRenderBatcher(queueMicrotask, false);
 
+  // node_modules/motion-dom/dist/es/gestures/drag/state/is-active.mjs
+  var isDragging = {
+    x: false,
+    y: false
+  };
+  function isDragActive() {
+    return isDragging.x || isDragging.y;
+  }
+
+  // node_modules/motion-dom/dist/es/gestures/utils/setup.mjs
+  function setupGesture(elementOrSelector, options) {
+    const elements = resolveElements(elementOrSelector);
+    const gestureAbortController = new AbortController();
+    const eventOptions = {
+      passive: true,
+      ...options,
+      signal: gestureAbortController.signal
+    };
+    const cancel = () => gestureAbortController.abort();
+    return [elements, eventOptions, cancel];
+  }
+
+  // node_modules/motion-dom/dist/es/gestures/hover.mjs
+  function isValidHover(event) {
+    return !(event.pointerType === "touch" || isDragActive());
+  }
+  function hover(elementOrSelector, onHoverStart, options = {}) {
+    const [elements, eventOptions, cancel] = setupGesture(elementOrSelector, options);
+    elements.forEach((element) => {
+      let isPressed = false;
+      let deferredHoverEnd = false;
+      let hoverEndCallback;
+      const removePointerLeave = () => {
+        element.removeEventListener("pointerleave", onPointerLeave);
+      };
+      const endHover = (event) => {
+        if (hoverEndCallback) {
+          hoverEndCallback(event);
+          hoverEndCallback = void 0;
+        }
+        removePointerLeave();
+      };
+      const onPointerUp = (event) => {
+        isPressed = false;
+        window.removeEventListener("pointerup", onPointerUp);
+        window.removeEventListener("pointercancel", onPointerUp);
+        if (deferredHoverEnd) {
+          deferredHoverEnd = false;
+          endHover(event);
+        }
+      };
+      const onPointerDown = () => {
+        isPressed = true;
+        window.addEventListener("pointerup", onPointerUp, eventOptions);
+        window.addEventListener("pointercancel", onPointerUp, eventOptions);
+      };
+      const onPointerLeave = (leaveEvent) => {
+        if (leaveEvent.pointerType === "touch")
+          return;
+        if (isPressed) {
+          deferredHoverEnd = true;
+          return;
+        }
+        endHover(leaveEvent);
+      };
+      const onPointerEnter = (enterEvent) => {
+        if (!isValidHover(enterEvent))
+          return;
+        deferredHoverEnd = false;
+        const onHoverEnd = onHoverStart(element, enterEvent);
+        if (typeof onHoverEnd !== "function")
+          return;
+        hoverEndCallback = onHoverEnd;
+        element.addEventListener("pointerleave", onPointerLeave, eventOptions);
+      };
+      element.addEventListener("pointerenter", onPointerEnter, eventOptions);
+      element.addEventListener("pointerdown", onPointerDown, eventOptions);
+    });
+    return cancel;
+  }
+
   // node_modules/motion-dom/dist/es/utils/is-svg-element.mjs
   function isSVGElement(element) {
     return isObject(element) && "ownerSVGElement" in element;
@@ -4930,11 +5011,11 @@
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
-    const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
+    const titles = ["Full-Stack Developer", "Front-End Engineer", "Web Developer"];
     const sequence = [
       [".navigation", { opacity: 1 }, { duration: 0.5 }],
       ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
-      ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
+      [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }],
       [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
       ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
       [
@@ -4954,53 +5035,21 @@
         {
           duration: 1
         }
-      ]
+      ],
+      [".github-linkedin", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
+      [".mail-icon", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
     ];
     const hero_animation = animate(sequence);
-    await hero_animation;
-    scramble_text_infinte(symbols, titles);
   }
-  var scramble_text_infinte = (symbols, titles) => {
-    let is_repeating = false;
-    let current_title = 0;
-    let next_title = 0;
-    let count = 0;
-    animate(
-      0,
-      1,
-      {
-        duration: 1.5,
-        ease: "circOut",
-        // on each frame of the animation (a value between 0-1), set the elements text 
-        // to a random substring in the symbols string with onUpdate callback
-        onUpdate: (latest) => {
-          if (is_repeating === false || latest < 1) {
-            $(".title").text(
-              function() {
-                if (latest === 1) {
-                  current_title++;
-                  next_title = current_title + 1;
-                  if (current_title > titles.length - 1) {
-                    current_title = 0;
-                  }
-                  if (next_title > titles.length - 1) {
-                    next_title = 0;
-                  }
-                  is_repeating = true;
-                  return titles[current_title];
-                }
-                is_repeating = false;
-                count++;
-                if (count % 6 === 0) {
-                  return generate_random_substring(titles[next_title].length, symbols);
-                }
-              }
-            );
-          }
-        },
-        repeat: Infinity,
-        repeatType: "loop",
-        repeatDelay: 1
+  var default_hover_states = () => {
+    hover(
+      ".default-hover-state",
+      (element) => {
+        element.style.cursor = "pointer";
+        animate(element, { opacity: 0.5, transform: "translateY(-6px)" });
+        return () => {
+          animate(element, { opacity: 1, transform: "translateY(0px)" });
+        };
       }
     );
   };
@@ -5009,6 +5058,7 @@
     nav_scroll();
     reset_page();
     animate_hero();
+    default_hover_states();
     open_dropdown();
     open_mobile_menu();
     close_button();
