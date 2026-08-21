@@ -122,20 +122,35 @@ function open_dropdown() {
 
 
 function open_mobile_menu() {
-    $("#hamburger-icon").click(
+    $(".hamburger").click(
         function () {
-            document.documentElement.style.setProperty("--underline-width-hover", "0px");
+            //document.documentElement.style.setProperty("--underline-width-hover", "0px");
             //$(".navigation").fadeOut("fast");
-            $(".navigation").addClass("slide-up");
+            //$(".navigation").addClass("slide-up");
             //$(".mobile-menu-popup").animate({ transform: "translateX(0%)" }, 300);
-            $(".mobile-menu-popup").addClass("appear");
-            $("#mobile-menu-popup-nav li").click(close_mobile_menu);
+            //$(".mobile-menu-popup").addClass("appear");
+            //$("#mobile-menu-popup-nav li").click(close_mobile_menu);
+
+            $(".nav-links").addClass("active");
+            $(".hamburger").addClass("active");
+            animate_hamburger();
             $("body").css("overflow", "hidden");
 
         }
     );
 
 
+
+}
+
+const animate_hamburger = () => {
+    const hamburger_bars = [
+        [".hamburger .bar:nth-child(3) ", { opacity: 0 }, { duration: 0.1 }],
+        [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.15 }],
+        [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.15 }]
+
+    ]
+    animate(hamburger_bars);
 
 }
 
@@ -223,8 +238,6 @@ async function animate_hero() {
     const sequence = [
         [".navigation", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
-        [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }],
-        [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
         ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
         [
             // On each value, by default latests counts from 0 to 1, for each of those values
@@ -256,6 +269,14 @@ async function animate_hero() {
 
 
     ];
+
+    if (isTouchDevice()) {
+        sequence.splice(2, 0, [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }]);
+    }
+    else {
+        sequence.splice(2, 0, [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }]);
+    }
+
     const hero_animation = animate(sequence);
 
     //await hero_animation;

@@ -4907,6 +4907,11 @@
   var animate = createScopedAnimate();
 
   // src/app.js
+  function isTouchDevice() {
+    const touch_events = "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+    const coarse_pointer = window.matchMedia("(pointer: coarse)").matches;
+    return touch_events && coarse_pointer;
+  }
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
   }
@@ -4957,16 +4962,23 @@
     );
   }
   function open_mobile_menu() {
-    $("#hamburger-icon").click(
+    $(".hamburger").click(
       function() {
-        document.documentElement.style.setProperty("--underline-width-hover", "0px");
-        $(".navigation").addClass("slide-up");
-        $(".mobile-menu-popup").addClass("appear");
-        $("#mobile-menu-popup-nav li").click(close_mobile_menu);
+        $(".nav-links").addClass("active");
+        $(".hamburger").addClass("active");
+        animate_hamburger();
         $("body").css("overflow", "hidden");
       }
     );
   }
+  var animate_hamburger = () => {
+    const hamburger_bars = [
+      [".hamburger .bar:nth-child(3) ", { opacity: 0 }, { duration: 0.1 }],
+      [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.15 }],
+      [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.15 }]
+    ];
+    animate(hamburger_bars);
+  };
   function close_button() {
     $(".close-menu").click(
       function() {
@@ -5015,8 +5027,6 @@
     const sequence = [
       [".navigation", { opacity: 1 }, { duration: 0.5 }],
       ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
-      [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }],
-      [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
       ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
       [
         // On each value, by default latests counts from 0 to 1, for each of those values
@@ -5039,6 +5049,11 @@
       [".github-linkedin", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
       [".mail-icon", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
     ];
+    if (isTouchDevice()) {
+      sequence.splice(2, 0, [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }]);
+    } else {
+      sequence.splice(2, 0, [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }]);
+    }
     const hero_animation = animate(sequence);
   }
   var default_hover_states = () => {
