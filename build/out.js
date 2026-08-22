@@ -4907,11 +4907,9 @@
   var animate = createScopedAnimate();
 
   // src/app.js
-  function isTouchDevice() {
-    const touch_events = "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-    const coarse_pointer = window.matchMedia("(pointer: coarse)").matches;
-    return touch_events && coarse_pointer;
-  }
+  var is_touch_device = () => {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0 || window.PointerEvent && window.matchMedia("(pointer: coarse)").matches;
+  };
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
   }
@@ -4961,37 +4959,52 @@
       }
     );
   }
-  function open_mobile_menu() {
+  function toggle_mobile_menu() {
     $(".hamburger").click(
       function() {
-        $(".nav-links").addClass("active");
-        $(".hamburger").addClass("active");
-        animate_hamburger();
-        $("body").css("overflow", "hidden");
+        const mobile_nav_open = $(".nav-links").hasClass("active");
+        if (mobile_nav_open) {
+          close_mobile_menu();
+        } else {
+          $(".nav-links").addClass("active");
+          animate_hamburger();
+          $(".hamburger").attr("aria-expanded", "true");
+          $("body").css("overflow", "hidden");
+        }
       }
     );
   }
   var animate_hamburger = () => {
     const hamburger_bars = [
       [".hamburger .bar:nth-child(3) ", { opacity: 0 }, { duration: 0.1 }],
-      [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.15 }],
-      [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.15 }]
+      [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.1 }],
+      [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.1 }]
     ];
     animate(hamburger_bars);
   };
-  function close_button() {
-    $(".close-menu").click(
-      function() {
-        close_mobile_menu();
-        $(".navigation").removeClass("slide-up");
-      }
-    );
-  }
-  function close_mobile_menu() {
-    $(".mobile-menu-popup").removeClass("appear");
-    $(".navigation").css("display", "flex");
+  var reverse_hamburger_animation = () => {
+    const hamburger_bars = [
+      [".hamburger .bar:nth-child(3) ", { opacity: 1 }, { duration: 0.1 }],
+      [".hamburger .bar:nth-child(1)", { transform: "rotate(0deg)" }, { duration: 0.15 }],
+      [".hamburger .bar:nth-child(2)", { transform: "rotate(0deg)" }, { duration: 0.15 }]
+    ];
+    animate(hamburger_bars);
+  };
+  var mobile_nav_links = () => {
+    if (is_touch_device()) {
+      $(".nav-links a").click(
+        function() {
+          close_mobile_menu();
+        }
+      );
+    }
+  };
+  var close_mobile_menu = () => {
+    reverse_hamburger_animation();
+    $(".nav-links").removeClass("active");
     $("body").css("overflow", "visible");
-  }
+    $(".hamburger").attr("aria-expanded", "false");
+  };
   var generate_random_substring = (length, symbols) => {
     let random_substring = "";
     for (let i = 0; i <= length; i++) {
@@ -5049,13 +5062,61 @@
       [".github-linkedin", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
       [".mail-icon", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
     ];
-    if (isTouchDevice()) {
+    if (is_touch_device()) {
       sequence.splice(2, 0, [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }]);
     } else {
       sequence.splice(2, 0, [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }]);
     }
     const hero_animation = animate(sequence);
+    await hero_animation;
+    console.log("scrambling infinite");
+    default_hover_states();
+    scramble_text_infinte(symbols, titles);
   }
+  var scramble_text_infinte = (symbols, titles) => {
+    let is_repeating = false;
+    let current_title = 0;
+    let next_title = 0;
+    let count = 0;
+    animate(
+      0,
+      1,
+      {
+        duration: 1.5,
+        ease: "circOut",
+        // on each frame of the animation (a value between 0-1), set the elements text 
+        // to a random substring in the symbols string with onUpdate callback
+        onUpdate: (latest) => {
+          if (is_repeating === false || latest < 1) {
+            $(".title").text(
+              function() {
+                if (latest === 1) {
+                  current_title++;
+                  next_title = current_title + 1;
+                  if (current_title > titles.length - 1) {
+                    current_title = 0;
+                  }
+                  if (next_title > titles.length - 1) {
+                    next_title = 0;
+                  }
+                  is_repeating = true;
+                  return titles[current_title];
+                }
+                is_repeating = false;
+                count++;
+                if (count % 6 === 0) {
+                  return generate_random_substring(titles[next_title].length, symbols);
+                }
+              }
+            );
+          }
+        },
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 1
+      }
+    );
+  };
   var default_hover_states = () => {
     hover(
       ".default-hover-state",
@@ -5073,9 +5134,8 @@
     nav_scroll();
     reset_page();
     animate_hero();
-    default_hover_states();
     open_dropdown();
-    open_mobile_menu();
-    close_button();
+    toggle_mobile_menu();
+    mobile_nav_links();
   });
 })();

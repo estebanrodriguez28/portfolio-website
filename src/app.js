@@ -3,18 +3,17 @@ import { animate, easingDefinitionToFunction, stagger, delay, hover } from "moti
 
 
 
-// Source - https://stackoverflow.com/a/4819886
-// Posted by bolmaster2, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-04-16, License - CC BY-SA 4.0 
+// Source - https://www.xjavascript.com/blog/what-s-the-best-way-to-detect-a-touch-screen-device-using-javascript/
 
-function isTouchDevice() {
-    const touch_events = (('ontouchstart' in window) ||
-        (navigator.maxTouchPoints > 0) ||
-        (navigator.msMaxTouchPoints > 0));
-    const coarse_pointer = window.matchMedia('(pointer: coarse)').matches;
-    return touch_events && coarse_pointer;
+const is_touch_device = () => {
 
-}
+    return (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        (window.PointerEvent && window.matchMedia('(pointer: coarse)').matches)
+    );
+};
+
 
 
 
@@ -121,20 +120,23 @@ function open_dropdown() {
 
 
 
-function open_mobile_menu() {
+function toggle_mobile_menu() {
     $(".hamburger").click(
         function () {
-            //document.documentElement.style.setProperty("--underline-width-hover", "0px");
-            //$(".navigation").fadeOut("fast");
-            //$(".navigation").addClass("slide-up");
-            //$(".mobile-menu-popup").animate({ transform: "translateX(0%)" }, 300);
-            //$(".mobile-menu-popup").addClass("appear");
-            //$("#mobile-menu-popup-nav li").click(close_mobile_menu);
 
-            $(".nav-links").addClass("active");
-            $(".hamburger").addClass("active");
-            animate_hamburger();
-            $("body").css("overflow", "hidden");
+            const mobile_nav_open = $(".nav-links").hasClass("active");
+            if (mobile_nav_open) {
+                close_mobile_menu();
+            }
+
+            else {
+                $(".nav-links").addClass("active");
+                animate_hamburger();
+                $(".hamburger").attr("aria-expanded", "true");
+                $("body").css("overflow", "hidden");
+
+            }
+
 
         }
     );
@@ -146,8 +148,19 @@ function open_mobile_menu() {
 const animate_hamburger = () => {
     const hamburger_bars = [
         [".hamburger .bar:nth-child(3) ", { opacity: 0 }, { duration: 0.1 }],
-        [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.15 }],
-        [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.15 }]
+        [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.1 }],
+        [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.1 }]
+
+    ]
+    animate(hamburger_bars);
+
+}
+
+const reverse_hamburger_animation = () => {
+    const hamburger_bars = [
+        [".hamburger .bar:nth-child(3) ", { opacity: 1 }, { duration: 0.1 }],
+        [".hamburger .bar:nth-child(1)", { transform: "rotate(0deg)" }, { duration: 0.15 }],
+        [".hamburger .bar:nth-child(2)", { transform: "rotate(0deg)" }, { duration: 0.15 }]
 
     ]
     animate(hamburger_bars);
@@ -157,22 +170,26 @@ const animate_hamburger = () => {
 
 
 
-function close_button() {
-    $(".close-menu").click(
-        function () {
-            close_mobile_menu();
-            $(".navigation").removeClass("slide-up");
-        }
-    );
+
+const mobile_nav_links = () => {
+    if (is_touch_device()) {
+        $(".nav-links a").click(
+            function () {
+                close_mobile_menu();
+            }
+        );
+    }
+
+
 
 }
 
-function close_mobile_menu() {
-    $(".mobile-menu-popup").removeClass("appear");
-    $(".navigation").css("display", "flex");
+const close_mobile_menu = () => {
+    reverse_hamburger_animation();
+    $(".nav-links").removeClass("active");
     $("body").css("overflow", "visible");
+    $(".hamburger").attr("aria-expanded", "false")
 }
-
 
 
 
@@ -270,19 +287,25 @@ async function animate_hero() {
 
     ];
 
-    if (isTouchDevice()) {
+    if (is_touch_device()) {
         sequence.splice(2, 0, [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }]);
     }
     else {
         sequence.splice(2, 0, [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }]);
     }
 
-    const hero_animation = animate(sequence);
 
-    //await hero_animation;
-    //scramble_text_infinte(symbols, titles);
+    const hero_animation = animate(sequence);
+    await hero_animation;
+
+
+    console.log("scrambling infinite");
+
+    default_hover_states();
+    scramble_text_infinte(symbols, titles);
 
 }
+
 
 
 const scramble_text_infinte = (symbols, titles) => {
@@ -344,7 +367,8 @@ const scramble_text_infinte = (symbols, titles) => {
         },
         repeat: Infinity, repeatType: "loop", repeatDelay: 1
     }
-    )
+    );
+
 
 
 
@@ -355,6 +379,7 @@ const scramble_text_infinte = (symbols, titles) => {
 
 // Since motion library changes opacity, I have to continue to use Motion if I want to animate same value
 // in this case opacity, otherwise if I try to animate opacity on hover state in css, will cause issue (flickering bug)
+
 const default_hover_states = () => {
     hover(
         ".default-hover-state", (element) => {
@@ -365,6 +390,7 @@ const default_hover_states = () => {
 
             // runs when hover ends
             return () => {
+
                 animate(element, { opacity: 1, transform: "translateY(0px)" });
             }
         }
@@ -384,11 +410,11 @@ $(document).ready(function () {
     reset_page();
 
     animate_hero();
-    default_hover_states();
+
 
     open_dropdown();
-    open_mobile_menu();
-    close_button();
+    toggle_mobile_menu();
+    mobile_nav_links();
 
 
 
