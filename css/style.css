@@ -84,7 +84,7 @@ main {
     max-width: 100%;
     display: block;
     height: 165px;
-
+    contain: content;
     overflow: hidden;
 
 
@@ -160,6 +160,7 @@ main {
 }
 
 .nav-links li {
+    opacity: 0;
     margin: 2rem 0;
 }
 
@@ -192,7 +193,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 15dvh;
+    padding-top: 15svh;
 }
 
 
@@ -776,6 +777,14 @@ a {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.nav-links .resume:hover {
+    background-color: var(--shadow-grey-dark);
+    color: var(--white);
+}
+
+.nav-links .resume a:hover::after {
+    width: 0%;
+}
 
 
 

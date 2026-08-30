@@ -4976,19 +4976,35 @@
   }
   var animate_hamburger = () => {
     const hamburger_bars = [
-      [".hamburger .bar:nth-child(3) ", { opacity: 0 }, { duration: 0.1 }],
-      [".hamburger .bar:nth-child(1)", { transform: "translateY(6px) rotate(45deg)" }, { duration: 0.1 }],
-      [".hamburger .bar:nth-child(2)", { transform: "translateY(-6px) rotate(-45deg)" }, { duration: 0.1 }]
+      [".hamburger .bar:nth-child(2) ", { opacity: 0 }],
+      [".hamburger .bar:nth-child(3)", { width: "35px", transform: "translateY(-12px)" }],
+      [".hamburger .bar:nth-child(1)", { transform: "translateY(13px)" }],
+      // Pause for a second when the bars meet in middle for dramatic effect with delay
+      [".hamburger .bar:nth-child(1)", { transform: "translateY(12px) rotate(45deg)" }, { delay: 0.1 }],
+      [".hamburger .bar:nth-child(3)", { transform: "translateY(-13px) rotate(-45deg)" }],
+      // Starts animating nav links 0.25 seconds from start of animation sequence
+      [".nav-links li", { opacity: 1, y: [-50, 0] }, { delay: stagger(0.05), at: 0.25 }]
     ];
-    animate(hamburger_bars);
+    animate(
+      hamburger_bars,
+      {
+        // each item in sequence has duration of 0.1 seconds
+        defaultTransition: { duration: 0.1 }
+      }
+    );
   };
   var reverse_hamburger_animation = () => {
     const hamburger_bars = [
-      [".hamburger .bar:nth-child(3) ", { opacity: 1 }, { duration: 0.1 }],
-      [".hamburger .bar:nth-child(1)", { transform: "rotate(0deg)" }, { duration: 0.15 }],
-      [".hamburger .bar:nth-child(2)", { transform: "rotate(0deg)" }, { duration: 0.15 }]
+      [".hamburger .bar:nth-child(1)", { transform: "rotate(0deg)" }],
+      [".hamburger .bar:nth-child(3)", { transform: "rotate(0deg) ", width: "25px" }],
+      [".hamburger .bar:nth-child(2) ", { opacity: 1 }]
     ];
-    animate(hamburger_bars);
+    animate(
+      hamburger_bars,
+      {
+        defaultTransition: { duration: 0.1 }
+      }
+    );
   };
   var mobile_nav_links = () => {
     if (is_touch_device()) {
@@ -5000,10 +5016,26 @@
     }
   };
   var close_mobile_menu = () => {
+    animate(".nav-links li", { opacity: 0, y: [0, -50] }, { delay: stagger(0.05) });
     reverse_hamburger_animation();
     $(".nav-links").removeClass("active");
     $("body").css("overflow", "visible");
     $(".hamburger").attr("aria-expanded", "false");
+  };
+  var add_accessibility = () => {
+    $(".hamburger").attr("aria-label", "Toggle navigation menu");
+    $(".hamburger").attr("aria-expanded", "false");
+    $(".hamburger").attr("role", "button");
+    $(".hamburger").attr("tabindex", "0");
+    $(".hamburger").on(
+      "keydown",
+      (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          $(".hamburger").click();
+        }
+      }
+    );
   };
   var generate_random_substring = (length, symbols) => {
     let random_substring = "";
@@ -5069,7 +5101,6 @@
     }
     const hero_animation = animate(sequence);
     await hero_animation;
-    console.log("scrambling infinite");
     default_hover_states();
     scramble_text_infinte(symbols, titles);
   }
@@ -5113,7 +5144,7 @@
         },
         repeat: Infinity,
         repeatType: "loop",
-        repeatDelay: 1
+        repeatDelay: 2
       }
     );
   };
@@ -5133,6 +5164,7 @@
     $(window).scrollTop(0);
     nav_scroll();
     reset_page();
+    add_accessibility();
     animate_hero();
     open_dropdown();
     toggle_mobile_menu();
