@@ -200,8 +200,8 @@ a {
 #intro {
 
     align-items: flex-start;
-    height: 100vh;
-    height: 100dvh;
+    height: 110vh;
+    height: 110dvh;
     max-width: 1000px;
     margin: 0px auto;
     padding-top: 0dvh;
