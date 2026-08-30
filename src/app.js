@@ -1,4 +1,15 @@
 import { animate, easingDefinitionToFunction, stagger, delay, hover } from "motion";
+// Source - https://stackoverflow.com/a/71338673
+// Posted by João Pimentel Ferreira, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-08-30, License - CC BY-SA 4.0
+
+// Only use icons we need
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSquareGithub, faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
+library.add(faEnvelope, faSquareGithub, faSquareLinkedin);
+dom.watch();
+
 
 
 
