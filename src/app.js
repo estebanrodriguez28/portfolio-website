@@ -169,7 +169,7 @@ const animate_hamburger = () => {
         [".hamburger .bar:nth-child(1)", { transform: "translateY(12px) rotate(45deg)" }, { delay: 0.1 }],
         [".hamburger .bar:nth-child(3)", { transform: "translateY(-13px) rotate(-45deg)" }],
         // Starts animating nav links 0.25 seconds from start of animation sequence
-        [".nav-links li", { opacity: 1, y: [-50, 0] }, { delay: stagger(0.05), at: 0.25 }],
+        [".nav-links li", { opacity: 1, y: [-50, 0] }, { delay: stagger(0.08), at: 0.25 }],
 
 
 
