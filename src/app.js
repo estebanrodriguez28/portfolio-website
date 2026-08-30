@@ -1,20 +1,30 @@
-import { animate, easingDefinitionToFunction, stagger, delay } from "motion";
+import { animate, easingDefinitionToFunction, stagger, delay, hover } from "motion";
+// Source - https://stackoverflow.com/a/71338673
+// Posted by João Pimentel Ferreira, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-08-30, License - CC BY-SA 4.0
+
+// Only use icons we need
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSquareGithub, faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
+library.add(faEnvelope, faSquareGithub, faSquareLinkedin);
+dom.watch();
 
 
 
 
-// Source - https://stackoverflow.com/a/4819886
-// Posted by bolmaster2, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-04-16, License - CC BY-SA 4.0 
 
-function isTouchDevice() {
-    const touch_events = (('ontouchstart' in window) ||
-        (navigator.maxTouchPoints > 0) ||
-        (navigator.msMaxTouchPoints > 0));
-    const coarse_pointer = window.matchMedia('(pointer: coarse)').matches;
-    return touch_events && coarse_pointer;
+// Source - https://www.xjavascript.com/blog/what-s-the-best-way-to-detect-a-touch-screen-device-using-javascript/
 
-}
+const is_touch_device = () => {
+
+    return (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        (window.PointerEvent && window.matchMedia('(pointer: coarse)').matches)
+    );
+};
+
 
 
 
@@ -48,28 +58,28 @@ const nav_scroll = () => {
 
         // Sometimes user can scroll to very top of page without navbar coming down/appearing
         if (st === 0) {
-            if ($("#navbar").hasClass("slide-up")) {
-                $("#navbar").removeClass("slide-up");
+            if ($(".navigation").hasClass("slide-up")) {
+                $(".navigation").removeClass("slide-up");
             }
         }
 
         // After scrolling slightly, box shadow added under top navigation
         if (st > 20) {
-            $("#navbar").css("filter", "drop-shadow(0px -1px 8px black)");
+            $(".navigation").css("filter", "drop-shadow(0px -1px 8px black)");
         }
 
         else {
-            $("#navbar").css("filter", "drop-shadow(0px 0px black)");
+            $(".navigation").css("filter", "drop-shadow(0px 0px black)");
         }
 
         // Scroll some more the top nav will slde up as user scrolls down page and slide down or appear again when user scrolls up page
         if (st > 100) {
             if (st > lastScrollTop) {
                 // downscroll code
-                $("#navbar").addClass("slide-up");
+                $(".navigation").addClass("slide-up");
             } else {
                 // upscroll code
-                $("#navbar").removeClass("slide-up");
+                $(".navigation").removeClass("slide-up");
             }
         }
 
@@ -92,33 +102,6 @@ function reset_page() {
         }
     )
 }
-
-
-function nav_link_underline() {
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-        $(".nav-links a").hover(
-            function () {
-                var link_width = $(this).width();
-                document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-            }
-        );
-    }
-
-    else {
-        $(".nav-links a").click(
-            function () {
-                var link_width = $(this).width();
-                document.documentElement.style.setProperty("--underline-width-hover", `${link_width}px`);
-            }
-        );
-    }
-
-
-
-}
-
-
-
 
 
 
@@ -148,16 +131,23 @@ function open_dropdown() {
 
 
 
-function open_mobile_menu() {
-    $("#hamburger-icon").click(
+function toggle_mobile_menu() {
+    $(".hamburger").click(
         function () {
-            document.documentElement.style.setProperty("--underline-width-hover", "0px");
-            //$("#navbar").fadeOut("fast");
-            $("#navbar").addClass("slide-up");
-            //$(".mobile-menu-popup").animate({ transform: "translateX(0%)" }, 300);
-            $(".mobile-menu-popup").addClass("appear");
-            $("#mobile-menu-popup-nav li").click(close_mobile_menu);
-            $("body").css("overflow", "hidden");
+
+            const mobile_nav_open = $(".nav-links").hasClass("active");
+            if (mobile_nav_open) {
+                close_mobile_menu();
+            }
+
+            else {
+                $(".nav-links").addClass("active");
+                animate_hamburger();
+                $(".hamburger").attr("aria-expanded", "true");
+                $("body").css("overflow", "hidden");
+
+            }
+
 
         }
     );
@@ -169,23 +159,87 @@ function open_mobile_menu() {
 
 
 
-function close_button() {
-    $(".close-menu").click(
-        function () {
-            close_mobile_menu();
-            $("#navbar").removeClass("slide-up");
-        }
+
+const animate_hamburger = () => {
+    const hamburger_bars = [
+        [".hamburger .bar:nth-child(2) ", { opacity: 0 }],
+        [".hamburger .bar:nth-child(3)", { width: "35px", transform: "translateY(-12px)" }],
+        [".hamburger .bar:nth-child(1)", { transform: "translateY(13px)" }],
+        // Pause for a second when the bars meet in middle for dramatic effect with delay
+        [".hamburger .bar:nth-child(1)", { transform: "translateY(12px) rotate(45deg)" }, { delay: 0.1 }],
+        [".hamburger .bar:nth-child(3)", { transform: "translateY(-13px) rotate(-45deg)" }],
+        // Starts animating nav links 0.25 seconds from start of animation sequence
+        [".nav-links li", { opacity: 1, y: [-50, 0] }, { delay: stagger(0.08), at: 0.25 }],
+
+
+
+    ]
+
+    animate(hamburger_bars, {
+        // each item in sequence has duration of 0.1 seconds
+        defaultTransition: { duration: 0.1 }
+    }
     );
 
 }
 
-function close_mobile_menu() {
-    $(".mobile-menu-popup").removeClass("appear");
-    $("#navbar").css("display", "flex");
+const reverse_hamburger_animation = () => {
+    const hamburger_bars = [
+        [".hamburger .bar:nth-child(1)", { transform: "rotate(0deg)" }],
+        [".hamburger .bar:nth-child(3)", { transform: "rotate(0deg) ", width: "25px" }],
+        [".hamburger .bar:nth-child(2) ", { opacity: 1 }]
+
+
+
+    ]
+    animate(hamburger_bars, {
+        defaultTransition: { duration: 0.1 }
+    }
+    );
+
+}
+
+
+
+
+
+const mobile_nav_links = () => {
+    if (is_touch_device()) {
+        $(".nav-links a").click(
+            function () {
+                close_mobile_menu();
+            }
+        );
+    }
+
+
+
+}
+
+const close_mobile_menu = () => {
+    animate(".nav-links li", { opacity: 0, y: [0, -50] }, { delay: stagger(0.05) });
+    reverse_hamburger_animation();
+    $(".nav-links").removeClass("active");
     $("body").css("overflow", "visible");
+    $(".hamburger").attr("aria-expanded", "false")
 }
+// Source: https://thesyntaxdiaries.com/responsive-navbar-html-css-js
+const add_accessibility = () => {
+    $(".hamburger").attr("aria-label", "Toggle navigation menu");
+    $(".hamburger").attr("aria-expanded", "false");
+    $(".hamburger").attr("role", "button");
+    $(".hamburger").attr("tabindex", "0");
+    // Keyboard activation of hamburger menu
+    $(".hamburger").on("keydown",
+        (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                $(".hamburger").click();
+            }
+        }
+    );
 
-
+}
 
 
 
@@ -246,12 +300,10 @@ async function animate_hero() {
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
-    const titles = ["Full-Stack Developer", "Front-End Engineer", "UI Creator + Animator"];
+    const titles = ["Full-Stack Developer", "Front-End Engineer", "Web Developer"];
     const sequence = [
-        ["#navbar", { opacity: 1 }, { duration: 0.5 }],
+        [".navigation", { opacity: 1 }, { duration: 0.5 }],
         ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
-        ["#hamburger-icon", { opacity: 1 }, { duration: 0.25 }],
-        [".desktop-nav-row li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }],
         ["#code-image", { opacity: 1, y: [35, 0] }, { duration: 0.25 }],
         [
             // On each value, by default latests counts from 0 to 1, for each of those values
@@ -278,19 +330,30 @@ async function animate_hero() {
             }
         ],
 
-        ["#github-li", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
-        ["#email", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
+        [".github-linkedin", { opacity: 1 }, { at: "<+0.5", duration: 1 }],
+        [".mail-icon", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
 
 
     ];
-    const hero_animation = animate(sequence);
 
+    if (is_touch_device()) {
+        sequence.splice(2, 0, [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }]);
+    }
+    else {
+        sequence.splice(2, 0, [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }]);
+    }
+
+
+    const hero_animation = animate(sequence);
     await hero_animation;
+
+
+
+    default_hover_states();
     scramble_text_infinte(symbols, titles);
 
-
-
 }
+
 
 
 const scramble_text_infinte = (symbols, titles) => {
@@ -350,14 +413,36 @@ const scramble_text_infinte = (symbols, titles) => {
             }
 
         },
-        repeat: Infinity, repeatType: "loop", repeatDelay: 1
+        repeat: Infinity, repeatType: "loop", repeatDelay: 2
     }
+    );
+
+
+
+
+
+
+
+}
+
+// Since motion library changes opacity, I have to continue to use Motion if I want to animate same value
+// in this case opacity, otherwise if I try to animate opacity on hover state in css, will cause issue (flickering bug)
+
+const default_hover_states = () => {
+    hover(
+        ".default-hover-state", (element) => {
+            // runs when hover starts
+
+            element.style.cursor = "pointer";
+            animate(element, { opacity: 0.5, transform: "translateY(-6px)" });
+
+            // runs when hover ends
+            return () => {
+
+                animate(element, { opacity: 1, transform: "translateY(0px)" });
+            }
+        }
     )
-
-
-
-
-
 
 }
 
@@ -371,13 +456,13 @@ $(document).ready(function () {
 
 
     reset_page();
-    nav_link_underline();
-
+    add_accessibility();
     animate_hero();
 
+
     open_dropdown();
-    open_mobile_menu();
-    close_button();
+    toggle_mobile_menu();
+    mobile_nav_links();
 
 
 

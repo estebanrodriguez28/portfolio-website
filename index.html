@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
     <script src="build/out.js"></script>
@@ -27,68 +26,60 @@
 
 
     <!--  Main navigation at the top -->
-    <header>
+    <header class="navigation">
+        <img class="icon-width default-hover-state" src="images/site-imgs/letter-e.png" alt="The letter E"
+            id="letter-e">
 
-        <section id="navbar">
-            <img class="icon-width social-icon" src="images/site-imgs/letter-e.png" alt="The letter E" id="letter-e">
+        <nav>
+            <ul class="nav-links remove-bullets">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills-interests">Skills + Interests</a></li>
+                <li class="resume"><a href="https://pdflink.to/esteban-r-e/" target="_blank"
+                        rel="noopener noreferrer">Resume</a></li>
+            </ul>
 
-            <!-- Navigation for desktop -->
-            <div id="desktop-nav">
-                <nav class="nav-links">
-                    <ol class="desktop-nav-row">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills-interests">Skills + Interests</a></li>
-                        <li class="skip" id="skip-desktop"><a href="https://pdflink.to/esteban-r-e/" target="_blank"
-                                rel="noopener noreferrer">Resume</a></li>
-                    </ol>
-                </nav>
-
-            </div>
-
-            <!-- Mobile Hambburger Navigation -->
-
-            <img src="images/site-imgs/mobile-menu.png" alt="Mobile navigation menu" class="icon-width"
-                id="hamburger-icon">
-        </section>
+        </nav>
 
 
-        <!-- Popup navigation menu on mobile after hamburger clicked -->
-        <aside class="mobile-menu-popup">
-            <img src="images/site-imgs/close.png" class="close-menu" alt="Icon in shape of x to close menu">
 
-            <section>
-                <nav class="nav-links" id="mobile-menu-popup-nav">
-                    <ol>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills-interests">Skills + Interests</a></li>
-                        <li class="skip" id="skip-mobile"><a href="https://pdflink.to/esteban-r-e/">Resume</a></li>
-                    </ol>
-                </nav>
 
-            </section>
-        </aside>
+        <div class="hamburger">
+            <span class="bar"> </span>
+            <span class="bar"> </span>
+            <span class="bar"> </span>
+
+        </div>
+
 
 
 
 
     </header>
 
-    <section id="social-icons">
-        <ul id="github-li">
-            <li><a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank"><img
-                        src="images/social-icons/linkedin.png" alt="LinkedIn icon" class="social-icon" id="li-icon"></a>
+    <ul class="social-profiles">
+        <ul class="github-linkedin">
+            <li>
+                <a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank">
+                    <i class="default-hover-state fa-brands fa-square-linkedin fa-3x"></i>
+            <li>
+                <a href="https://github.com/estebanrodriguez28" target="_blank">
+                    <i class="default-hover-state fa-brands fa-square-github fa-3x">
+
+                    </i>
+                </a>
             </li>
-            <li><a href="https://github.com/estebanrodriguez28" target="_blank"><img
-                        src="images/social-icons/github.png" alt="Github icon" class="social-icon icon-width"></a></li>
+
         </ul>
-        <a href="mailto:erod9246@gmail.com">
-            <img src="images/social-icons/email.png" alt="Email icon" class="social-icon" id="email">
-        </a>
-    </section>
+        <li class="mail-icon">
+            <a href="mailto:erod9246@gmail.com">
+                <i class="default-hover-state fa-solid fa-envelope fa-3x"></i>
+            </a>
+        </li>
+    </ul>
+
+
 
 
     <main>
