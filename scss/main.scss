@@ -1,0 +1,29 @@
+/*****************************************************************
+   01. ABSTRACTS
+   Helper functions & non-output snippets
+   (Variables, mixins, functions, etc.)
+*****************************************************************/
+
+@use "abstracts" as *;
+
+
+/*****************************************************************
+   02. BASE
+   Reset, typography, global styles
+*****************************************************************/
+@use "base" as base;
+
+/*****************************************************************
+   03. COMPONENTS
+   Micro-level, reusable components
+   (Each does one thing only. Ex: buttons)
+*****************************************************************/
+
+@use "components" as components;
+
+/*****************************************************************
+   04. LAYOUTS
+   Unique combos of components & base styles
+   (Grids, specific page styles, etc.)
+*****************************************************************/
+@use "layouts" as layouts;

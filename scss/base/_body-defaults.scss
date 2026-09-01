@@ -1,0 +1,26 @@
+@use "../abstracts" as *;
+
+html {
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    background-color: $shadow-grey;
+    font-family: $my-font, serif;
+    font-optical-sizing: auto;
+    color: $white;
+
+
+
+}
+
+
+main {
+    width: 100%;
+    max-width: 1600px;
+    padding: 0px 25px;
+    margin: 0px auto;
+
+}

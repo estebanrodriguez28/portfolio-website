@@ -10,13 +10,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
-    "esbuild": "0.28.0"
+    "esbuild": "0.28.0",
+    "sass": "^1.103.1"
   },
   "scripts": {
     "clean": "rm -rf ./build",
     "init": "npm run clean && mkdir ./build",
     "bundle": "npm run init && esbuild ./src/app.js --bundle --outfile=./build/out.js",
-    "build": "npm run bundle"
+    "scss": "npm run bundle && sass ./scss/main.scss ./build/style.css",
+    "build": "npm run scss"
   },
   "repository": {
     "type": "git",
