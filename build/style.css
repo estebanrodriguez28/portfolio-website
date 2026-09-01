@@ -49,6 +49,11 @@ main {
   margin: 0px auto;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*****************************************************************
    03. COMPONENTS
    Micro-level, reusable components
@@ -67,26 +72,6 @@ main {
   align-items: center;
   transform: translateX(120%);
   transition: transform 0.6s;
-}
-@media only screen and (min-width: 1024px) {
-  .nav-links .nav-links {
-    display: flex;
-    align-items: center;
-    position: static;
-    height: 0;
-    flex-direction: row;
-    transform: translateX(0%);
-  }
-  .nav-links .nav-links li {
-    opacity: 0;
-    margin: 0rem 2rem 0rem 0rem;
-  }
-  .nav-links .nav-links a {
-    font-size: 1rem;
-  }
-  .nav-links .nav-links .resume {
-    padding: 10px;
-  }
 }
 .nav-links.active {
   transform: translateX(0%);
@@ -133,6 +118,26 @@ main {
 }
 .nav-links .resume a:hover::after {
   width: 0%;
+}
+@media only screen and (min-width: 1024px) {
+  .nav-links {
+    display: flex;
+    align-items: center;
+    position: static;
+    height: 0;
+    flex-direction: row;
+    transform: translateX(0%);
+  }
+  .nav-links li {
+    opacity: 0;
+    margin: 0rem 2rem 0rem 0rem;
+  }
+  .nav-links a {
+    font-size: 1rem;
+  }
+  .nav-links .resume {
+    padding: 10px;
+  }
 }
 
 /*****************************************************************

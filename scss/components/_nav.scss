@@ -15,31 +15,6 @@
     transform: translateX(120%);
     transition: transform 0.6s;
 
-    @include respond(laptop) {
-        .nav-links {
-            display: flex;
-            align-items: center;
-            position: static;
-            height: 0;
-            flex-direction: row;
-            transform: translateX(0%);
-        }
-
-        .nav-links li {
-            opacity: 0;
-            margin: 0rem 2rem 0rem 0rem;
-
-        }
-
-        .nav-links a {
-            font-size: 1rem;
-        }
-
-        .nav-links .resume {
-            padding: 10px;
-        }
-    }
-
     &.active {
         transform: translateX(0%);
     }
@@ -96,4 +71,31 @@
             width: 0%;
         }
     }
+
+    @include respond(laptop) {
+
+        display: flex;
+        align-items: center;
+        position: static;
+        height: 0;
+        flex-direction: row;
+        transform: translateX(0%);
+
+
+        li {
+            opacity: 0;
+            margin: 0rem 2rem 0rem 0rem;
+
+        }
+
+        a {
+            font-size: 1rem;
+        }
+
+        .resume {
+            padding: 10px;
+        }
+    }
+
+
 }
