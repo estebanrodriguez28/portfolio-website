@@ -8353,6 +8353,11 @@
     iconName: "envelope",
     icon: [512, 512, [128386, 9993, 61443], "f0e0", "M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"]
   };
+  var faArrowUpRightFromSquare = {
+    prefix: "fas",
+    iconName: "arrow-up-right-from-square",
+    icon: [512, 512, ["external-link"], "f08e", "M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0-201.4 201.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3 448 192c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 96C35.8 96 0 131.8 0 176L0 432c0 44.2 35.8 80 80 80l256 0c44.2 0 80-35.8 80-80l0-80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 80c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-256c0-8.8 7.2-16 16-16l80 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 96z"]
+  };
 
   // node_modules/@fortawesome/free-brands-svg-icons/index.mjs
   var faSquareGithub = {
@@ -8367,7 +8372,13 @@
   };
 
   // src/app.js
-  library$1.add(faEnvelope, faSquareGithub, faSquareLinkedin);
+  document.documentElement.classList.add("js-reveal");
+  library$1.add(
+    faEnvelope,
+    faArrowUpRightFromSquare,
+    faSquareGithub,
+    faSquareLinkedin
+  );
   dom$1.watch();
   var is_touch_device = () => {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0 || window.PointerEvent && window.matchMedia("(pointer: coarse)").matches;
@@ -8403,82 +8414,89 @@
     });
   };
   function reset_page() {
-    $("#letter-e").click(
-      () => {
-        location.reload();
-      }
-    );
+    $("#letter-e").click(() => {
+      location.reload();
+    });
   }
   function open_dropdown() {
-    $("#footer-dropdown").click(
-      function() {
-        let dropdown_state = $(".dropdown-content").css("display");
-        if (dropdown_state == "none") {
-          $(".dropdown-content").css("display", "block");
-        } else {
-          $(".dropdown-content").css("display", "");
-        }
+    $("#footer-dropdown").click(function() {
+      let dropdown_state = $(".dropdown-content").css("display");
+      if (dropdown_state == "none") {
+        $(".dropdown-content").css("display", "block");
+      } else {
+        $(".dropdown-content").css("display", "");
       }
-    );
+    });
   }
   function toggle_mobile_menu() {
-    $(".hamburger").click(
-      function() {
-        const mobile_nav_open = $(".nav-links").hasClass("active");
-        if (mobile_nav_open) {
-          close_mobile_menu();
-        } else {
-          $(".nav-links").addClass("active");
-          animate_hamburger();
-          $(".hamburger").attr("aria-expanded", "true");
-          $("body").css("overflow", "hidden");
-        }
+    $(".hamburger").click(function() {
+      const mobile_nav_open = $(".nav-links").hasClass("active");
+      if (mobile_nav_open) {
+        close_mobile_menu();
+      } else {
+        $(".nav-links").addClass("active");
+        animate_hamburger();
+        $(".hamburger").attr("aria-expanded", "true");
+        $("body").css("overflow", "hidden");
       }
-    );
+    });
   }
   var animate_hamburger = () => {
     const hamburger_bars = [
       [".hamburger .bar:nth-child(2) ", { opacity: 0 }],
-      [".hamburger .bar:nth-child(3)", { width: "35px", transform: "translateY(-12px)" }],
+      [
+        ".hamburger .bar:nth-child(3)",
+        { width: "35px", transform: "translateY(-12px)" }
+      ],
       [".hamburger .bar:nth-child(1)", { transform: "translateY(13px)" }],
       // Pause for a second when the bars meet in middle for dramatic effect with delay
-      [".hamburger .bar:nth-child(1)", { transform: "translateY(12px) rotate(45deg)" }, { delay: 0.1 }],
-      [".hamburger .bar:nth-child(3)", { transform: "translateY(-13px) rotate(-45deg)" }],
+      [
+        ".hamburger .bar:nth-child(1)",
+        { transform: "translateY(12px) rotate(45deg)" },
+        { delay: 0.1 }
+      ],
+      [
+        ".hamburger .bar:nth-child(3)",
+        { transform: "translateY(-13px) rotate(-45deg)" }
+      ],
       // Starts animating nav links 0.25 seconds from start of animation sequence
-      [".nav-links li", { opacity: 1, y: [-50, 0] }, { delay: stagger(0.08), at: 0.25 }]
+      [
+        ".nav-links li",
+        { opacity: 1, y: [-50, 0] },
+        { delay: stagger(0.08), at: 0.25 }
+      ]
     ];
-    animate(
-      hamburger_bars,
-      {
-        // each item in sequence has duration of 0.1 seconds
-        defaultTransition: { duration: 0.1 }
-      }
-    );
+    animate(hamburger_bars, {
+      // each item in sequence has duration of 0.1 seconds
+      defaultTransition: { duration: 0.1 }
+    });
   };
   var reverse_hamburger_animation = () => {
     const hamburger_bars = [
       [".hamburger .bar:nth-child(1)", { transform: "rotate(0deg)" }],
-      [".hamburger .bar:nth-child(3)", { transform: "rotate(0deg) ", width: "25px" }],
+      [
+        ".hamburger .bar:nth-child(3)",
+        { transform: "rotate(0deg) ", width: "25px" }
+      ],
       [".hamburger .bar:nth-child(2) ", { opacity: 1 }]
     ];
-    animate(
-      hamburger_bars,
-      {
-        defaultTransition: { duration: 0.1 }
-      }
-    );
+    animate(hamburger_bars, {
+      defaultTransition: { duration: 0.1 }
+    });
   };
   var mobile_nav_links = () => {
     if (is_touch_device()) {
-      $(".nav-links a").click(
-        function() {
-          close_mobile_menu();
-        }
-      );
+      $(".nav-links a").click(function() {
+        close_mobile_menu();
+      });
     }
   };
   var close_mobile_menu = () => {
-    animate(".nav-links li", { opacity: 0, y: [0, -50] }, { delay: stagger(0.05) });
+    animate(
+      ".nav-links li",
+      { opacity: 0, y: [0, -50] },
+      { delay: stagger(0.05) }
+    );
     reverse_hamburger_animation();
     $(".nav-links").removeClass("active");
     $("body").css("overflow", "visible");
@@ -8489,34 +8507,31 @@
     $(".hamburger").attr("aria-expanded", "false");
     $(".hamburger").attr("role", "button");
     $(".hamburger").attr("tabindex", "0");
-    $(".hamburger").on(
-      "keydown",
-      (e2) => {
-        if (e2.key === "Enter" || e2.key === " ") {
-          e2.preventDefault();
-          $(".hamburger").click();
-        }
+    $(".hamburger").on("keydown", (e2) => {
+      if (e2.key === "Enter" || e2.key === " ") {
+        e2.preventDefault();
+        $(".hamburger").click();
       }
-    );
+    });
   };
   var generate_random_substring = (length, symbols) => {
     let random_substring = "";
     for (let i2 = 0; i2 <= length; i2++) {
-      random_substring += symbols.charAt(Math.floor(Math.random() * symbols.length));
+      random_substring += symbols.charAt(
+        Math.floor(Math.random() * symbols.length)
+      );
     }
     return random_substring;
   };
   var scramble_text = (latest, count, element, target_string, symbols) => {
-    element.text(
-      function() {
-        if (latest === 1) {
-          return target_string;
-        }
-        if (count % 4 === 0) {
-          return generate_random_substring(target_string.length, symbols);
-        }
+    element.text(function() {
+      if (latest === 1) {
+        return target_string;
       }
-    );
+      if (count % 4 === 0) {
+        return generate_random_substring(target_string.length, symbols);
+      }
+    });
   };
   async function animate_hero() {
     const chars = ["\u{1F600}", "\u{1F603}", "\u{1F604}", "\u{1F601}", "\u{1F606}", "\u{1F605}"];
@@ -8530,7 +8545,12 @@
     const name_element = $(".bold");
     const title_element = $(".title");
     let count = 0;
-    const titles = ["Full-Stack Developer", "Front-End Engineer", "Web Developer"];
+    const titles = [
+      "Full-Stack Developer",
+      "Front-End Engineer",
+      "Web Developer",
+      "Software Engineer"
+    ];
     const sequence = [
       [".navigation", { opacity: 1 }, { duration: 0.5 }],
       ["#letter-e", { opacity: 1 }, { duration: 0.25 }],
@@ -8557,9 +8577,17 @@
       [".mail-icon", { opacity: 1 }, { at: "<+0.5", duration: 1 }]
     ];
     if (is_touch_device()) {
-      sequence.splice(2, 0, [".hamburger .bar", { opacity: 1, y: [-15, 0] }, { delay: stagger(0.06) }]);
+      sequence.splice(2, 0, [
+        ".hamburger .bar",
+        { opacity: 1, y: [-15, 0] },
+        { delay: stagger(0.06) }
+      ]);
     } else {
-      sequence.splice(2, 0, [".nav-links li", { opacity: 1, y: [-35, 0] }, { delay: stagger(0.06) }]);
+      sequence.splice(2, 0, [
+        ".nav-links li",
+        { opacity: 1, y: [-35, 0] },
+        { delay: stagger(0.06) }
+      ]);
     }
     const hero_animation = animate(sequence);
     await hero_animation;
@@ -8571,56 +8599,50 @@
     let current_title = 0;
     let next_title = 0;
     let count = 0;
-    animate(
-      0,
-      1,
-      {
-        duration: 1.5,
-        ease: "circOut",
-        // on each frame of the animation (a value between 0-1), set the elements text 
-        // to a random substring in the symbols string with onUpdate callback
-        onUpdate: (latest) => {
-          if (is_repeating === false || latest < 1) {
-            $(".title").text(
-              function() {
-                if (latest === 1) {
-                  current_title++;
-                  next_title = current_title + 1;
-                  if (current_title > titles.length - 1) {
-                    current_title = 0;
-                  }
-                  if (next_title > titles.length - 1) {
-                    next_title = 0;
-                  }
-                  is_repeating = true;
-                  return titles[current_title];
-                }
-                is_repeating = false;
-                count++;
-                if (count % 6 === 0) {
-                  return generate_random_substring(titles[next_title].length, symbols);
-                }
+    animate(0, 1, {
+      duration: 1.5,
+      ease: "circOut",
+      // on each frame of the animation (a value between 0-1), set the elements text
+      // to a random substring in the symbols string with onUpdate callback
+      onUpdate: (latest) => {
+        if (is_repeating === false || latest < 1) {
+          $(".title").text(function() {
+            if (latest === 1) {
+              current_title++;
+              next_title = current_title + 1;
+              if (current_title > titles.length - 1) {
+                current_title = 0;
               }
-            );
-          }
-        },
-        repeat: Infinity,
-        repeatType: "loop",
-        repeatDelay: 2
-      }
-    );
+              if (next_title > titles.length - 1) {
+                next_title = 0;
+              }
+              is_repeating = true;
+              return titles[current_title];
+            }
+            is_repeating = false;
+            count++;
+            if (count % 6 === 0) {
+              return generate_random_substring(
+                titles[next_title].length,
+                symbols
+              );
+            }
+          });
+        }
+      },
+      repeat: Infinity,
+      repeatType: "loop",
+      repeatDelay: 2
+    });
   };
   var default_hover_states = () => {
-    hover(
-      ".default-hover-state",
-      (element) => {
-        element.style.cursor = "pointer";
-        animate(element, { opacity: 0.5, transform: "translateY(-6px)" });
-        return () => {
-          animate(element, { opacity: 1, transform: "translateY(0px)" });
-        };
-      }
-    );
+    hover(".default-hover-state", (element) => {
+      element.style.cursor = "pointer";
+      animate(element, { opacity: 0.5, transform: "translateY(-6px)" });
+      return () => {
+        animate(element, { opacity: 1, transform: "translateY(0px)" });
+      };
+    });
   };
   $(document).ready(function() {
     $(window).scrollTop(0);
@@ -8631,7 +8653,80 @@
     open_dropdown();
     toggle_mobile_menu();
     mobile_nav_links();
+    setup_job_tabs();
+    setup_scroll_reveal();
   });
+  var setup_job_tabs = () => {
+    const tabs = document.querySelectorAll(".job-tab");
+    const highlight = document.querySelector(".job-highlight");
+    if (!tabs.length || !highlight) return;
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const move_highlight = (tab) => {
+      if (desktop.matches) {
+        highlight.style.width = "";
+        highlight.style.transform = `translateY(${tab.offsetTop}px)`;
+      } else {
+        highlight.style.width = `${tab.offsetWidth}px`;
+        highlight.style.transform = `translateX(${tab.offsetLeft}px)`;
+      }
+    };
+    const select_tab = (tab) => {
+      tabs.forEach((t2) => {
+        const selected = t2 === tab;
+        t2.setAttribute("aria-selected", selected);
+        t2.tabIndex = selected ? 0 : -1;
+        document.getElementById(t2.getAttribute("aria-controls")).hidden = !selected;
+      });
+      move_highlight(tab);
+    };
+    tabs.forEach((tab, i2) => {
+      tab.addEventListener("click", () => select_tab(tab));
+      tab.addEventListener("keydown", (e2) => {
+        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e2.key];
+        if (!step) return;
+        e2.preventDefault();
+        const target = tabs[(i2 + step + tabs.length) % tabs.length];
+        target.focus();
+        select_tab(target);
+      });
+    });
+    const reposition = () => move_highlight(document.querySelector('.job-tab[aria-selected="true"]'));
+    desktop.addEventListener("change", reposition);
+    window.addEventListener("resize", reposition);
+    select_tab(tabs[0]);
+  };
+  var setup_scroll_reveal = () => {
+    const targets = document.querySelectorAll(
+      [
+        ".content-section:not(#intro) > h1",
+        ".content-section:not(#intro) > .sharp-edge",
+        "#about-content",
+        ".jobs",
+        ".project-row",
+        ".skills-row",
+        "#footer"
+      ].join(", ")
+    );
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("reveal", "is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      // Start when 15% of the element is visible, a little above the bottom edge
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    targets.forEach((el) => {
+      el.classList.add("reveal");
+      observer.observe(el);
+    });
+  };
 })();
 /*! Bundled license information:
 

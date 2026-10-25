@@ -1,730 +1,683 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Esteban's portofolio site, a full stack developer in the SF bay area. 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Esteban's portofolio site, a full stack developer in the SF bay area. 
         Site includes following sections:
-        About, Experience, Projects, and Skills + Interests">
+        About, Experience, Projects, and Skills + Interests"
+    />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="images/site-imgs/letter-e.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/site-imgs/optimized-letter-e.webp"
+    />
     <title>Esteban Rodriguez</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
     <script src="build/out.js"></script>
+  </head>
 
-
-
-</head>
-
-<body>
-
-
-
+  <body>
     <!--  Main navigation at the top -->
     <header class="navigation">
-        <img class="icon-width default-hover-state" src="images/site-imgs/letter-e.png" alt="The letter E"
-            id="letter-e">
+      <img
+        class="icon-width default-hover-state"
+        src="images/site-imgs/optimized-letter-e.webp"
+        alt="The letter E"
+        id="letter-e"
+      />
 
-        <nav>
-            <ul class="nav-links remove-bullets">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills-interests">Skills + Interests</a></li>
-                <li class="resume"><a href="https://pdflink.to/esteban-r-e/" target="_blank"
-                        rel="noopener noreferrer">Resume</a></li>
-            </ul>
+      <nav>
+        <ul class="nav-links remove-bullets">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills-interests">Skills + Interests</a></li>
+          <li class="resume">
+            <a
+              href="https://linkmypdf.com/view/e-s-grad-resume-2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Resume</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-        </nav>
-
-
-
-
-        <div class="hamburger">
-            <span class="bar"> </span>
-            <span class="bar"> </span>
-            <span class="bar"> </span>
-
-        </div>
-
-
-
-
-
+      <div class="hamburger">
+        <span class="bar"> </span>
+        <span class="bar"> </span>
+        <span class="bar"> </span>
+      </div>
     </header>
 
     <ul class="social-profiles">
-        <ul class="github-linkedin">
-            <li>
-                <a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-linkedin fa-3x"></i>
-            <li>
-                <a href="https://github.com/estebanrodriguez28" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-github fa-3x">
-
-                    </i>
-                </a>
-            </li>
-
-        </ul>
-        <li class="mail-icon">
-            <a href="mailto:erod9246@gmail.com">
-                <i class="default-hover-state fa-solid fa-envelope fa-3x"></i>
-            </a>
+      <ul class="github-linkedin">
+        <li>
+          <a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank">
+            <i
+              class="default-hover-state fa-brands fa-square-linkedin fa-3x"
+            ></i>
+          </a>
         </li>
+
+        <li>
+          <a href="https://github.com/estebanrodriguez28" target="_blank">
+            <i class="default-hover-state fa-brands fa-square-github fa-3x">
+            </i>
+          </a>
+        </li>
+      </ul>
+      <li class="mail-icon">
+        <a href="mailto:erod9246@gmail.com">
+          <i class="default-hover-state fa-solid fa-envelope fa-3x"></i>
+        </a>
+      </li>
     </ul>
 
-
-
-
     <main>
+      <!-- Intro/Hero section -->
+      <section class="content-section" id="intro">
+        <img
+          src="images/site-imgs/programming.png"
+          id="code-image"
+          alt="Cartoon icon of laptop with code"
+        />
+        <div class="limit-symbols">
+          <h1 class="bold"></h1>
 
-        <!-- Intro/Hero section -->
-        <section class="content-section" id="intro">
-            <img src="images/site-imgs/programming.png" id="code-image" alt="Cartoon icon of laptop with code">
-            <div class="limit-symbols">
-                <h1 class="bold"></h1>
+          <h2 class="title" id="limit-title"></h2>
+        </div>
+      </section>
 
-
-                <h2 class="title" id="limit-title"></h2>
-
+      <!-- About me section -->
+      <section class="content-section" id="about">
+        <h1>1. About Me</h1>
+        <div class="sharp-edge"></div>
+        <section id="about-content">
+          <span id="polaroid">
+            <img
+              src="images/site-imgs/e.webp"
+              alt="Picture of me"
+              id="large-img"
+            />
+          </span>
+          <!-- Styling the about text in a mock browser tab -->
+          <div class="browser">
+            <div class="browser-tab" id="browser-tab-about">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
             </div>
 
+            <div id="browser-text">
+              <p class="txt-spacing">
+                Hi, I’m Esteban, a front-end and full-stack engineer based in
+                the San Francisco Bay Area.
+              </p>
+              <p class="txt-spacing">
+                I love working where design and code meet: turning ideas into
+                interfaces that are responsive, intuitive, and look great. I
+                care about the details that create the user experience.
+              </p>
+              <p class="txt-spacing">
+                I graduated from the University of San Diego in May 2025 with a
+                B.S. in Computer Science. Since then I’ve built website variants
+                with Claude at Coframe, built this portfolio site, and am
+                improving my skills with
+                <a
+                  href="https://www.frontendmentor.io/profile/estebanrodriguez28"
+                  target="_blank"
+                  >Front-end Mentor</a
+                >. I’m currently looking for my next role as a front-end or
+                full-stack engineer.
+              </p>
 
-
+              <p class="txt-spacing">
+                Outside of work I enjoy exercise, nutrition, playing my guitar,
+                and hanging out with my cat Mochi.
+              </p>
+            </div>
+          </div>
         </section>
+      </section>
 
+      <!-- Experience/work section -->
+      <section class="content-section" id="experience">
+        <h1>2. Experience</h1>
+        <div class="sharp-edge"></div>
+        <!-- My Jobs: tabbed layout -->
+        <div class="jobs">
+          <div class="job-tabs" role="tablist" aria-label="Places I've worked">
+            <button
+              class="job-tab"
+              type="button"
+              role="tab"
+              id="tab-0"
+              aria-selected="true"
+              aria-controls="panel-0"
+            >
+              Coframe
+            </button>
+            <button
+              class="job-tab"
+              type="button"
+              role="tab"
+              id="tab-1"
+              aria-selected="false"
+              aria-controls="panel-1"
+              tabindex="-1"
+            >
+              Haystacks AI
+            </button>
+            <button
+              class="job-tab"
+              type="button"
+              role="tab"
+              id="tab-2"
+              aria-selected="false"
+              aria-controls="panel-2"
+              tabindex="-1"
+            >
+              Guardant Health
+            </button>
+            <span class="job-highlight" aria-hidden="true"></span>
+          </div>
 
+          <div class="job-panels">
+            <div
+              class="job-panel"
+              role="tabpanel"
+              id="panel-0"
+              aria-labelledby="tab-0"
+            >
+              <h2>
+                Front-end Developer (Contract)
+                <span class="company"
+                  >@
+                  <a
+                    href="https://www.coframe.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Coframe</a
+                  ></span
+                >
+              </h2>
+              <p class="job-dates">February 2026</p>
+              <ul class="job-bullets">
+                <li>
+                  Built 30+ website variants using Claude AI development tools,
+                  accelerating front-end production and enabling rapid iteration
+                  for conversion rate optimization (CRO) testing
+                </li>
+                <li>
+                  Leveraged Claude to cut average variant build time by ~30%,
+                  increasing capacity for A/B testing across client sites
+                </li>
+                <li>
+                  Supported 4 client websites simultaneously, delivering rapid
+                  front-end changes
+                </li>
+              </ul>
+            </div>
 
-        <!-- About me section -->
-        <section class="content-section" id="about">
-            <h1>1. About Me</h1>
-            <div class="sharp-edge"></div>
-            <section id="about-content">
+            <div
+              class="job-panel"
+              role="tabpanel"
+              id="panel-1"
+              aria-labelledby="tab-1"
+              hidden
+            >
+              <h2>
+                Software Engineer Intern
+                <span class="company"
+                  >@
+                  <a
+                    href="https://haystacksai.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Haystacks AI</a
+                  ></span
+                >
+              </h2>
+              <p class="job-dates">Summer 2024</p>
+              <ul class="job-bullets">
+                <li>
+                  Automated an ETL pipeline using Playwright and Pandas to
+                  collect and aggregate campaign data from sources without APIs,
+                  saving 10+ hours of work per week
+                </li>
+                <li>
+                  Engineered LLM prompts to personalize outreach emails based on
+                  developers’ GitHub activity, doubling response rates
+                </li>
+                <li>
+                  Built Make automations connecting GitHub, Slack, and internal
+                  analytics tools to trigger personalized outreach campaigns,
+                  automating the end-to-end workflow for 500+ developer
+                  prospects monthly
+                </li>
+              </ul>
+            </div>
 
+            <div
+              class="job-panel"
+              role="tabpanel"
+              id="panel-2"
+              aria-labelledby="tab-2"
+              hidden
+            >
+              <h2>
+                Security Validation Intern
+                <span class="company"
+                  >@
+                  <a
+                    href="https://guardanthealth.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Guardant Health</a
+                  ></span
+                >
+              </h2>
+              <p class="job-dates">Summer 2023</p>
+              <ul class="job-bullets">
+                <li>
+                  Executed security assessments across 300+ systems and
+                  applications using automated testing tools (NodeZero,
+                  BurpSuite, Metasploit)
+                </li>
+                <li>
+                  Identified and documented 20+ vulnerabilities including 5
+                  critical-severity issues, directly contributing to improved
+                  security posture for healthcare infrastructure handling
+                  sensitive patient data
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <span id="polaroid">
-                    <img src="images/site-imgs/e.jpg" alt="Picture of me" id="large-img">
-                </span>
-                <!-- Styling the about text in a mock browser tab -->
+      <!-- Projects section -->
+      <section class="content-section" id="projects">
+        <h1>3. Projects</h1>
+        <div class="sharp-edge"></div>
+        <ul class="remove-bullets">
+          <!-- List of Projects-->
+          <li>
+            <div class="project-row">
+              <!-- On desktop I wanted the project screenshot to be outside of the card, and be on the left of the project description (which is within the card), to fill more of the screen. On mobile the screenshot is within the card. -->
+              <div class="desktop-browser">
+                <div class="browser-tab">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+                <img
+                  src="images/project-screenshots/mindestry.webp"
+                  alt="Screenshot of my project mindestry"
+                  id="project-img"
+                />
+              </div>
+
+              <div class="card project-card">
+                <!-- On mobile, the screenshot within the browser styling appears inside the card w/ project description, on desktop the browser (the screenshot + browser styling) gets hidden -->
                 <div class="browser">
-                    <div class="browser-tab" id="browser-tab-about">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-
-                    <div id="browser-text">
-
-
-                        <p class="txt-spacing">Welcome, I'm Esteban. I love creating visual designs that excite people!
-                            One way is through websites, I'm fascinated by the interesection between design and coding.
-                        </p>
-                        <p class="txt-spacing">My goal is to create the best designs I possibly can and amaze people! I
-                            am excited to keep
-                            growing my front-end skills and reach the highest level of design I can.</p>
-                    </div>
+                  <div class="browser-tab">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                  </div>
+                  <img
+                    src="images/project-screenshots/mindestry.webp"
+                    alt="Screenshot of my project mindestry"
+                    id="project-img"
+                  />
                 </div>
-            </section>
+                <div class="project-card-body">
+                  <div class="project-links">
+                    <h2>Mindestry</h2>
+                    <a
+                      href="https://mindestry.onrender.com/"
+                      target="_blank"
+                      aria-label="Open the live Mindestry site"
+                    >
+                      <i
+                        class="default-hover-state fa-solid fa-arrow-up-right-from-square fa-xl"
+                      ></i>
+                    </a>
+                    <a
+                      href="https://github.com/estebanrodriguez28/mind-mastery-react"
+                      target="_blank"
+                    >
+                      <i
+                        class="default-hover-state fa-brands fa-square-github fa-2x"
+                      >
+                      </i>
+                    </a>
+                  </div>
 
-        </section>
-
-
-
-        <!-- Experience/work section -->
-        <section class="content-section" id="experience">
-
-            <h1>2. Experience</h1>
-            <div class="sharp-edge"></div>
-            <!-- My Jobs -->
-            <ul class="remove-bullets">
-                <li>
-                    <div class="card">
-                        <img src="images/company-logos/coframe.png" alt="Coframe company logo">
-                        <h2>Web Developer</h2>
-                        <h3>Coframe</h3>
-                        <p>Built website variants with AI for conversion rate optimization (CRO) testing</p>
-                        <span>February 2026</span>
+                  <p>
+                    Developed a full stack mental health web app, using OpenAI's
+                    GPT API to change negative thoughts into positive ones.
+                  </p>
+                </div>
+                <ul class="project-icons">
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                      />
                     </div>
-                </li>
-
-                <li>
-                    <div class="card">
-                        <img src="images/company-logos/haystacks.png" alt="Haystacks company logo">
-                        <h2>Software Engineer Intern</h2>
-                        <h3>Haystacks AI</h3>
-                        <p>Used AI for automation and personalization for customer outreach</p>
-                        <span>Summer 2024</span>
+                    <span>React.js</span>
+                  </li>
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+                      />
                     </div>
+                    <span>Node.js</span>
+                  </li>
 
-                </li>
-
-                <li>
-                    <div class="card">
-                        <img src="images/company-logos/guardant.png" alt="Guardant company logo">
-                        <h2>Security Validation Intern</h2>
-                        <h3>Guardant Health</h3>
-                        <p>Conducted security assesments on healthcare systems</p>
-                        <span>Summer 2023</span>
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                      />
                     </div>
+                    <span>MongoDB</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
 
-                </li>
-            </ul>
+          <li>
+            <div class="project-row">
+              <img
+                class="fit-screenshot"
+                src="images/project-screenshots/senior-project.webp"
+                alt="Senior project poster screenshot"
+                id="hide-screenshot-mobile"
+              />
 
+              <div class="card project-card">
+                <img
+                  class="fit-screenshot"
+                  src="images/project-screenshots/senior-project.webp"
+                  alt="Senior project poster screenshot"
+                  id="hide-screenshot-desktop"
+                />
 
-
-
-        </section>
-
-        <!-- Projects section -->
-        <section class="content-section" id="projects">
-            <h1>3. Projects</h1>
-            <div class="sharp-edge"></div>
-            <ul class="remove-bullets">
-                <!-- List of Projects-->
-                <li>
-                    <div class="project-row">
-                        <!-- On desktop I wanted the project screenshot to be outside of the card, and be on the left of the project description (which is within the card), to fill more of the screen. On mobile the screenshot is within the card. -->
-                        <div class="desktop-browser">
-                            <div class="browser-tab">
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                            </div>
-                            <img src="images/project-screenshots/mindestry.png" alt="Screenshot of my project mindestry"
-                                id="project-img">
-
-                        </div>
-
-                        <div class="card project-card">
-                            <!-- On mobile, the screenshot within the browser styling appears inside the card w/ project description, on desktop the browser (the screenshot + browser styling) gets hidden -->
-                            <div class="browser">
-                                <div class="browser-tab">
-                                    <div class="circle"></div>
-                                    <div class="circle"></div>
-                                    <div class="circle"></div>
-                                </div>
-                                <img src="images/project-screenshots/mindestry.png"
-                                    alt="Screenshot of my project mindestry" id="project-img">
-
-                            </div>
-                            <div class="project-card-body">
-
-
-                                <div class="project-links">
-                                    <h2>Mindestry</h2>
-                                    <a href="https://mindestry.onrender.com/">
-                                        <img class="default-hover-state" src="images/site-imgs/external.png"
-                                            alt="External link icon"></a>
-                                    <a href="https://github.com/estebanrodriguez28/mind-mastery-react" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-github fa-2x">
-
-                    </i>
-                </a>
-
-                                </div>
-
-                                <p>Developed a full stack mental health web app, using OpenAI's GPT
-                                    API to change negative thoughts into positive ones.</p>
-                            </div>
-                            <ul class="project-icons">
-                                <li>
-                                    <div class="image-container">
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
-
-                                    </div>
-                                    <span>React.js</span>
-                                </li>
-                                <li>
-                                    <div class="image-container">
-
-
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />
-
-
-                                    </div>
-                                    <span>Node.js</span>
-                                </li>
-
-                                <li>
-                                    <div class="image-container">
-
-
-
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" />
-
-                                    </div>
-                                    <span>MongoDB</span>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="project-card-body">
+                  <div class="project-links">
+                    <h2>Senior Project</h2>
+                    <a
+                      href="https://github.com/estebanrodriguez28/COMP-49X-24-25-TransactCampus"
+                      target="_blank"
+                    >
+                      <i
+                        class="default-hover-state fa-brands fa-square-github fa-2x"
+                      >
+                      </i>
+                    </a>
+                  </div>
+                  <p>
+                    Collaborated in a team of 4 to create an admin dashboard
+                    analyzing student dining behavior.
+                  </p>
+                </div>
+                <ul class="project-icons">
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
+                      />
                     </div>
-
-                </li>
-
-                <li>
-
-                    <div class="project-row">
-
-                        <img class="fit-screenshot" src="images/project-screenshots/senior-project.png"
-                            alt="Senior project poster screenshot" id="hide-screenshot-mobile">
-
-
-
-                        <div class="card project-card">
-
-                            <img class="fit-screenshot" src="images/project-screenshots/senior-project.png"
-                                alt="Senior project poster screenshot" id="hide-screenshot-desktop">
-
-
-
-                            <div class="project-card-body">
-
-
-                                <div class="project-links">
-                                    <h2>Senior Project</h2>
-                                    <a href="https://github.com/estebanrodriguez28/COMP-49X-24-25-TransactCampus" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-github fa-2x">
-
-                    </i>
-                </a>
-                                </div>
-                                <p>Collaborated in a team of 4 to create an admin dashboard analyzing student dining
-                                    behavior.
-                                </p>
-                            </div>
-                            <ul class="project-icons">
-                                <li>
-                                    <div class="image-container">
-
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" />
-                                    </div>
-                                    <span>Flask</span>
-                                </li>
-                                <li>
-                                    <div class="image-container">
-
-
-
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" />
-
-                                    </div>
-                                    <span>Docker</span>
-                                </li>
-
-                                <li>
-                                    <div class="image-container">
-
-
-                                        <img class="devicon-white" src="images/tech-icons/power-bi.png" alt="PowerBI">
-
-                                    </div>
-                                    <span>PowerBI</span>
-                                </li>
-                            </ul>
-                        </div>
+                    <span>Flask</span>
+                  </li>
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg"
+                      />
                     </div>
+                    <span>Docker</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
 
-                </li>
+          <li>
+            <div class="project-row">
+              <div class="desktop-browser">
+                <div class="browser-tab">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+                <img
+                  src="images/project-screenshots/intro-project.webp"
+                  alt="Intro project screenshot"
+                  id="project-img"
+                />
+              </div>
 
-                <li>
-                    <div class="project-row">
-                        <div class="desktop-browser">
-                            <div class="browser-tab">
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                                <div class="circle"></div>
-                            </div>
-                            <img src="images/project-screenshots/intro-project.png" alt="Intro project screenshot"
-                                id="project-img">
-
-                        </div>
-
-                        <div class="card project-card">
-
-                            <div class="browser">
-                                <div class="browser-tab">
-                                    <div class="circle"></div>
-                                    <div class="circle"></div>
-                                    <div class="circle"></div>
-                                </div>
-                                <img src="images/project-screenshots/intro-project.png" alt="Intro project screenshot"
-                                    id="project-img">
-                            </div>
-
-                            <div class="project-card-body">
-
-                                <div class="project-links">
-                                    <h2>Message Board</h2>
-                                  
-
-                                    <a href="https://github.com/estebanrodriguez28/COMP-49X-24-25-transactCampus-intro-project" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-github fa-2x">
-
-                    </i>
-                </a>
-                                </div>
-
-
-                                <p>Worked in a team of four to create a full-stack message board where users can create
-                                    posts
-                                    and
-                                    add
-                                    comments.</p>
-                            </div>
-                            <ul class="project-icons">
-                                <li>
-                                    <div class="image-container">
-
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
-                                    </div>
-                                    <span>Python</span>
-                                </li>
-                                <li>
-                                    <div class="image-container">
-
-
-
-
-                                        <img class="devicon-white"
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg" />
-
-                                    </div>
-                                    <span>PostgreSQL</span>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-
-
-        </section>
-
-        <!-- Skills + Interests section -->
-        <section class="content-section" id="skills-interests">
-            <h1 id="skills-header">4. Skills + Interests</h1>
-            <div class="sharp-edge"></div>
-            <ul class="skills-container remove-bullets">
-                <div class="skills-row">
-                    <li>
-
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" />
-
-
-                        <h2>HTML 5</h2>
-                    </li>
-
-                    <li>
-
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg" />
-
-                        <h2>CSS 3</h2>
-
-                    </li>
-
+              <div class="card project-card">
+                <div class="browser">
+                  <div class="browser-tab">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                  </div>
+                  <img
+                    src="images/project-screenshots/intro-project.webp"
+                    alt="Intro project screenshot"
+                    id="project-img"
+                  />
                 </div>
 
-                <div class="skills-row">
-                    <li>
+                <div class="project-card-body">
+                  <div class="project-links">
+                    <h2>Message Board</h2>
 
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+                    <a
+                      href="https://github.com/estebanrodriguez28/COMP-49X-24-25-transactCampus-intro-project"
+                      target="_blank"
+                    >
+                      <i
+                        class="default-hover-state fa-brands fa-square-github fa-2x"
+                      >
+                      </i>
+                    </a>
+                  </div>
 
-
-                        <h2>React.js</h2>
-                    </li>
-
-                    <li>
-
-
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" />
-
-
-
-                        <h2>JavaScript</h2>
-
-                    </li>
-
+                  <p>
+                    Worked in a team of four to create a full-stack message
+                    board where users can create posts and add comments.
+                  </p>
                 </div>
+                <ul class="project-icons">
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                      />
+                    </div>
+                    <span>Python</span>
+                  </li>
+                  <li>
+                    <div class="image-container">
+                      <img
+                        class="devicon-white"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg"
+                      />
+                    </div>
+                    <span>PostgreSQL</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-                <div class="skills-row">
-                    <li>
+      <!-- Skills + Interests section -->
+      <section class="content-section" id="skills-interests">
+        <h1 id="skills-header">4. Skills</h1>
+        <div class="sharp-edge"></div>
+        <ul class="skills-container remove-bullets">
+          <div class="skills-row">
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg"
+              />
 
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />
+              <h2>HTML 5</h2>
+            </li>
 
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
+              />
 
-                        <h2>Node.js</h2>
-                    </li>
+              <h2>CSS 3</h2>
+            </li>
+          </div>
 
-                    <li>
+          <div class="skills-row">
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+              />
 
+              <h2>React.js</h2>
+            </li>
 
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" />
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
+              />
 
+              <h2>JavaScript</h2>
+            </li>
+          </div>
 
+          <div class="skills-row">
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+              />
 
-                        <h2>MongoDB</h2>
+              <h2>Node.js</h2>
+            </li>
 
-                    </li>
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+              />
 
-                </div>
+              <h2>MongoDB</h2>
+            </li>
+          </div>
 
-                <div class="skills-row">
-                    <li>
+          <div class="skills-row">
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+              />
 
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
+              <h2>Python</h2>
+            </li>
 
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
+              />
 
-                        <h2>Python</h2>
-                    </li>
-
-                    <li>
-
-
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" />
-
-
-
-                        <h2>Flask</h2>
-
-                    </li>
-
-                </div>
-                <div class="skills-row">
-
-
-                    <li>
-
-                        <img class="devicon-white"
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg" />
-                        <h2>PostgreSQL</h2>
-
-                    </li>
-                </div>
-
-            </ul>
-
-
-
-            <div class="sharp-edge" id="shorter-edge"></div>
-            <ul class="skills-container remove-bullets">
-
-
-                <div class="interests-row">
-
-
-                    <li>
-                        <img src="images/interests-icons/pull-up-bar.png">
-                        <span>Calisthenics</span>
-                    </li>
-
-                    <li>
-                        <img class="devicon-white" src="images/interests-icons/steak.png">
-                        <span>Nutrition</span>
-
-                    </li>
-                </div>
-
-                <div class="interests-row">
-                    <li>
-                        <img src="images/interests-icons/surf 1.png">
-                        <span>Surfing</span>
-                    </li>
-
-                    <li>
-                        <img class="devicon-white" src="images/interests-icons/open-book 2.png">
-                        <span>Reading</span>
-
-                    </li>
-
-                </div>
-            </ul>
-
-
-        </section>
-
-
-
-
+              <h2>Flask</h2>
+            </li>
+          </div>
+          <div class="skills-row">
+            <li>
+              <img
+                class="devicon-white"
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg"
+              />
+              <h2>PostgreSQL</h2>
+            </li>
+          </div>
+        </ul>
+      </section>
     </main>
 
     <!--
             Footer w/ Github + LinkedIn
         -->
     <footer id="footer">
-        <section id="footer-socials">
-            <div id="footer-row-socials">
-             
-                <a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-linkedin fa-3x"></i>
-        
-                <a href="https://github.com/estebanrodriguez28" target="_blank">
-                    <i class="default-hover-state fa-brands fa-square-github fa-3x">
+      <section id="footer-socials">
+        <div id="footer-row-socials">
+          <a href="https://www.linkedin.com/in/esteban-r-e/" target="_blank">
+            <i
+              class="default-hover-state fa-brands fa-square-linkedin fa-3x"
+            ></i>
+          </a>
+          <a href="https://github.com/estebanrodriguez28" target="_blank">
+            <i class="default-hover-state fa-brands fa-square-github fa-3x">
+            </i>
+          </a>
+        </div>
+        <a href="mailto:erod9246@gmail.com">
+          <i class="default-hover-state fa-solid fa-envelope fa-3x"></i>
+        </a>
+        <span>erod9246@gmail.com</span>
+      </section>
+      <p class="footer-signature">Designed &amp; built by Esteban Rodriguez</p>
 
-                    </i>
-                </a>
-                
-                
-
-            </div>
-<a href="mailto:erod9246@gmail.com">
-                <i class="default-hover-state fa-solid fa-envelope fa-3x"></i>
-            </a>            <span>erod9246@gmail.com</span>
-
-
-        </section>
-        <p>Inspiration from:</p>
-        <ul class="remove-bullets inspiration">
-            <li>
-                <a href="https://yeshc.me/">Yesh C</a>
-
-            </li>
-
-            <li>
-                <a href="https://dorota1997.github.io/react-frontend-dev-portfolio/">Davina G</a>
-
-            </li>
-
-            <li>
-                <a href="https://hamishw.com/">Hamish W</a>
-
-            </li>
-        </ul>
-        <span class="inspiration">The tech icons in projects + skills section came from <a
-                href="https://devicon.dev/">devicon.dev</a></span>
-        <span class="inspiration">List of icons used in this site from <a
-                href="https://www.flaticon.com/">flaticon.com</a>:
-        </span>
-        <section class="dropdown">
-
-            <div id="footer-dropdown">
-                <h3>Flaticon Links </h3>
-                <div class="arrow-styling down"></div>
-            </div>
-            <ul class="remove-bullets dropdown-content">
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/letter-e" title="letter e icons">Letter e icons created
-                        by
-                        popo2021 - Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/hamburger" title="hamburger icons">Hamburger icons
-                        created
-                        by
-                        See Icons - Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/code" title="code icons">Code icons created by
-                        juicy_fish -
-                        Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created
-                        by
-                        Smashicons - Flaticon</a>
-                </li>
-
-                <li>
-
-                    <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by
-                        IconBaandar -
-                        Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by
-                        kornkun -
-                        Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/external-link" title="external link icons">External
-                        link
-                        icons
-                        created by Icon mania - Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/pull-up-bar" title="pull up bar icons">Pull up bar
-                        icons
-                        created by
-                        Hayyan Haider - Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/steak" title="steak icons">Steak icons created by
-                        Febrian
-                        Hidayat -
-                        Flaticon</a>
-                </li>
-
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/surfing" title="surfing icons">Surfing icons created by
-                        Mayor Icons
-                        - Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/book" title="book icons">Book icons created by Zlatko
-                        Najdenovski -
-                        Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/book" title="book icons">Book icons created by Freepik
-                        -
-                        Flaticon</a>
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/bookmark" title="bookmark icons">Bookmark icons created
-                        by
-                        Good
-                        Ware - Flaticon</a>
-
-                </li>
-
-                <li>
-                    <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Lagot
-                        Design - Flaticon</a>
-                </li>
-
-            </ul>
-
-        </section>
-
-
+      <details class="footer-credits">
+        <summary>Credits</summary>
+        <div class="footer-credits-body">
+          <p>
+            Design inspiration from
+            <a href="https://v4.brittanychiang.com/" target="_blank" rel="noopener noreferrer">Brittany C</a>,
+            <a href="https://dorota1997.github.io/react-frontend-dev-portfolio/" target="_blank" rel="noopener noreferrer">Davina G</a>
+            and
+            <a href="https://hamishw.com/" target="_blank" rel="noopener noreferrer">Hamish W</a>.
+          </p>
+          <p>
+            Tech icons from
+            <a href="https://devicon.dev/" target="_blank" rel="noopener noreferrer">devicon.dev</a>.
+            <a href="https://www.flaticon.com/free-icons/letter-e" title="letter e icons" target="_blank" rel="noopener noreferrer">Letter E icon</a>
+            by popo2021 and
+            <a href="https://www.flaticon.com/free-icons/code" title="code icons" target="_blank" rel="noopener noreferrer">code icon</a>
+            by juicy_fish on Flaticon.
+          </p>
+        </div>
+      </details>
     </footer>
-
-
-
-
-</body>
-
+  </body>
 </html>
