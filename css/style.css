@@ -421,7 +421,9 @@ a {
 }
 
 .project-row {
-  display: inline;
+  /* block (not inline) so it has a real box on phones: the scroll-reveal
+     fade can't move or detect an inline element wrapped around blocks */
+  display: block;
 }
 
 #hide-screenshot-desktop {
