@@ -449,7 +449,10 @@ const setup_scroll_reveal = () => {
     [
       ".content-section:not(#intro) > h1",
       ".content-section:not(#intro) > .sharp-edge",
-      "#about-content",
+      // photo and text box separately, so on phones (where they stack)
+      // the text box fades in when you reach it, not along with the photo
+      "#polaroid",
+      "#about-content > .browser",
       ".jobs",
       ".project-row",
       ".skills-row",
